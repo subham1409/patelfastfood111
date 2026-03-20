@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Patel Fast Food – Delicious burgers, cakes, and gola delivered fast. Order now via WhatsApp!" />
+  <title>Patel Fast Food – Delicious Food Delivered Fast 🍔</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--red:#E8192C;--red-dark:#c0111e;--orange:#FF6B00;--yellow:#FFD600;--white:#fff;--dark:#1a0a00;--gray-light:#f5f5f5;--border:#e8e0d5;--bg:#FFF8F0;--bg2:#fff;--bg3:#f9f1e7;--text:#1a0a00;--text2:#4a3728;--text3:#6b5744;--card-bg:#fff;--nav-bg:rgba(255,248,240,0.96);--shadow:0 4px 24px rgba(232,25,44,0.08);--shadow-hover:0 12px 40px rgba(232,25,44,0.18);--input-bg:#fff;--input-border:#e0d0c0}
+    [data-theme=dark]{--bg:#0f0500;--bg2:#1a0800;--bg3:#220d00;--text:#fff5ee;--text2:#ffd9b8;--text3:#c9a07a;--card-bg:#1f0c00;--nav-bg:rgba(15,5,0,0.97);--shadow:0 4px 24px rgba(0,0,0,.4);--shadow-hover:0 12px 40px rgba(232,100,44,.25);--border:#3a1a00;--gray-light:#1f0c00;--input-bg:#2a1000;--input-border:#4a2000}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    button{cursor:pointer;border:none;outline:none;font-family:inherit}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+    .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+    .section-title{font-family:'Baloo 2',cursive;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;text-align:center;margin-bottom:.4rem}
+    .section-sub{text-align:center;color:var(--text3);font-size:1.05rem;margin-bottom:3rem}
+
+    /* NAVBAR */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:2.5px solid var(--red);padding:.75rem 0;transition:background .3s}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{display:flex;align-items:center;gap:.6rem;font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;color:var(--red)}
+    .logo-icon{width:42px;height:42px;background:var(--red);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 12px rgba(232,25,44,.35)}
+    .logo span{color:var(--yellow)}
+    .nav-links{display:flex;align-items:center;gap:.2rem}
+    .nav-links a{font-weight:700;font-size:.9rem;padding:.4rem .8rem;border-radius:8px;color:var(--text2);transition:background .2s,color .2s}
+    .nav-links a:hover{background:var(--red);color:#fff}
+    .nav-right{display:flex;align-items:center;gap:.75rem}
+    .theme-toggle{background:var(--gray-light);border:2px solid var(--border);border-radius:50%;width:38px;height:38px;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .theme-toggle:hover{background:var(--yellow);border-color:var(--yellow)}
+    .cart-btn{background:var(--red);color:#fff;border-radius:50px;padding:.5rem 1.1rem;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:.5rem;transition:all .2s}
+    .cart-btn:hover{background:var(--red-dark);transform:scale(1.05)}
+    .cart-count{background:var(--yellow);color:var(--dark);font-size:.7rem;font-weight:900;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:6px;background:transparent}
+    .hamburger span{width:24px;height:2.5px;background:var(--red);border-radius:2px}
+    .mobile-menu{display:none;flex-direction:column;background:var(--nav-bg);padding:1rem 1.5rem 1.5rem;gap:.5rem;border-bottom:2px solid var(--red)}
+    .mobile-menu a{font-weight:700;font-size:1rem;padding:.6rem .8rem;border-radius:8px;color:var(--text2);transition:background .2s,color .2s}
+    .mobile-menu a:hover{background:var(--red);color:#fff}
+    .mobile-menu.open{display:flex}
+
+    /* HERO */
+    .hero{padding-top:80px;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#fff8f0 0%,#ffe5d0 60%,#ffd6b8 100%);position:relative;overflow:hidden}
+    [data-theme=dark] .hero{background:linear-gradient(135deg,#0f0500 0%,#1a0800 60%,#220d00 100%)}
+    .hero-blob{position:absolute;border-radius:50%;pointer-events:none}
+    .hero-blob:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,rgba(232,25,44,.08) 0%,transparent 70%);top:-150px;right:-100px}
+    .hero-blob:nth-child(2){width:400px;height:400px;background:radial-gradient(circle,rgba(255,214,0,.12) 0%,transparent 70%);bottom:-100px;left:-50px}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:4rem 0}
+    .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;font-size:.8rem;font-weight:800;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.2rem;letter-spacing:.04em;animation:fadeInUp .6s ease both}
+    .hero-title{font-family:'Baloo 2',cursive;font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:1.2rem;animation:fadeInUp .7s .1s ease both}
+    .hero-title .hl{color:var(--red);position:relative;display:inline-block}
+    .hero-title .hl::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:4px;background:var(--yellow);border-radius:2px}
+    .hero-desc{color:var(--text3);font-size:1.05rem;line-height:1.7;margin-bottom:2rem;animation:fadeInUp .7s .2s ease both}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeInUp .7s .3s ease both}
+    .btn-primary{background:var(--red);color:#fff;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:700;padding:.85rem 2rem;border-radius:50px;box-shadow:0 6px 20px rgba(232,25,44,.35);transition:all .25s;display:flex;align-items:center;gap:.5rem}
+    .btn-primary:hover{background:var(--red-dark);transform:translateY(-3px)}
+    .btn-outline{background:transparent;color:var(--red);border:2.5px solid var(--red);font-family:'Baloo 2',cursive;font-size:1rem;font-weight:700;padding:.85rem 2rem;border-radius:50px;transition:all .25s}
+    .btn-outline:hover{background:var(--red);color:#fff;transform:translateY(-3px)}
+    .hero-stats{display:flex;gap:2rem;margin-top:2.5rem;animation:fadeInUp .7s .4s ease both}
+    .hero-stat{text-align:center}
+    .hero-stat strong{display:block;font-family:'Baloo 2',cursive;font-size:1.8rem;font-weight:800;color:var(--red)}
+    .hero-stat span{font-size:.8rem;color:var(--text3);font-weight:600}
+    .hero-visual{display:flex;justify-content:center;align-items:center;position:relative;animation:fadeInRight .8s .2s ease both}
+    .hero-img-wrap{width:320px;height:320px;border-radius:50%;overflow:hidden;border:6px solid var(--red);box-shadow:0 20px 60px rgba(232,25,44,.3);animation:floatY 3s ease-in-out infinite;flex-shrink:0}
+    .hero-img-wrap img{width:100%;height:100%;object-fit:cover}
+    .hero-badge{position:absolute;background:var(--white);border-radius:16px;padding:.7rem 1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.85rem;animation:floatX 4s ease-in-out infinite;white-space:nowrap}
+    [data-theme=dark] .hero-badge{background:var(--card-bg)}
+    .hero-badge:nth-child(2){top:10%;right:-2%;animation-delay:.5s}
+    .hero-badge:nth-child(3){bottom:18%;left:-8%;animation-delay:1s}
+
+    /* MENU SECTION */
+    .menu{background:var(--bg);padding:5rem 0}
+    .menu-controls{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+    .search-box{position:relative;flex:1;min-width:220px;max-width:360px}
+    .search-box input{width:100%;background:var(--input-bg);border:2px solid var(--input-border);border-radius:50px;padding:.65rem 1rem .65rem 2.8rem;font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--text);transition:border-color .2s}
+    .search-box input:focus{border-color:var(--red);outline:none}
+    .s-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1rem;pointer-events:none}
+
+    /* MAIN CAT TABS */
+    .cat-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+    .cat-tab{padding:.5rem 1.2rem;border-radius:50px;font-weight:700;font-size:.9rem;background:var(--gray-light);color:var(--text2);border:2.5px solid transparent;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+    .cat-tab.active,.cat-tab:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+    /* SUBCAT CHIPS */
+    .subcat-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;align-items:center;min-height:34px}
+    .subcat-label{font-size:.82rem;font-weight:700;color:var(--text3);white-space:nowrap}
+    .subcat-chip{padding:.32rem .9rem;border-radius:50px;font-weight:700;font-size:.78rem;background:var(--bg3);color:var(--text3);border:2px solid var(--border);transition:all .2s;cursor:pointer}
+    .subcat-chip.active,.subcat-chip:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+    /* MENU GRID */
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.8rem}
+    .menu-item{background:var(--card-bg);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:all .3s;border:2px solid transparent}
+    .menu-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:var(--red)}
+
+    /* item image */
+    .item-img{height:175px;position:relative;overflow:hidden;background:linear-gradient(135deg,#ffe8d0,#ffd0b0)}
+    [data-theme=dark] .item-img{background:linear-gradient(135deg,#2a0d00,#3a1500)}
+    .item-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .menu-item:hover .item-img img{transform:scale(1.08)}
+    .img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4.5rem;display:none}
+    .pop-ribbon{position:absolute;top:12px;left:-4px;background:var(--red);color:#fff;font-size:.65rem;font-weight:800;padding:3px 10px 3px 8px;border-radius:0 4px 4px 0;letter-spacing:.04em;z-index:2}
+    .pop-ribbon::after{content:'';position:absolute;bottom:-4px;left:0;border-top:4px solid var(--red-dark);border-left:4px solid transparent}
+    .subcat-tag{position:absolute;bottom:8px;right:8px;background:rgba(255,107,0,.9);color:#fff;font-size:.65rem;font-weight:800;padding:3px 9px;border-radius:20px;z-index:2;letter-spacing:.03em}
+
+    .item-body{padding:1.1rem 1.2rem 1.2rem}
+    .item-name{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;margin-bottom:.25rem}
+    .item-desc{font-size:.8rem;color:var(--text3);margin-bottom:.9rem;line-height:1.5}
+    .item-footer{display:flex;align-items:center;justify-content:space-between}
+    .item-price{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800;color:var(--red)}
+    .add-btn{background:var(--red);color:#fff;border-radius:10px;padding:.5rem 1rem;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:.4rem;transition:all .2s}
+    .add-btn:hover{background:var(--red-dark);transform:scale(1.07)}
+    .add-btn.added{background:#22a745}
+    .no-results{text-align:center;padding:3rem;color:var(--text3);grid-column:1/-1;font-size:1.05rem}
+    .no-results .big{font-size:3rem;margin-bottom:1rem}
+
+    /* ABOUT */
+    .about{background:var(--bg2);padding:5rem 0}
+    .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .about-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+    .about-img-card{border-radius:16px;overflow:hidden;height:155px}
+    .about-img-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .about-img-card:hover img{transform:scale(1.06)}
+    .about-tagline{font-family:'Baloo 2',cursive;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;margin-bottom:1rem}
+    .about-tagline .red{color:var(--red)}
+    .about-text{color:var(--text3);line-height:1.8;margin-bottom:1.5rem;font-size:1rem}
+    .about-points{display:flex;flex-direction:column;gap:.8rem}
+    .about-point{display:flex;align-items:flex-start;gap:.8rem}
+    .point-icon{width:36px;height:36px;background:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;flex-shrink:0}
+    .point-text strong{display:block;font-weight:700;font-size:.95rem;margin-bottom:.15rem}
+    .point-text span{font-size:.82rem;color:var(--text3)}
+
+    /* CONTACT */
+    .contact{background:var(--bg);padding:5rem 0}
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+    .contact-card{background:var(--card-bg);border-radius:20px;padding:2rem 1.5rem;text-align:center;box-shadow:var(--shadow);border:2px solid transparent;transition:all .3s}
+    .contact-card:hover{border-color:var(--red);transform:translateY(-4px)}
+    .contact-icon{font-size:2.5rem;margin-bottom:1rem}
+    .contact-card h3{font-family:'Baloo 2',cursive;font-weight:800;font-size:1.1rem;margin-bottom:.5rem}
+    .contact-card p{color:var(--text3);font-size:.9rem;line-height:1.6}
+    .contact-card a{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;background:#25D366;color:#fff;padding:.5rem 1.2rem;border-radius:50px;font-weight:700;font-size:.85rem;transition:all .2s}
+    .contact-card a:hover{background:#1da851;transform:scale(1.05)}
+
+    footer{background:var(--dark);color:rgba(255,255,255,.7);text-align:center;padding:2rem;font-size:.88rem}
+    footer .f-logo{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:800;color:var(--yellow);margin-bottom:.5rem}
+
+    /* CART */
+    .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1500;opacity:0;pointer-events:none;transition:opacity .3s}
+    .cart-overlay.open{opacity:1;pointer-events:all}
+    .cart-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:var(--bg2);z-index:1600;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.2)}
+    .cart-panel.open{transform:translateX(0)}
+    .cart-header{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.5rem;border-bottom:2px solid var(--border);background:var(--red);color:#fff}
+    .cart-header h2{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800}
+    .cart-close{background:rgba(255,255,255,.2);color:#fff;width:34px;height:34px;border-radius:50%;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .cart-close:hover{background:rgba(255,255,255,.4)}
+    .cart-items{flex:1;overflow-y:auto;padding:1rem}
+    .cart-empty{text-align:center;padding:3rem 1rem;color:var(--text3)}
+    .cart-empty .big{font-size:4rem;margin-bottom:1rem}
+    .cart-item{display:flex;align-items:center;gap:.8rem;padding:.9rem;background:var(--bg3);border-radius:14px;margin-bottom:.8rem;animation:slideInR .3s ease}
+    .ci-img{width:54px;height:54px;border-radius:10px;overflow:hidden;flex-shrink:0;background:var(--bg3)}
+    .ci-img img{width:100%;height:100%;object-fit:cover}
+    .cart-item-info{flex:1;min-width:0}
+    .cart-item-name{font-weight:700;font-size:.88rem;margin-bottom:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cart-item-sub{font-size:.72rem;color:var(--text3);margin-bottom:.15rem}
+    .cart-item-price{font-family:'Baloo 2',cursive;font-weight:800;color:var(--red);font-size:.92rem}
+    .qty-controls{display:flex;align-items:center;gap:.4rem}
+    .qty-btn{width:28px;height:28px;border-radius:8px;background:var(--red);color:#fff;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s}
+    .qty-btn:hover{background:var(--red-dark);transform:scale(1.1)}
+    .qty-num{font-weight:800;font-size:1rem;min-width:20px;text-align:center}
+    .remove-btn{background:#fee2e2;color:var(--red);width:30px;height:30px;border-radius:8px;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+    .remove-btn:hover{background:var(--red);color:#fff}
+    .cart-footer{padding:1.2rem 1.5rem;border-top:2px solid var(--border)}
+    .cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+    .cart-total-label{font-weight:700;font-size:1rem}
+    .cart-total-price{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;color:var(--red)}
+    .checkout-btn{width:100%;background:var(--red);color:#fff;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;padding:1rem;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .2s;box-shadow:0 6px 20px rgba(232,25,44,.35)}
+    .checkout-btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+    .checkout-btn:disabled{background:#ccc;cursor:not-allowed;box-shadow:none;transform:none}
+
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .3s}
+    .modal-overlay.open{opacity:1;pointer-events:all}
+    .modal{background:var(--bg2);border-radius:24px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.9);transition:transform .3s}
+    .modal-overlay.open .modal{transform:scale(1)}
+    .modal-header{background:var(--red);color:#fff;padding:1.3rem 1.5rem;border-radius:24px 24px 0 0;display:flex;align-items:center;justify-content:space-between}
+    .modal-header h2{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800}
+    .modal-close{background:rgba(255,255,255,.2);color:#fff;width:32px;height:32px;border-radius:50%;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .modal-close:hover{background:rgba(255,255,255,.4)}
+    .modal-body{padding:1.5rem}
+    .form-group{margin-bottom:1.2rem}
+    .form-group label{display:block;font-weight:700;font-size:.88rem;margin-bottom:.4rem;color:var(--text2)}
+    .form-group input,.form-group textarea{width:100%;background:var(--input-bg);border:2px solid var(--input-border);border-radius:10px;padding:.7rem 1rem;font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--text);transition:border-color .2s}
+    .form-group input:focus,.form-group textarea:focus{border-color:var(--red);outline:none}
+    .form-group textarea{resize:vertical;min-height:80px}
+    .order-summary-box{background:var(--bg3);border-radius:12px;padding:1rem;margin-bottom:1.2rem;font-size:.88rem;color:var(--text2)}
+    .sum-title{font-weight:800;margin-bottom:.6rem;color:var(--text)}
+    .sum-item{display:flex;justify-content:space-between;margin-bottom:.3rem}
+    .sum-total{display:flex;justify-content:space-between;margin-top:.6rem;padding-top:.6rem;border-top:1.5px solid var(--border);font-weight:800;color:var(--red);font-size:1rem}
+    .whatsapp-btn{width:100%;background:#25D366;color:#fff;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;padding:1rem;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:all .2s;box-shadow:0 6px 20px rgba(37,211,102,.35)}
+    .whatsapp-btn:hover{background:#1da851;transform:translateY(-2px)}
+
+    .floating-wa{position:fixed;bottom:2rem;right:2rem;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;font-size:1.6rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);z-index:900;transition:all .25s;animation:pulseDot 2.5s ease-in-out infinite}
+    .floating-wa:hover{transform:scale(1.15)}
+
+    .toast-container{position:fixed;top:88px;right:1.5rem;z-index:3000;display:flex;flex-direction:column;gap:.6rem}
+    .toast{background:var(--dark);color:#fff;padding:.75rem 1.2rem;border-radius:12px;font-weight:700;font-size:.88rem;box-shadow:0 4px 20px rgba(0,0,0,.25);display:flex;align-items:center;gap:.6rem;animation:toastIn .4s ease,toastOut .4s ease 2.6s forwards;border-left:4px solid var(--red);max-width:280px}
+    [data-theme=dark] .toast{background:var(--card-bg)}
+
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+    @keyframes floatX{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.03)}}
+    @keyframes pulseDot{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45)}50%{box-shadow:0 4px 30px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,.1)}}
+    @keyframes toastIn{from{opacity:0;transform:translateX(100%)}to{opacity:1;transform:translateX(0)}}
+    @keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(100%)}}
+    @keyframes slideInR{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-btns{justify-content:center}.hero-stats{justify-content:center}.hero-visual{margin-top:2rem}.about-inner{grid-template-columns:1fr}.about-img-grid{order:-1}.hero-badge:nth-child(2){right:5%}.hero-badge:nth-child(3){left:0}}
+    @media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}.menu-controls{flex-direction:column;align-items:stretch}.search-box{max-width:100%}.cat-tabs{justify-content:center}}
+  </style>
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo"><div class="logo-icon">🍔</div>Patel <span>Fast Food</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+      <button class="cart-btn" id="cartToggle">🛒 Cart <span class="cart-count" id="cartCount">0</span></button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="closeMobile()">Home</a><a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#about" onclick="closeMobile()">About</a><a href="#contact" onclick="closeMobile()">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-blob"></div><div class="hero-blob"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">🔥 Freshly Made · Fast Delivery</div>
+        <h1 class="hero-title">Delicious Food<br><span class="hl">Delivered Fast</span></h1>
+        <p class="hero-desc">From sizzling burgers to dreamy cakes and refreshing gola — Patel Fast Food brings your cravings to your doorstep. Order easily via WhatsApp in seconds!</p>
+        <div class="hero-btns"><a href="#menu" class="btn-primary">🍔 Order Now</a><a href="#about" class="btn-outline">Learn More</a></div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>500+</strong><span>Happy Customers</span></div>
+          <div class="hero-stat"><strong>26</strong><span>Menu Items</span></div>
+          <div class="hero-stat"><strong>15 min</strong><span>Avg. Delivery</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=640&auto=format&fit=crop&q=80" alt="Burger" loading="eager"/>
+        </div>
+        <div class="hero-badge">🌟 Top Rated</div>
+        <div class="hero-badge">⚡ Fast Delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <h2 class="section-title">Our Menu</h2>
+    <p class="section-sub">Fresh ingredients · Bold flavors · Fast service</p>
+    <div class="menu-controls">
+      <div class="search-box"><span class="s-icon">🔍</span><input type="text" id="searchInput" placeholder="Search food, subcategory…"/></div>
+    </div>
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-tab active" data-cat="all">🍽️ All Items</button>
+      <button class="cat-tab" data-cat="fastfood">🍔 Fast Food</button>
+      <button class="cat-tab" data-cat="cake">🎂 Cakes</button>
+      <button class="cat-tab" data-cat="gola">🧊 Gola</button>
+    </div>
+    <div class="subcat-bar" id="subcatBar"></div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-img-grid">
+        <div class="about-img-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=80" alt="burger" loading="lazy"/></div>
+        <div class="about-img-card"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&auto=format&fit=crop&q=80" alt="pizza" loading="lazy"/></div>
+        <div class="about-img-card"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop&q=80" alt="cake" loading="lazy"/></div>
+        <div class="about-img-card"><img src="https://images.unsplash.com/photo-1576107232684-1279f8a56b07?w=400&auto=format&fit=crop&q=80" alt="fries" loading="lazy"/></div>
+      </div>
+      <div>
+        <h2 class="about-tagline">We Cook With <span class="red">Love</span> &amp; Serve With <span class="red">Speed</span></h2>
+        <p class="about-text">Patel Fast Food started with a simple dream — to serve delicious, freshly made food that puts a smile on every face. From burgers and pizzas to celebration cakes and summer gola, we've got something for everyone.</p>
+        <p class="about-text">Every dish is crafted with high-quality ingredients and a whole lot of passion. WhatsApp ordering makes it seamless — just tap, order, enjoy!</p>
+        <div class="about-points">
+          <div class="about-point"><div class="point-icon">✅</div><div class="point-text"><strong>100% Fresh Ingredients</strong><span>Sourced daily, cooked to order</span></div></div>
+          <div class="about-point"><div class="point-icon">⚡</div><div class="point-text"><strong>Lightning Fast Delivery</strong><span>Average 15 minutes to your door</span></div></div>
+          <div class="about-point"><div class="point-icon">💬</div><div class="point-text"><strong>WhatsApp Ordering</strong><span>Simple, instant, no app needed</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-sub">We're just a message away!</p>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="contact-icon">📞</div><h3>Call Us</h3><p>+91 8849110467<br>Open 10 AM – 10 PM daily</p><a href="tel:+918849110467">📞 Call Now</a></div>
+      <div class="contact-card"><div class="contact-icon">📍</div><h3>Location</h3><p>Shop No. 5, Patel Market<br>Ahmedabad, Gujarat 380001</p><a href="https://wa.me/918849110467" target="_blank">💬 WhatsApp Us</a></div>
+      <div class="contact-card"><div class="contact-icon">🕐</div><h3>Hours</h3><p>Mon – Sun: 10:00 AM – 10:00 PM<br>No holidays, always open!</p><a href="https://wa.me/918849110467" target="_blank">📦 Order Now</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">🍔 Patel Fast Food</div>
+  <p>Delicious Food Delivered Fast · Ahmedabad, Gujarat</p>
+  <p style="margin-top:.5rem">© 2025 Patel Fast Food. Made with ❤️ for food lovers.</p>
+</footer>
+
+<a class="floating-wa" href="https://wa.me/918849110467" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- CART -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header"><h2>🛒 Your Cart</h2><button class="cart-close" id="cartClose">✕</button></div>
+  <div class="cart-items" id="cartItemsContainer"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-price" id="cartTotal">₹0</span></div>
+    <button class="checkout-btn" id="checkoutBtn">🛍️ Proceed to Order</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-header"><h2>📋 Checkout</h2><button class="modal-close" id="modalClose">✕</button></div>
+    <div class="modal-body">
+      <div class="order-summary-box" id="orderSummary"></div>
+      <div class="form-group"><label>Your Name *</label><input type="text" id="custName" placeholder="e.g. Rahul Patel"/></div>
+      <div class="form-group"><label>Phone Number *</label><input type="tel" id="custPhone" placeholder="e.g. 8849110467"/></div>
+      <div class="form-group"><label>Delivery Address *</label><textarea id="custAddress" placeholder="House no, Street, Area, City..."></textarea></div>
+      <div class="form-group"><label>Special Instructions</label><textarea id="custNote" placeholder="Extra chutney, less spicy…" style="min-height:60px"></textarea></div>
+      <button class="whatsapp-btn" id="placeOrderBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Place Order via WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========== MENU DATA with real Unsplash images + subcategories ========== */
+const MENU = [
+  // ── Fast Food › Burger ──
+  {id:1, name:'Classic Veg Burger',     cat:'fastfood', subcat:'Burger',     popular:true,  price:80,  desc:'Crispy patty, fresh lettuce & tangy sauce in a soft bun',
+   img:'https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&auto=format&fit=crop&q=80'},
+  {id:2, name:'Cheese Butter Burger',   cat:'fastfood', subcat:'Burger',     popular:true,  price:100, desc:'Double cheese with melted butter on a perfectly toasted bun',
+   img:'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=80'},
+  {id:3, name:'Spicy Aloo Burger',      cat:'fastfood', subcat:'Burger',     popular:false, price:70,  desc:'Spiced potato patty with mint chutney & crispy onion rings',
+   img:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Fast Food › Pizza ──
+  {id:4, name:'Margherita Pizza',       cat:'fastfood', subcat:'Pizza',      popular:true,  price:150, desc:'Classic tomato base, mozzarella & fresh basil leaves',
+   img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=80'},
+  {id:5, name:'Cheese Burst Pizza',     cat:'fastfood', subcat:'Pizza',      popular:true,  price:190, desc:'Oozing cheese-filled crust loaded with double mozzarella',
+   img:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=80'},
+  {id:6, name:'Paneer Tikka Pizza',     cat:'fastfood', subcat:'Pizza',      popular:false, price:170, desc:'Spiced paneer on a creamy tikka tomato base',
+   img:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Fast Food › Sandwich ──
+  {id:7, name:'Butter Cheese Sandwich', cat:'fastfood', subcat:'Sandwich',   popular:true,  price:65,  desc:'Grilled with butter, cheese & green chutney — street comfort',
+   img:'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=80'},
+  {id:8, name:'Club Sandwich',          cat:'fastfood', subcat:'Sandwich',   popular:false, price:90,  desc:'Triple-decker with veggies, cheese & mustard mayo',
+   img:'https://images.unsplash.com/photo-1481070414801-51fd732d7184?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Fast Food › Snacks ──
+  {id:9,  name:'French Fries (Large)',  cat:'fastfood', subcat:'Snacks',     popular:true,  price:60,  desc:'Crispy golden fries tossed with masala & ketchup',
+   img:'https://images.unsplash.com/photo-1576107232684-1279f8a56b07?w=500&auto=format&fit=crop&q=80'},
+  {id:10, name:'Pav Bhaji',             cat:'fastfood', subcat:'Snacks',     popular:false, price:70,  desc:'Spiced mixed veg bhaji with extra butter pav',
+   img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Cake › Chocolate ──
+  {id:11, name:'Chocolate Truffle Cake',cat:'cake',     subcat:'Chocolate',  popular:true,  price:350, desc:'Rich dark chocolate ganache layered cake (500g)',
+   img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80'},
+  {id:12, name:'Chocolate Brownie',     cat:'cake',     subcat:'Chocolate',  popular:true,  price:55,  desc:'Fudgy walnut chocolate brownie — dense & perfectly gooey',
+   img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop&q=80'},
+  {id:13, name:'Choco Lava Cake',       cat:'cake',     subcat:'Chocolate',  popular:false, price:90,  desc:'Warm molten chocolate core in a soft sponge shell',
+   img:'https://images.unsplash.com/photo-1617305855058-336d24456869?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Cake › Cream Cake ──
+  {id:14, name:'Red Velvet Cake',       cat:'cake',     subcat:'Cream Cake', popular:true,  price:380, desc:'Classic red velvet sponge with cream cheese frosting',
+   img:'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&auto=format&fit=crop&q=80'},
+  {id:15, name:'Black Forest Cake',     cat:'cake',     subcat:'Cream Cake', popular:false, price:400, desc:'Cherries, whipped cream & dark chocolate layers (500g)',
+   img:'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&auto=format&fit=crop&q=80'},
+  {id:16, name:'Vanilla Dream Cake',    cat:'cake',     subcat:'Cream Cake', popular:false, price:280, desc:'Light vanilla sponge with smooth whipped cream frosting',
+   img:'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Cake › Pastry ──
+  {id:17, name:'Pineapple Pastry',      cat:'cake',     subcat:'Pastry',     popular:false, price:60,  desc:'Fresh pineapple cream on a fluffy sponge base',
+   img:'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=500&auto=format&fit=crop&q=80'},
+  {id:18, name:'Strawberry Pastry',     cat:'cake',     subcat:'Pastry',     popular:false, price:65,  desc:'Whipped cream with fresh strawberry slices on sponge',
+   img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Gola › Classic ──
+  {id:19, name:'Kala Khatta Gola',      cat:'gola',     subcat:'Classic',    popular:true,  price:30,  desc:'Tangy black plum syrup on crushed ice — street classic',
+   img:'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=500&auto=format&fit=crop&q=80'},
+  {id:20, name:'Lemon Masala Gola',     cat:'gola',     subcat:'Classic',    popular:false, price:30,  desc:'Nimbu + kala namak + chaat masala on crushed ice',
+   img:'https://images.unsplash.com/photo-1559181567-c3190ca9d174?w=500&auto=format&fit=crop&q=80'},
+  {id:21, name:'Strawberry Gola',       cat:'gola',     subcat:'Classic',    popular:false, price:35,  desc:'Sweet strawberry syrup with lemon twist on ice',
+   img:'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Gola › Special ──
+  {id:22, name:'Mango Aamras Gola',     cat:'gola',     subcat:'Special',    popular:true,  price:40,  desc:'Fresh mango pulp poured generously over crushed ice',
+   img:'https://images.unsplash.com/photo-1546173159-315724a31696?w=500&auto=format&fit=crop&q=80'},
+  {id:23, name:'Rainbow Mix Gola',      cat:'gola',     subcat:'Special',    popular:true,  price:45,  desc:'Three flavors on one stick — ultimate fun gola',
+   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Gola › Cream Gola ──
+  {id:24, name:'Rose Milk Gola',        cat:'gola',     subcat:'Cream Gola', popular:false, price:35,  desc:'Rose syrup + condensed milk drizzle on crushed ice',
+   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+  {id:25, name:'Cream Rabdi Gola',      cat:'gola',     subcat:'Cream Gola', popular:true,  price:55,  desc:'Thick rabdi + saffron + crushed dry fruits on ice',
+   img:'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&auto=format&fit=crop&q=80'},
+];
+
+/* subcat lists per main category */
+const SUBCATS = {
+  all:      ['All','Burger','Pizza','Sandwich','Snacks','Chocolate','Cream Cake','Pastry','Classic','Special','Cream Gola'],
+  fastfood: ['All','Burger','Pizza','Sandwich','Snacks'],
+  cake:     ['All','Chocolate','Cream Cake','Pastry'],
+  gola:     ['All','Classic','Special','Cream Gola'],
+};
+
+/* STATE */
+let cart        = JSON.parse(localStorage.getItem('pff_cart3') || '[]');
+let activeCat   = 'all';
+let activeSub   = 'All';
+let searchQ     = '';
+const WA        = '918849110467';
+
+/* RENDER SUBCATS */
+function renderSubcats() {
+  const bar = document.getElementById('subcatBar');
+  bar.innerHTML = '<span class="subcat-label">Filter:</span>' +
+    SUBCATS[activeCat].map(s =>
+      `<button class="subcat-chip${s===activeSub?' active':''}" onclick="setSub('${s}')">${s}</button>`
+    ).join('');
+}
+function setSub(s) { activeSub=s; renderSubcats(); renderMenu(); }
+
+/* RENDER MENU */
+function renderMenu() {
+  const grid = document.getElementById('menuGrid');
+  const items = MENU.filter(i => {
+    const mc = activeCat==='all' || i.cat===activeCat;
+    const ms = activeSub==='All' || i.subcat===activeSub;
+    const mq = !searchQ || i.name.toLowerCase().includes(searchQ) || i.desc.toLowerCase().includes(searchQ) || i.subcat.toLowerCase().includes(searchQ);
+    return mc && ms && mq;
+  });
+
+  if (!items.length) {
+    grid.innerHTML = `<div class="no-results"><div class="big">🤔</div>No items found${searchQ?` for "<strong>${searchQ}</strong>"`:''}.</div>`;
+    return;
+  }
+
+  const catFallback = {fastfood:'🍔', cake:'🎂', gola:'🧊'};
+  grid.innerHTML = items.map(item => {
+    const inCart = cart.find(c=>c.id===item.id);
+    return `<div class="menu-item">
+      <div class="item-img">
+        ${item.popular?'<div class="pop-ribbon">⭐ Popular</div>':''}
+        <img src="${item.img}" alt="${item.name}" loading="lazy"
+             onerror="this.style.display='none';this.parentNode.querySelector('.img-ph').style.display='flex'"/>
+        <div class="img-ph">${catFallback[item.cat]}</div>
+        <div class="subcat-tag">${item.subcat}</div>
+      </div>
+      <div class="item-body">
+        <div class="item-name">${item.name}</div>
+        <div class="item-desc">${item.desc}</div>
+        <div class="item-footer">
+          <span class="item-price">₹${item.price}</span>
+          <button class="add-btn${inCart?' added':''}" onclick="addToCart(${item.id})">
+            ${inCart?'✅ Added':'＋ Add'}
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* CART LOGIC */
+function addToCart(id) {
+  const item = MENU.find(m=>m.id===id);
+  const ex   = cart.find(c=>c.id===id);
+  if (ex) ex.qty++; else cart.push({...item, qty:1});
+  saveCart(); renderMenu(); renderCart();
+  showToast(`${item.name} added to cart!`);
+}
+function changeQty(id, d) {
+  const idx = cart.findIndex(c=>c.id===id);
+  if (idx<0) return;
+  cart[idx].qty += d;
+  if (cart[idx].qty<=0) cart.splice(idx,1);
+  saveCart(); renderMenu(); renderCart();
+}
+function removeItem(id) {
+  cart = cart.filter(c=>c.id!==id);
+  saveCart(); renderMenu(); renderCart();
+}
+function saveCart() {
+  localStorage.setItem('pff_cart3', JSON.stringify(cart));
+  document.getElementById('cartCount').textContent = cart.reduce((a,b)=>a+b.qty,0);
+}
+function getTotal() { return cart.reduce((a,b)=>a+b.price*b.qty,0); }
+
+function renderCart() {
+  const c = document.getElementById('cartItemsContainer');
+  document.getElementById('cartTotal').textContent = `₹${getTotal()}`;
+  document.getElementById('cartCount').textContent  = cart.reduce((a,b)=>a+b.qty,0);
+  if (!cart.length) {
+    c.innerHTML = `<div class="cart-empty"><div class="big">🛒</div><strong>Your cart is empty</strong><p style="margin-top:.5rem;color:var(--text3)">Add some delicious items!</p></div>`;
+    document.getElementById('checkoutBtn').disabled = true;
+    return;
+  }
+  document.getElementById('checkoutBtn').disabled = false;
+  c.innerHTML = cart.map(item=>`
+    <div class="cart-item">
+      <div class="ci-img"><img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'"/></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-sub">${item.subcat}</div>
+        <div class="cart-item-price">₹${item.price*item.qty}</div>
+      </div>
+      <div class="qty-controls">
+        <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+      </div>
+      <button class="remove-btn" onclick="removeItem(${item.id})">🗑</button>
+    </div>`).join('');
+}
+
+/* CART PANEL */
+const openCart  = () => { document.getElementById('cartPanel').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); document.body.style.overflow='hidden'; };
+const closeCart = () => { document.getElementById('cartPanel').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); document.body.style.overflow=''; };
+document.getElementById('cartToggle').addEventListener('click', openCart);
+document.getElementById('cartClose').addEventListener('click', closeCart);
+document.getElementById('cartOverlay').addEventListener('click', closeCart);
+
+/* CHECKOUT */
+function openCheckout() {
+  closeCart();
+  const rows = cart.map(c=>`<div class="sum-item"><span>${c.name} ×${c.qty}</span><span>₹${c.price*c.qty}</span></div>`).join('');
+  document.getElementById('orderSummary').innerHTML =
+    `<div class="sum-title">📋 Order Summary</div>${rows}<div class="sum-total"><span>Total</span><span>₹${getTotal()}</span></div>`;
+  document.getElementById('checkoutModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+const closeCheckout = () => { document.getElementById('checkoutModal').classList.remove('open'); document.body.style.overflow=''; };
+document.getElementById('checkoutBtn').addEventListener('click', openCheckout);
+document.getElementById('modalClose').addEventListener('click', closeCheckout);
+document.getElementById('checkoutModal').addEventListener('click', e => { if(e.target===document.getElementById('checkoutModal')) closeCheckout(); });
+
+/* WHATSAPP ORDER */
+document.getElementById('placeOrderBtn').addEventListener('click', () => {
+  const name    = document.getElementById('custName').value.trim();
+  const phone   = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  const note    = document.getElementById('custNote').value.trim();
+  if (!name||!phone||!address) { showToast('⚠️ Please fill all required fields!'); return; }
+  if (!/^\d{10}$/.test(phone))  { showToast('⚠️ Enter a valid 10-digit phone number!'); return; }
+  const lines = cart.map(c=>`• ${c.name} (${c.subcat}) ×${c.qty} — ₹${c.price*c.qty}`).join('\n');
+  const msg = `🍔 *New Order – Patel Fast Food*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Address:* ${address}\n\n🛒 *Items:*\n${lines}\n\n💰 *Total: ₹${getTotal()}*${note?`\n\n📝 *Note:* ${note}`:''}\n\n_via Patel Fast Food website_`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+  cart=[]; saveCart(); renderMenu(); renderCart(); closeCheckout();
+  showToast('🎉 Order sent via WhatsApp!');
+  ['custName','custPhone','custAddress','custNote'].forEach(id=>document.getElementById(id).value='');
+});
+
+/* SEARCH */
+document.getElementById('searchInput').addEventListener('input', e => { searchQ=e.target.value.toLowerCase().trim(); renderMenu(); });
+
+/* CAT TABS */
+document.getElementById('catTabs').addEventListener('click', e => {
+  const btn = e.target.closest('.cat-tab'); if(!btn) return;
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activeCat=btn.dataset.cat; activeSub='All';
+  renderSubcats(); renderMenu();
+});
+
+/* THEME */
+let isDark = localStorage.getItem('pff_theme')==='dark';
+function applyTheme() { document.documentElement.dataset.theme=isDark?'dark':'light'; document.getElementById('themeToggle').textContent=isDark?'☀️':'🌙'; }
+applyTheme();
+document.getElementById('themeToggle').addEventListener('click', ()=>{ isDark=!isDark; localStorage.setItem('pff_theme',isDark?'dark':'light'); applyTheme(); });
+
+/* HAMBURGER */
+document.getElementById('hamburger').addEventListener('click', ()=>document.getElementById('mobileMenu').classList.toggle('open'));
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+/* TOAST */
+function showToast(msg) {
+  const t=document.createElement('div'); t.className='toast'; t.textContent=msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(()=>t.remove(), 3200);
+}
+
+/* INIT */
+renderSubcats(); renderMenu(); renderCart();
+</script>
+</body>
+</html>
