@@ -315,6 +315,8 @@ margin-left: -12px;}
     <div class="cat-tabs" id="catTabs">
       <button class="cat-tab active" data-cat="all">🍽️ All Items</button>
       <button class="cat-tab" data-cat="fastfood">🍔 Fast Food</button>
+      <button class="cat-tab" data-cat="pavbhaji">🍛 Pav Bhaji</button>
+      <button class="cat-tab" data-cat="burger">🍔 Burger</button>
       <button class="cat-tab" data-cat="puff">🥐 Grilled Puff</button>
       <button class="cat-tab" data-cat="quickbites">🥙 Quick Bites</button>
       <button class="cat-tab" data-cat="sandwich">🥪 Sandwich</button>
@@ -411,11 +413,11 @@ margin-left: -12px;}
 /* ========== MENU DATA with real Unsplash images + subcategories ========== */
 const MENU = [
   // ── Fast Food › Burger ──
-  {id:1, name:'Classic Veg Burger',     cat:'fastfood', subcat:'Burger',     popular:true,  price:80,  desc:'Crispy patty, fresh lettuce & tangy sauce in a soft bun',
+  {id:1, name:'Classic Veg Burger',     cat:'burger', subcat:'Burger',     popular:true,  price:80,  desc:'Crispy patty, fresh lettuce & tangy sauce in a soft bun',
    img:'https://images.unsplash.com/photo-1603064752734-4c48eff53d05?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnVyZ2VyfGVufDB8fDB8fHww'},
-  {id:2, name:'Cheese Butter Burger',   cat:'fastfood', subcat:'Burger',     popular:true,  price:100, desc:'Double cheese with melted butter on a perfectly toasted bun',
+  {id:2, name:'Cheese Butter Burger',   cat:'burger', subcat:'Burger',     popular:true,  price:100, desc:'Double cheese with melted butter on a perfectly toasted bun',
    img:'https://images.unsplash.com/photo-1603064752734-4c48eff53d05?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnVyZ2VyfGVufDB8fDB8fHws'},
-  {id:3, name:'Spicy Aloo Burger',      cat:'fastfood', subcat:'Burger',     popular:false, price:70,  desc:'Spiced potato patty with mint chutney & crispy onion rings',
+  {id:3, name:'Spicy Aloo Burger',      cat:'burger', subcat:'Burger',     popular:false, price:70,  desc:'Spiced potato patty with mint chutney & crispy onion rings',
    img:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&auto=format&fit=crop&q=80'},
 
   // ── Fast Food › Pizza ──
@@ -435,7 +437,7 @@ const MENU = [
   // ── Fast Food › Snacks ──
   {id:9,  name:'French Fries (Large)',  cat:'fastfood', subcat:'Snacks',     popular:true,  price:60,  desc:'Crispy golden fries tossed with masala & ketchup',
    img:'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJlbmNoJTIwZnJpZXN8ZW58MHx8MHx8fDA%3D'},
-  {id:10, name:'Pav Bhaji',             cat:'fastfood', subcat:'Snacks',     popular:false, price:70,  desc:'Spiced mixed veg bhaji with extra butter pav',
+  {id:10, name:'Pav Bhaji',             cat:'pavbhaji', subcat:'Pav Bhaji',  popular:false, price:70,  desc:'Spiced mixed veg bhaji with extra butter pav',
    img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=80'},
 
   // ── Cake › Chocolate ──
@@ -462,93 +464,93 @@ const MENU = [
 
   // ── Gola › Stick Gola ──
   {id:19, name:'Orange Gola',           cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Classic sweet orange syrup on crushed ice stick',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/orange.jpeg'},
   {id:20, name:'Pineapple Gola',        cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Tangy pineapple syrup on a refreshing crushed ice stick',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/mango.jpeg'},
   {id:21, name:'Falsa Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Rare summer falsa (phalsa) berry syrup on crushed ice',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/brown.jpeg'},
   {id:22, name:'Kachi Keri Gola',       cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Raw mango with chaat masala on a tangy crushed ice stick',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/green.jpeg'},
   {id:23, name:'Mango Gola',            cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Sweet ripe mango syrup generously poured over crushed ice',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/orange.jpeg'},
   {id:24, name:'Kala Khatta Gola',      cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy black plum syrup on crushed ice — the street classic',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/kalakhata.jpeg'},
   {id:25, name:'Rajwadi Gola',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Royal Rajwadi flavour on crushed ice with a rich taste',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/brown.jpeg'},
   {id:26, name:'Cadbury Gola',          cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Chocolate Cadbury drizzle on crushed ice — a sweet treat',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/strawberry.jpeg'},
   {id:27, name:'Gulkand Gola',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fragrant rose petal gulkand syrup on refreshing crushed ice',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/gulkand.jpeg'},
   {id:28, name:'Jamphal Gola',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Unique jamphal (guava) flavoured syrup on crushed ice stick',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/green.jpeg'},
   {id:29, name:'Kiwi Gola',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Zesty kiwi syrup on crushed ice for a tropical refresher',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/green.jpeg'},
   {id:30, name:'Blueberry Gola',        cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet blueberry syrup on crushed ice — fruity and cool',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/blue.jpeg'},
   {id:31, name:'Strawberry Gola',       cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet strawberry syrup with a lemon twist on crushed ice',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/strawberry.jpeg'},
   {id:32, name:'Blackcurrant Gola',     cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Deep blackcurrant syrup on crushed ice — bold and tangy',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/black.jpeg'},
   {id:33, name:'Jambu Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Java plum jambu syrup on crushed ice with a purple hue',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/kalakhata.jpeg'},
   {id:34, name:'Imli Gola',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy tamarind imli syrup on crushed ice — spicy and sour',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/brown.jpeg'},
   {id:35, name:'Gulab Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Floral rose gulab syrup on a delicate crushed ice stick',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/strawberry.jpeg'},
   {id:36, name:'Chiku Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet sapota chiku syrup on crushed ice — mildly earthy',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/brown.jpeg'},
   {id:37, name:'Masala Soda Gola',      cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Spiced masala soda flavour on crushed ice — chatpata hit',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/green.jpeg'},
   {id:38, name:'Chocolate Gola',        cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Rich chocolate syrup drizzled over a crushed ice stick',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/black.jpeg'},
   {id:39, name:'Variyali Gola',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fennel-flavoured variyali syrup on crushed ice — aromatic',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/green.jpeg'},
   {id:40, name:'Rainbow Gola',          cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Multi-colour rainbow syrup on crushed ice — the fun one!',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/rainbow.jpeg'},
 
   // ── Gola › Dish Gola ──
   {id:41, name:'Orange Dish Gola',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Orange syrup on a generous serving of crushed ice in a dish',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/oranged.jpeg'},
   {id:42, name:'Pineapple Dish Gola',   cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Pineapple syrup on a large crushed ice dish — super cool',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/yellowd.jpeg'},
   {id:43, name:'Falsa Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Falsa berry syrup on a big dish of crushed ice',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/brownd.jpeg'},
   {id:44, name:'Kachi Keri Dish Gola',  cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Raw mango masala on a large dish of crushed ice',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/greend.jpeg'},
   {id:45, name:'Mango Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Sweet mango syrup on a heaping crushed ice dish',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/oranged.jpeg'},
   {id:46, name:'Kala Khatta Dish Gola', cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tangy kala khatta syrup on a large crushed ice dish',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/brownd.jpeg'},
   {id:47, name:'Rajwadi Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Royal Rajwadi flavour served in a generous ice dish',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/cadburryd.jpeg'},
   {id:48, name:'Cadbury Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Cadbury chocolate drizzle on a big crushed ice dish',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/cadburryd.jpeg'},
   {id:49, name:'Gulkand Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Rose petal gulkand on a refreshing large crushed ice dish',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/pinkd.jpeg'},
   {id:50, name:'Jamphal Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Guava jamphal syrup on a heaped ice dish — chatpata fun',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/greend.jpeg'},
   {id:51, name:'Kiwi Dish Gola',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Tropical kiwi syrup on a generous serving of crushed ice',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/greend.jpeg'},
   {id:52, name:'Blueberry Dish Gola',   cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet blueberry syrup served in a large crushed ice dish',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/blued.jpeg'},
   {id:53, name:'Strawberry Dish Gola',  cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Strawberry syrup on a big crushed ice dish — fresh and sweet',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/redd.jpeg'},
   {id:54, name:'Blackcurrant Dish Gola',cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Bold blackcurrant syrup on a heaped crushed ice dish',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/brownd.jpeg'},
   {id:55, name:'Jambu Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Java plum jambu syrup on a large dish of crushed ice',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/blued.jpeg'},
   {id:56, name:'Imli Dish Gola',        cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tamarind imli syrup on a big crushed ice dish — spicy sour',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/cadburryd.jpeg'},
   {id:57, name:'Gulab Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Floral rose gulab syrup served in a large crushed ice dish',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/redd.jpeg'},
   {id:58, name:'Chiku Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet chiku sapota syrup on a generous crushed ice dish',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/cadburryd.jpeg'},
   {id:59, name:'Butterscotch Dish Gola',cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Creamy butterscotch syrup on a heaped crushed ice dish',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/cadburryd.jpeg'},
   {id:60, name:'Variyali Dish Gola',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Aromatic fennel variyali syrup on a large crushed ice dish',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/greend.jpeg'},
   {id:61, name:'Rainbow Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Multi-colour rainbow syrup on a big crushed ice dish',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/rainbowd.jpeg'},
 
   // ── Gola › Mava Dish ──
   {id:62, name:'Rajbhog Mava Dish',            cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Rich Rajbhog mava on crushed ice. With vanilla/choc ice cream option at ₹160',
@@ -800,8 +802,10 @@ const MENU = [
 
 /* subcat lists per main category */
 const SUBCATS = {
-  all:        ['All','Burger','Pizza','Sandwich','Snacks','Grilled Puff','Quick Bites','Grilled Sandwich','French Fries','Pasta','Chaat','Chinese','Ice Sparkle','Milkshake','Combos','Chocolate','Cream Cake','Pastry','Stick Gola','Dish Gola','Mava Dish','Sugar Free'],
-  fastfood:   ['All','Burger','Pizza','Sandwich','Snacks'],
+  all:        ['All','Burger','Pizza','Sandwich','Snacks','Pav Bhaji','Grilled Puff','Quick Bites','Grilled Sandwich','French Fries','Pasta','Chaat','Chinese','Ice Sparkle','Milkshake','Combos','Chocolate','Cream Cake','Pastry','Stick Gola','Dish Gola','Mava Dish','Sugar Free'],
+  fastfood:   ['All'],
+  pavbhaji:   ['All','Pav Bhaji'],
+  burger:     ['All','Burger'],
   puff:       ['All','Grilled Puff'],
   quickbites: ['All','Quick Bites'],
   sandwich:   ['All','Grilled Sandwich'],
@@ -859,7 +863,7 @@ function renderMenu() {
     return;
   }
 
-  const catFallback = {fastfood:'🍔', cake:'🎂', gola:'🧊', puff:'🥐', quickbites:'🥙', sandwich:'🥪', pizza:'🍕', fries:'🍟', pasta:'🍝', chaat:'🫙', chinese:'🥢', drinks:'🥤', combos:'🎁'};
+  const catFallback = {fastfood:'🍔', cake:'🎂', gola:'🧊', puff:'🥐', quickbites:'🥙', sandwich:'🥪', pizza:'🍕', fries:'🍟', pasta:'🍝', chaat:'🫙', chinese:'🥢', drinks:'🥤', combos:'🎁', pavbhaji:'🍛', burger:'🍔'};
   grid.innerHTML = items.map(item => {
     const inCart = cart.find(c=>c.id===item.id);
     const preQty = pendingQty[item.id] || 1;
