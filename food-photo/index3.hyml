@@ -250,60 +250,6 @@ margin-left: -1px;}
   border-radius: 50%;
 margin-left: -12px;}
   }
-    /* CAKE GALLERY CARD */
-    .cake-gallery-strip{display:flex;gap:6px;overflow-x:auto;padding:6px 10px 8px;scrollbar-width:thin;scrollbar-color:var(--red) transparent}
-    .cake-gallery-strip::-webkit-scrollbar{height:4px}
-    .cake-gallery-strip::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
-    .cake-thumb{width:52px;height:52px;border-radius:8px;overflow:hidden;flex-shrink:0;border:2px solid transparent;cursor:pointer;transition:border-color .2s}
-    .cake-thumb.active,.cake-thumb:hover{border-color:var(--red)}
-    .cake-thumb img{width:100%;height:100%;object-fit:cover}
-    .cake-size-badge{background:var(--yellow);color:var(--dark);font-size:.6rem;font-weight:800;padding:2px 7px;border-radius:20px;position:absolute;top:8px;right:8px;z-index:2}
-
-    /* IMD SCROLLABLE GALLERY */
-    .imd-gallery{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;width:100%;height:100%;scrollbar-width:none}
-    .imd-gallery::-webkit-scrollbar{display:none}
-    .imd-gallery-slide{min-width:100%;height:100%;flex-shrink:0;scroll-snap-align:start;overflow:hidden}
-    .imd-gallery-slide img{width:100%;height:100%;object-fit:cover;display:block}
-    .imd-gallery-dots{display:flex;justify-content:center;gap:6px;padding:8px 0 0}
-    .imd-gallery-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s;flex-shrink:0}
-    .imd-gallery-dot.active{background:var(--red)}
-    .imd-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;z-index:4;transition:background .2s}
-    .imd-gallery-nav:hover{background:var(--red)}
-    .imd-gallery-nav.prev{left:8px}
-    .imd-gallery-nav.next{right:8px}
-    .imd-img-wrap-rel{position:relative;overflow:hidden;width:100%;height:100%}
-
-    /* CAKE SIZE SELECTOR */
-    .imd-sizes{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
-    .imd-size-btn{padding:.38rem .85rem;border-radius:50px;font-weight:700;font-size:.8rem;background:var(--bg3);color:var(--text2);border:2px solid var(--border);cursor:pointer;transition:all .2s}
-    .imd-size-btn.active{background:var(--red);color:#fff;border-color:var(--red)}
-    .imd-size-label{font-size:.8rem;font-weight:700;color:var(--text3);margin-top:.5rem;display:block}
-
-    /* ITEM DETAIL MODAL */
-    .item-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:2500;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .3s}
-    .item-modal-overlay.open{opacity:1;pointer-events:all}
-    .item-modal-box{background:var(--bg2);border-radius:22px;max-width:820px;width:100%;max-height:92vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;position:relative;transform:scale(.93);transition:transform .3s}
-    .item-modal-overlay.open .item-modal-box{transform:scale(1)}
-    @media(max-width:600px){.item-modal-box{grid-template-columns:1fr}}
-    .item-modal-close{position:absolute;top:.75rem;right:.75rem;background:var(--gray-light);border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--text2);z-index:3;transition:background .2s}
-    .item-modal-close:hover{background:var(--red);color:#fff}
-    .item-modal-img-wrap{border-radius:22px 0 0 22px;overflow:hidden;background:var(--bg3);min-height:260px}
-    @media(max-width:600px){.item-modal-img-wrap{border-radius:22px 22px 0 0;min-height:200px}}
-    .item-modal-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-    .item-modal-info{padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.6rem;justify-content:center}
-    .item-modal-subcat{display:inline-block;background:var(--orange);color:#fff;font-size:.7rem;font-weight:800;padding:2px 10px;border-radius:20px;width:fit-content;letter-spacing:.03em}
-    .item-modal-name{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;line-height:1.2;color:var(--text)}
-    .item-modal-name-gu{font-size:.95rem;color:var(--text3);font-weight:600;margin-top:-.2rem}
-    .item-modal-desc{font-size:.92rem;color:var(--text3);line-height:1.7;border-top:1.5px solid var(--border);padding-top:.8rem;margin-top:.2rem}
-    .item-modal-price{font-family:'Baloo 2',cursive;font-size:2rem;font-weight:800;color:var(--red)}
-    .item-modal-actions{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-top:.4rem}
-    .imd-qty-row{display:flex;align-items:center;gap:.5rem}
-    .imd-qty-btn{width:34px;height:34px;border-radius:9px;background:var(--red);color:#fff;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:all .15s;flex-shrink:0}
-    .imd-qty-btn:hover{background:var(--red-dark)}
-    .imd-qty-num{font-weight:800;font-size:1.1rem;min-width:28px;text-align:center}
-    .imd-add-btn{flex:1;min-width:120px;background:var(--red);color:#fff;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;padding:.8rem 1.2rem;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:.4rem;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(232,25,44,.28)}
-    .imd-add-btn:hover{background:var(--red-dark);transform:translateY(-2px)}
-
   </style>
 </head>
 <body>
@@ -434,31 +380,6 @@ margin-left: -12px;}
 
 <a class="floating-wa" href="https://wa.me/918849110467" target="_blank" title="Chat on WhatsApp">💬</a>
 
-<!-- ITEM DETAIL MODAL -->
-<div class="item-modal-overlay" id="itemDetailModal">
-  <div class="item-modal-box">
-    <button class="item-modal-close" id="itemDetailClose">✕</button>
-    <div class="item-modal-img-wrap" id="imdImgWrap">
-    </div>
-    <div class="item-modal-info">
-      <div class="item-modal-subcat" id="imdSubcat"></div>
-      <div class="item-modal-name" id="imdName"></div>
-      <div class="item-modal-name-gu" id="imdNameGu"></div>
-      <div class="item-modal-desc" id="imdDesc"></div>
-      <div class="item-modal-price" id="imdPrice"></div>
-      <div id="imdSizeContainer" style="display:none"></div>
-      <div class="item-modal-actions">
-        <div class="imd-qty-row">
-          <button class="imd-qty-btn" id="imdMinus">−</button>
-          <span class="imd-qty-num" id="imdQtyNum">1</span>
-          <button class="imd-qty-btn" id="imdPlus">+</button>
-        </div>
-        <button class="imd-add-btn" id="imdAddBtn">🛒 Add to Cart</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- CART -->
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-panel" id="cartPanel">
@@ -492,403 +413,396 @@ margin-left: -12px;}
 /* ========== MENU DATA with real Unsplash images + subcategories ========== */
 const MENU = [
   // ── Fast Food › Burger ──
-  {id:1, name:'Classic Veg Burger',     nameGu:'ક્લાસિક વેજ બર્ગર',     cat:'burger', subcat:'Burger',     popular:true,  price:80,  desc:'Crispy patty, fresh lettuce & tangy sauce in a soft bun',
+  {id:1, name:'Classic Veg Burger',     cat:'burger', subcat:'Burger',     popular:true,  price:80,  desc:'Crispy patty, fresh lettuce & tangy sauce in a soft bun',
    img:'https://images.unsplash.com/photo-1603064752734-4c48eff53d05?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnVyZ2VyfGVufDB8fDB8fHww'},
-  {id:2, name:'Cheese Butter Burger',   nameGu:'ચીઝ બટર બર્ગર',          cat:'burger', subcat:'Burger',     popular:true,  price:100, desc:'Double cheese with melted butter on a perfectly toasted bun',
+  {id:2, name:'Cheese Butter Burger',   cat:'burger', subcat:'Burger',     popular:true,  price:100, desc:'Double cheese with melted butter on a perfectly toasted bun',
    img:'https://images.unsplash.com/photo-1603064752734-4c48eff53d05?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnVyZ2VyfGVufDB8fDB8fHws'},
-  {id:3, name:'Spicy Aloo Burger',      nameGu:'સ્પાઇસી આલૂ બર્ગર',       cat:'burger', subcat:'Burger',     popular:false, price:70,  desc:'Spiced potato patty with mint chutney & crispy onion rings',
+  {id:3, name:'Spicy Aloo Burger',      cat:'burger', subcat:'Burger',     popular:false, price:70,  desc:'Spiced potato patty with mint chutney & crispy onion rings',
    img:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&auto=format&fit=crop&q=80'},
 
   // ── Fast Food › Pizza ──
-  {id:4, name:'Margherita Pizza',       nameGu:'માર્ગેરિટા પિઝા',         cat:'fastfood', subcat:'Pizza',      popular:true,  price:150, desc:'Classic tomato base, mozzarella & fresh basil leaves',
+  {id:4, name:'Margherita Pizza',       cat:'fastfood', subcat:'Pizza',      popular:true,  price:150, desc:'Classic tomato base, mozzarella & fresh basil leaves',
    img:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop&q=80'},
-  {id:5, name:'Cheese Burst Pizza',     nameGu:'ચીઝ બર્સ્ટ પિઝા',        cat:'fastfood', subcat:'Pizza',      popular:true,  price:190, desc:'Oozing cheese-filled crust loaded with double mozzarella',
+  {id:5, name:'Cheese Burst Pizza',     cat:'fastfood', subcat:'Pizza',      popular:true,  price:190, desc:'Oozing cheese-filled crust loaded with double mozzarella',
    img:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=80'},
-  {id:6, name:'Paneer Tikka Pizza',     nameGu:'પનીર ટિક્કા પિઝા',       cat:'fastfood', subcat:'Pizza',      popular:false, price:170, desc:'Spiced paneer on a creamy tikka tomato base',
+  {id:6, name:'Paneer Tikka Pizza',     cat:'fastfood', subcat:'Pizza',      popular:false, price:170, desc:'Spiced paneer on a creamy tikka tomato base',
    img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=80'},
 
   // ── Fast Food › Sandwich ──
-  {id:7, name:'Butter Cheese Sandwich', nameGu:'બટર ચીઝ સેન્ડવિચ',       cat:'fastfood', subcat:'Sandwich',   popular:true,  price:65,  desc:'Grilled with butter, cheese & green chutney — street comfort',
+  {id:7, name:'Butter Cheese Sandwich', cat:'fastfood', subcat:'Sandwich',   popular:true,  price:65,  desc:'Grilled with butter, cheese & green chutney — street comfort',
    img:'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=80'},
-  {id:8, name:'Club Sandwich',          nameGu:'ક્લબ સેન્ડવિચ',           cat:'fastfood', subcat:'Sandwich',   popular:false, price:90,  desc:'Triple-decker with veggies, cheese & mustard mayo',
+  {id:8, name:'Club Sandwich',          cat:'fastfood', subcat:'Sandwich',   popular:false, price:90,  desc:'Triple-decker with veggies, cheese & mustard mayo',
    img:'https://media.istockphoto.com/id/1406626857/photo/club-sandwich-with-chicken-on-wooden-table.webp?a=1&b=1&s=612x612&w=0&k=20&c=Utx55fhmTRmZa3Z21MfCOaNItaMrHboFvt2G0Fworts='},
 
   // ── Fast Food › Snacks ──
-  {id:9,  name:'French Fries (Large)',  nameGu:'ફ્રેન્ચ ફ્રાઇઝ (મોટી)',   cat:'fastfood', subcat:'Snacks',     popular:true,  price:60,  desc:'Crispy golden fries tossed with masala & ketchup',
+  {id:9,  name:'French Fries (Large)',  cat:'fastfood', subcat:'Snacks',     popular:true,  price:60,  desc:'Crispy golden fries tossed with masala & ketchup',
    img:'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJlbmNoJTIwZnJpZXN8ZW58MHx8MHx8fDA%3D'},
-  {id:10, name:'Pav Bhaji',             nameGu:'પાવ ભાજી',                 cat:'pavbhaji', subcat:'Pav Bhaji',  popular:false, price:70,  desc:'Spiced mixed veg bhaji with extra butter pav',
+  {id:10, name:'Pav Bhaji',             cat:'pavbhaji', subcat:'Pav Bhaji',  popular:false, price:70,  desc:'Spiced mixed veg bhaji with extra butter pav',
    img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=80'},
 
-  // ── Cake › Pastry ──
-  {id:11, name:'Pineapple Pastry',      nameGu:'પાઇનેપલ પેસ્ટ્રી',        cat:'cake',     subcat:'Pastry',     popular:true,  price:60,  desc:'Fresh pineapple cream on a fluffy vanilla sponge base — tropical and light',
-   img:'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=500&auto=format&fit=crop&q=80'},
-  {id:12, name:'Strawberry Pastry',     nameGu:'સ્ટ્રોબેરી પેસ્ટ્રી',     cat:'cake',     subcat:'Pastry',     popular:true,  price:65,  desc:'Whipped cream with fresh strawberry slices on a soft sponge — sweet and fruity',
-   img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&auto=format&fit=crop&q=80'},
-  {id:13, name:'Chocolate Pastry',      nameGu:'ચોકલેટ પેસ્ટ્રી',         cat:'cake',     subcat:'Pastry',     popular:true,  price:70,  desc:'Rich chocolate cream layered on a moist dark cocoa sponge — every chocoholic\'s dream',
+  // ── Cake › Chocolate ──
+  {id:11, name:'Chocolate Truffle Cake',cat:'cake',     subcat:'Chocolate',  popular:true,  price:350, desc:'Rich dark chocolate ganache layered cake (500g)',
+   img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80'},
+  {id:12, name:'Chocolate Brownie',     cat:'cake',     subcat:'Chocolate',  popular:true,  price:55,  desc:'Fudgy walnut chocolate brownie — dense & perfectly gooey',
    img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop&q=80'},
-  {id:14, name:'Black Forest Pastry',   nameGu:'બ્લેક ફોરેસ્ટ પેસ્ટ્રી',  cat:'cake',     subcat:'Pastry',     popular:false, price:75,  desc:'Cherries & whipped cream on dark chocolate sponge — the classic German-inspired treat',
-   img:'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&auto=format&fit=crop&q=80'},
-  {id:15, name:'Red Velvet Pastry',     nameGu:'રેડ વેલ્વેટ પેસ્ટ્રી',    cat:'cake',     subcat:'Pastry',     popular:false, price:75,  desc:'Velvety red sponge with smooth cream cheese frosting — bold colour, richer taste',
+  {id:13, name:'Choco Lava Cake',       cat:'cake',     subcat:'Chocolate',  popular:false, price:90,  desc:'Warm molten chocolate core in a soft sponge shell',
+   img:'https://images.unsplash.com/photo-1617305855058-336d24456869?w=500&auto=format&fit=crop&q=80'},
+
+  // ── Cake › Cream Cake ──
+  {id:14, name:'Red Velvet Cake',       cat:'cake',     subcat:'Cream Cake', popular:true,  price:380, desc:'Classic red velvet sponge with cream cheese frosting',
    img:'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=500&auto=format&fit=crop&q=80'},
-  {id:16, name:'Butterscotch Pastry',   nameGu:'બટરસ્કોચ પેસ્ટ્રી',       cat:'cake',     subcat:'Pastry',     popular:false, price:65,  desc:'Creamy butterscotch filling with caramel drizzle on a golden sponge — irresistibly buttery',
+  {id:15, name:'Black Forest Cake',     cat:'cake',     subcat:'Cream Cake', popular:false, price:400, desc:'Cherries, whipped cream & dark chocolate layers (500g)',
+   img:'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&auto=format&fit=crop&q=80'},
+  {id:16, name:'Vanilla Dream Cake',    cat:'cake',     subcat:'Cream Cake', popular:false, price:280, desc:'Light vanilla sponge with smooth whipped cream frosting',
    img:'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&auto=format&fit=crop&q=80'},
 
-  // ── Cake › Cake ──
-  {id:17, name:'Custom Celebration Cake', nameGu:'કસ્ટમ સેલિબ્રેશન કેક',  cat:'cake',     subcat:'Cake',       popular:true,  price:400,
-   desc:'Made fresh to order — choose your flavour, size & design. Perfect for birthdays, anniversaries & every special moment. Each cake is crafted with premium ingredients, fluffy layered sponge, rich cream frosting and personalised decoration. Available in multiple sizes with pricing from ₹400 (500g) onwards.',
-   imgs:[
-     'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&auto=format&fit=crop&q=80',
-   ],
-   img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80',
-   sizes:[{label:'500g',price:400},{label:'1 Kg',price:750},{label:'1.5 Kg',price:1100},{label:'2 Kg',price:1450}]
-  },
+  // ── Cake › Pastry ──
+  {id:17, name:'Pineapple Pastry',      cat:'cake',     subcat:'Pastry',     popular:false, price:60,  desc:'Fresh pineapple cream on a fluffy sponge base',
+   img:'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=500&auto=format&fit=crop&q=80'},
+  {id:18, name:'Strawberry Pastry',     cat:'cake',     subcat:'Pastry',     popular:false, price:65,  desc:'Whipped cream with fresh strawberry slices on sponge',
+   img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&auto=format&fit=crop&q=80'},
 
   // ── Gola › Stick Gola ──
-  {id:19, name:'Orange Gola',           nameGu:'ઓરેન્જ ગોળો',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Classic sweet orange syrup on crushed ice stick',
+  {id:19, name:'Orange Gola',           cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Classic sweet orange syrup on crushed ice stick',
    img:'food-photo/orange.jpeg'},
-  {id:20, name:'Pineapple Gola',        nameGu:'પાઇનેપલ ગોળો',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Tangy pineapple syrup on a refreshing crushed ice stick',
+  {id:20, name:'Pineapple Gola',        cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Tangy pineapple syrup on a refreshing crushed ice stick',
    img:'food-photo/mango.jpeg'},
-  {id:21, name:'Falsa Gola',            nameGu:'ફાલસા ગોળો',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Rare summer falsa (phalsa) berry syrup on crushed ice',
+  {id:21, name:'Falsa Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Rare summer falsa (phalsa) berry syrup on crushed ice',
    img:'food-photo/brown.jpeg'},
-  {id:22, name:'Kachi Keri Gola',       nameGu:'કાચી કેરી ગોળો',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Raw mango with chaat masala on a tangy crushed ice stick',
+  {id:22, name:'Kachi Keri Gola',       cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Raw mango with chaat masala on a tangy crushed ice stick',
    img:'food-photo/green.jpeg'},
-  {id:23, name:'Mango Gola',            nameGu:'કેરી ગોળો',               cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Sweet ripe mango syrup generously poured over crushed ice',
+  {id:23, name:'Mango Gola',            cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Sweet ripe mango syrup generously poured over crushed ice',
    img:'food-photo/orange.jpeg'},
-  {id:24, name:'Kala Khatta Gola',      nameGu:'કાળા ખટ્ટા ગોળો',         cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy black plum syrup on crushed ice — the street classic',
+  {id:24, name:'Kala Khatta Gola',      cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy black plum syrup on crushed ice — the street classic',
    img:'food-photo/kalakhata.jpeg'},
-  {id:25, name:'Rajwadi Gola',          nameGu:'રાજવાડી ગોળો',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Royal Rajwadi flavour on crushed ice with a rich taste',
+  {id:25, name:'Rajwadi Gola',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Royal Rajwadi flavour on crushed ice with a rich taste',
    img:'food-photo/brown.jpeg'},
-  {id:26, name:'Cadbury Gola',          nameGu:'કેડબરી ગોળો',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Chocolate Cadbury drizzle on crushed ice — a sweet treat',
+  {id:26, name:'Cadbury Gola',          cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Chocolate Cadbury drizzle on crushed ice — a sweet treat',
    img:'food-photo/strawberry.jpeg'},
-  {id:27, name:'Gulkand Gola',          nameGu:'ગુલકંદ ગોળો',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fragrant rose petal gulkand syrup on refreshing crushed ice',
+  {id:27, name:'Gulkand Gola',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fragrant rose petal gulkand syrup on refreshing crushed ice',
    img:'food-photo/gulkand.jpeg'},
-  {id:28, name:'Jamphal Gola',          nameGu:'જામફળ ગોળો',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Unique jamphal (guava) flavoured syrup on crushed ice stick',
+  {id:28, name:'Jamphal Gola',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Unique jamphal (guava) flavoured syrup on crushed ice stick',
    img:'food-photo/green.jpeg'},
-  {id:29, name:'Kiwi Gola',             nameGu:'કીવી ગોળો',               cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Zesty kiwi syrup on crushed ice for a tropical refresher',
+  {id:29, name:'Kiwi Gola',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Zesty kiwi syrup on crushed ice for a tropical refresher',
    img:'food-photo/green.jpeg'},
-  {id:30, name:'Blueberry Gola',        nameGu:'બ્લૂબેરી ગોળો',           cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet blueberry syrup on crushed ice — fruity and cool',
+  {id:30, name:'Blueberry Gola',        cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet blueberry syrup on crushed ice — fruity and cool',
    img:'food-photo/blue.jpeg'},
-  {id:31, name:'Strawberry Gola',       nameGu:'સ્ટ્રોબેરી ગોળો',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet strawberry syrup with a lemon twist on crushed ice',
+  {id:31, name:'Strawberry Gola',       cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet strawberry syrup with a lemon twist on crushed ice',
    img:'food-photo/strawberry.jpeg'},
-  {id:32, name:'Blackcurrant Gola',     nameGu:'બ્લેકકરન્ટ ગોળો',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Deep blackcurrant syrup on crushed ice — bold and tangy',
+  {id:32, name:'Blackcurrant Gola',     cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Deep blackcurrant syrup on crushed ice — bold and tangy',
    img:'food-photo/black.jpeg'},
-  {id:33, name:'Jambu Gola',            nameGu:'જામ્બુ ગોળો',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Java plum jambu syrup on crushed ice with a purple hue',
+  {id:33, name:'Jambu Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Java plum jambu syrup on crushed ice with a purple hue',
    img:'food-photo/kalakhata.jpeg'},
-  {id:34, name:'Imli Gola',             nameGu:'આમલી ગોળો',               cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy tamarind imli syrup on crushed ice — spicy and sour',
+  {id:34, name:'Imli Gola',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy tamarind imli syrup on crushed ice — spicy and sour',
    img:'food-photo/brown.jpeg'},
-  {id:35, name:'Gulab Gola',            nameGu:'ગુલાબ ગોળો',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Floral rose gulab syrup on a delicate crushed ice stick',
+  {id:35, name:'Gulab Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Floral rose gulab syrup on a delicate crushed ice stick',
    img:'food-photo/strawberry.jpeg'},
-  {id:36, name:'Chiku Gola',            nameGu:'ચીકૂ ગોળો',               cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet sapota chiku syrup on crushed ice — mildly earthy',
+  {id:36, name:'Chiku Gola',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet sapota chiku syrup on crushed ice — mildly earthy',
    img:'food-photo/brown.jpeg'},
-  {id:37, name:'Masala Soda Gola',      nameGu:'મસાલા સોડા ગોળો',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Spiced masala soda flavour on crushed ice — chatpata hit',
+  {id:37, name:'Masala Soda Gola',      cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Spiced masala soda flavour on crushed ice — chatpata hit',
    img:'food-photo/green.jpeg'},
-  {id:38, name:'Chocolate Gola',        nameGu:'ચોકલેટ ગોળો',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Rich chocolate syrup drizzled over a crushed ice stick',
+  {id:38, name:'Chocolate Gola',        cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Rich chocolate syrup drizzled over a crushed ice stick',
    img:'food-photo/black.jpeg'},
-  {id:39, name:'Variyali Gola',         nameGu:'વરિયાળી ગોળો',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fennel-flavoured variyali syrup on crushed ice — aromatic',
+  {id:39, name:'Variyali Gola',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fennel-flavoured variyali syrup on crushed ice — aromatic',
    img:'food-photo/green.jpeg'},
-  {id:40, name:'Rainbow Gola',          nameGu:'રેઇન્બો ગોળો',            cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Multi-colour rainbow syrup on crushed ice — the fun one!',
+  {id:40, name:'Rainbow Gola',          cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Multi-colour rainbow syrup on crushed ice — the fun one!',
    img:'food-photo/rainbow.jpeg'},
 
   // ── Gola › Dish Gola ──
-  {id:41, name:'Orange Dish Gola',      nameGu:'ઓરેન્જ ડિશ ગોળો',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Orange syrup on a generous serving of crushed ice in a dish',
+  {id:41, name:'Orange Dish Gola',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Orange syrup on a generous serving of crushed ice in a dish',
    img:'food-photo/oranged.jpeg'},
-  {id:42, name:'Pineapple Dish Gola',   nameGu:'પાઇનેપલ ડિશ ગોળો',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Pineapple syrup on a large crushed ice dish — super cool',
+  {id:42, name:'Pineapple Dish Gola',   cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Pineapple syrup on a large crushed ice dish — super cool',
    img:'food-photo/yellowd.jpeg'},
-  {id:43, name:'Falsa Dish Gola',       nameGu:'ફાલસા ડિશ ગોળો',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Falsa berry syrup on a big dish of crushed ice',
+  {id:43, name:'Falsa Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Falsa berry syrup on a big dish of crushed ice',
    img:'food-photo/brownd.jpeg'},
-  {id:44, name:'Kachi Keri Dish Gola',  nameGu:'કાચી કેરી ડિશ ગોળો',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Raw mango masala on a large dish of crushed ice',
+  {id:44, name:'Kachi Keri Dish Gola',  cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Raw mango masala on a large dish of crushed ice',
    img:'food-photo/greend.jpeg'},
-  {id:45, name:'Mango Dish Gola',       nameGu:'કેરી ડિશ ગોળો',           cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Sweet mango syrup on a heaping crushed ice dish',
+  {id:45, name:'Mango Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Sweet mango syrup on a heaping crushed ice dish',
    img:'food-photo/oranged.jpeg'},
-  {id:46, name:'Kala Khatta Dish Gola', nameGu:'કાળા ખટ્ટા ડિશ ગોળો',    cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tangy kala khatta syrup on a large crushed ice dish',
+  {id:46, name:'Kala Khatta Dish Gola', cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tangy kala khatta syrup on a large crushed ice dish',
    img:'food-photo/brownd.jpeg'},
-  {id:47, name:'Rajwadi Dish Gola',     nameGu:'રાજવાડી ડિશ ગોળો',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Royal Rajwadi flavour served in a generous ice dish',
+  {id:47, name:'Rajwadi Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Royal Rajwadi flavour served in a generous ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:48, name:'Cadbury Dish Gola',     nameGu:'કેડબરી ડિશ ગોળો',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Cadbury chocolate drizzle on a big crushed ice dish',
+  {id:48, name:'Cadbury Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Cadbury chocolate drizzle on a big crushed ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:49, name:'Gulkand Dish Gola',     nameGu:'ગુલકંદ ડિશ ગોળો',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Rose petal gulkand on a refreshing large crushed ice dish',
+  {id:49, name:'Gulkand Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Rose petal gulkand on a refreshing large crushed ice dish',
    img:'food-photo/pinkd.jpeg'},
-  {id:50, name:'Jamphal Dish Gola',     nameGu:'જામફળ ડિશ ગોળો',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Guava jamphal syrup on a heaped ice dish — chatpata fun',
+  {id:50, name:'Jamphal Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Guava jamphal syrup on a heaped ice dish — chatpata fun',
    img:'food-photo/greend.jpeg'},
-  {id:51, name:'Kiwi Dish Gola',        nameGu:'કીવી ડિશ ગોળો',           cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Tropical kiwi syrup on a generous serving of crushed ice',
+  {id:51, name:'Kiwi Dish Gola',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Tropical kiwi syrup on a generous serving of crushed ice',
    img:'food-photo/greend.jpeg'},
-  {id:52, name:'Blueberry Dish Gola',   nameGu:'બ્લૂબેરી ડિશ ગોળો',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet blueberry syrup served in a large crushed ice dish',
+  {id:52, name:'Blueberry Dish Gola',   cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet blueberry syrup served in a large crushed ice dish',
    img:'food-photo/blued.jpeg'},
-  {id:53, name:'Strawberry Dish Gola',  nameGu:'સ્ટ્રોબેરી ડિશ ગોળો',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Strawberry syrup on a big crushed ice dish — fresh and sweet',
+  {id:53, name:'Strawberry Dish Gola',  cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Strawberry syrup on a big crushed ice dish — fresh and sweet',
    img:'food-photo/redd.jpeg'},
-  {id:54, name:'Blackcurrant Dish Gola',nameGu:'બ્લેકકરન્ટ ડિશ ગોળો',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Bold blackcurrant syrup on a heaped crushed ice dish',
+  {id:54, name:'Blackcurrant Dish Gola',cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Bold blackcurrant syrup on a heaped crushed ice dish',
    img:'food-photo/brownd.jpeg'},
-  {id:55, name:'Jambu Dish Gola',       nameGu:'જામ્બુ ડિશ ગોળો',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Java plum jambu syrup on a large dish of crushed ice',
+  {id:55, name:'Jambu Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Java plum jambu syrup on a large dish of crushed ice',
    img:'food-photo/blued.jpeg'},
-  {id:56, name:'Imli Dish Gola',        nameGu:'આમલી ડિશ ગોળો',          cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tamarind imli syrup on a big crushed ice dish — spicy sour',
+  {id:56, name:'Imli Dish Gola',        cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tamarind imli syrup on a big crushed ice dish — spicy sour',
    img:'food-photo/cadburryd.jpeg'},
-  {id:57, name:'Gulab Dish Gola',       nameGu:'ગુલાબ ડિશ ગોળો',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Floral rose gulab syrup served in a large crushed ice dish',
+  {id:57, name:'Gulab Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Floral rose gulab syrup served in a large crushed ice dish',
    img:'food-photo/redd.jpeg'},
-  {id:58, name:'Chiku Dish Gola',       nameGu:'ચીકૂ ડિશ ગોળો',           cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet chiku sapota syrup on a generous crushed ice dish',
+  {id:58, name:'Chiku Dish Gola',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet chiku sapota syrup on a generous crushed ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:59, name:'Butterscotch Dish Gola',nameGu:'બટરસ્કોચ ડિશ ગોળો',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Creamy butterscotch syrup on a heaped crushed ice dish',
+  {id:59, name:'Butterscotch Dish Gola',cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Creamy butterscotch syrup on a heaped crushed ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:60, name:'Variyali Dish Gola',    nameGu:'વરિયાળી ડિશ ગોળો',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Aromatic fennel variyali syrup on a large crushed ice dish',
+  {id:60, name:'Variyali Dish Gola',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Aromatic fennel variyali syrup on a large crushed ice dish',
    img:'food-photo/greend.jpeg'},
-  {id:61, name:'Rainbow Dish Gola',     nameGu:'રેઇન્બો ડિશ ગોળો',       cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Multi-colour rainbow syrup on a big crushed ice dish',
+  {id:61, name:'Rainbow Dish Gola',     cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Multi-colour rainbow syrup on a big crushed ice dish',
    img:'food-photo/rainbowd.jpeg'},
 
   // ── Gola › Mava Dish ──
-  {id:62, name:'Rajbhog Mava Dish',            nameGu:'રાજભોગ માવા ડિશ',          cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Rich Rajbhog mava on crushed ice. With vanilla/choc ice cream option at ₹160',
+  {id:62, name:'Rajbhog Mava Dish',            cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Rich Rajbhog mava on crushed ice. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
-  {id:63, name:'Kesar Pista Mava Dish',        nameGu:'કેસર પિસ્તા માવા ડિશ',     cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Saffron kesar pista mava on crushed ice — royal flavour. With vanilla/choc ice cream option at ₹160',
+  {id:63, name:'Kesar Pista Mava Dish',        cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Saffron kesar pista mava on crushed ice — royal flavour. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
-  {id:64, name:'Mava Badam Dish',              nameGu:'માવા બદામ ડિશ',             cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Creamy mava with crunchy badam on refreshing crushed ice. With vanilla/choc ice cream option at ₹160',
+  {id:64, name:'Mava Badam Dish',              cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Creamy mava with crunchy badam on refreshing crushed ice. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
-  {id:65, name:'Mava Malai Dish',              nameGu:'માવા મલાઈ ડિશ',             cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Silky mava malai on crushed ice — rich and indulgent. With vanilla/choc ice cream option at ₹160',
+  {id:65, name:'Mava Malai Dish',              cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Silky mava malai on crushed ice — rich and indulgent. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
-  {id:66, name:'Cadbury Mava Malai Dish',      nameGu:'કેડબરી માવા મલાઈ ડિશ',     cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Cadbury chocolate with mava malai on crushed ice — decadent. With vanilla/choc ice cream option at ₹160',
+  {id:66, name:'Cadbury Mava Malai Dish',      cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Cadbury chocolate with mava malai on crushed ice — decadent. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
-  {id:67, name:'Gulkand Mava Malai Dish',      nameGu:'ગુલકંદ માવા મલાઈ ડિશ',    cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Gulkand rose petal with mava malai on crushed ice. With vanilla/choc ice cream option at ₹160',
+  {id:67, name:'Gulkand Mava Malai Dish',      cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Gulkand rose petal with mava malai on crushed ice. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
-  {id:68, name:'Chiku Mava Malai Dish',        nameGu:'ચીકૂ માવા મલાઈ ડિશ',       cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Sweet chiku with creamy mava malai on a crushed ice dish. With vanilla/choc ice cream option at ₹160',
+  {id:68, name:'Chiku Mava Malai Dish',        cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Sweet chiku with creamy mava malai on a crushed ice dish. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
-  {id:69, name:'Butterscotch Rabadi Dish',     nameGu:'બટરસ્કોચ રબડી ડિશ',        cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Butterscotch with thick rabadi on crushed ice — creamy bliss. With vanilla/choc ice cream option at ₹160',
+  {id:69, name:'Butterscotch Rabadi Dish',     cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Butterscotch with thick rabadi on crushed ice — creamy bliss. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
-  {id:70, name:'Mango Rabadi Malai Dish',      nameGu:'કેરી રબડી મલાઈ ડિશ',       cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Mango pulp with rabadi malai on crushed ice — summer special. With vanilla/choc ice cream option at ₹160',
+  {id:70, name:'Mango Rabadi Malai Dish',      cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Mango pulp with rabadi malai on crushed ice — summer special. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
-  {id:71, name:'Shahi Gulab Masti Dish',       nameGu:'શાહી ગુલાબ મસ્તી ડિશ',    cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Shahi gulab masti — a royal rose flavoured mava ice treat. With vanilla/choc ice cream option at ₹160',
+  {id:71, name:'Shahi Gulab Masti Dish',       cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Shahi gulab masti — a royal rose flavoured mava ice treat. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
-  {id:72, name:'Kaju Katri Mava Malai Dish',   nameGu:'કાજુ કતરી માવા મલાઈ ડિશ',  cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Kaju katri with mava malai on crushed ice — nutty premium. With vanilla/choc ice cream option at ₹160',
+  {id:72, name:'Kaju Katri Mava Malai Dish',   cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Kaju katri with mava malai on crushed ice — nutty premium. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
-  {id:73, name:'Mava Chocolate Dish',          nameGu:'માવા ચોકલેટ ડિશ',          cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Rich chocolate with creamy mava on a crushed ice dish. With vanilla/choc ice cream option at ₹160',
+  {id:73, name:'Mava Chocolate Dish',          cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Rich chocolate with creamy mava on a crushed ice dish. With vanilla/choc ice cream option at ₹160',
    img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
-  {id:74, name:'Double Chocolate Dip Dish',    nameGu:'ડબલ ચોકલેટ ડિપ ડિશ',      cat:'gola', subcat:'Mava Dish', popular:true,  price:140, desc:'Double chocolate dip on crushed ice — the ultimate choco treat. With vanilla/choc ice cream option at ₹180',
+  {id:74, name:'Double Chocolate Dip Dish',    cat:'gola', subcat:'Mava Dish', popular:true,  price:140, desc:'Double chocolate dip on crushed ice — the ultimate choco treat. With vanilla/choc ice cream option at ₹180',
    img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
 
   // ── Gola › Sugar Free ──
-  {id:75, name:'Orange Sugar Free Gola',       nameGu:'ઓરેન્જ સુગર ફ્રી ગોળો',   cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Orange flavour gola made with zero sugar — guilt-free treat',
+  {id:75, name:'Orange Sugar Free Gola',       cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Orange flavour gola made with zero sugar — guilt-free treat',
    img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
-  {id:76, name:'Kalakhata Sugar Free Gola',    nameGu:'કાળા ખટ્ટા સુગર ફ્રી ગોળો',cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Tangy kala khatta flavour with absolutely no added sugar',
+  {id:76, name:'Kalakhata Sugar Free Gola',    cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Tangy kala khatta flavour with absolutely no added sugar',
    img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
-  {id:77, name:'Rose Sugar Free Gola',         nameGu:'ગુલાબ સુગર ફ્રી ગોળો',    cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Floral rose flavour gola with zero sugar — light and healthy',
+  {id:77, name:'Rose Sugar Free Gola',         cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Floral rose flavour gola with zero sugar — light and healthy',
    img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
 
   // ── Grilled Puff ──
-  {id:101, name:'Grilled Masala Puff',        nameGu:'ગ્રિલ્ડ મસાલા પફ',          cat:'puff', subcat:'Grilled Puff', popular:false, price:50,  desc:'Classic masala stuffed grilled puff pastry',
+  {id:101, name:'Grilled Masala Puff',        cat:'puff', subcat:'Grilled Puff', popular:false, price:50,  desc:'Classic masala stuffed grilled puff pastry',
    img:'https://media.istockphoto.com/id/1194093933/photo/indian-chicken-puffs-an-indian-snack.webp?a=1&b=1&s=612x612&w=0&k=20&c=lc1jEZuqyfPcDVSJxan-BwgCMV3xJ4lHB-oZHyevq6Q='},
-  {id:102, name:'Grilled Schezwan Puff',      nameGu:'ગ્રિલ્ડ શેઝવાન પફ',         cat:'puff', subcat:'Grilled Puff', popular:false, price:60,  desc:'Spicy schezwan filling in a crispy grilled puff',
+  {id:102, name:'Grilled Schezwan Puff',      cat:'puff', subcat:'Grilled Puff', popular:false, price:60,  desc:'Spicy schezwan filling in a crispy grilled puff',
    img:'Schezwan-Paneer-Puff-6.webp'},
-  {id:103, name:'Grilled Cheese Chutney Puff',nameGu:'ગ્રિલ્ડ ચીઝ ચટણી પફ',      cat:'puff', subcat:'Grilled Puff', popular:true,  price:70,  desc:'Cheese and mint chutney in a golden grilled puff',
+  {id:103, name:'Grilled Cheese Chutney Puff',cat:'puff', subcat:'Grilled Puff', popular:true,  price:70,  desc:'Cheese and mint chutney in a golden grilled puff',
    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAMZMxROBXAfK1mkRha-rrA69DEDQ6k1fh_A&s'},
-  {id:104, name:'Grilled Cheese Corn Puff',   nameGu:'ગ્રિલ્ડ ચીઝ કોર્ન પફ',      cat:'puff', subcat:'Grilled Puff', popular:false, price:70,  desc:'Sweet corn and cheese stuffed grilled puff',
+  {id:104, name:'Grilled Cheese Corn Puff',   cat:'puff', subcat:'Grilled Puff', popular:false, price:70,  desc:'Sweet corn and cheese stuffed grilled puff',
    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3-OcVEoGiYGn9VwpjjQ_4xwMLz3OwYFINGwzS0d6R&s'},
-  {id:105, name:'Grilled Mexican Puff',       nameGu:'ગ્રિલ્ડ મેક્સિકન પફ',        cat:'puff', subcat:'Grilled Puff', popular:false, price:70,  desc:'Zesty Mexican spiced filling in a flaky grilled puff',
+  {id:105, name:'Grilled Mexican Puff',       cat:'puff', subcat:'Grilled Puff', popular:false, price:70,  desc:'Zesty Mexican spiced filling in a flaky grilled puff',
    img:'Gemini_Generated_Image_b4nf2yb4nf2yb4nf.png'},
-  {id:106, name:'Grilled Tandoori Paneer Puff',nameGu:'ગ્રિલ્ડ તંદૂરી પનીર પફ',   cat:'puff', subcat:'Grilled Puff', popular:true,  price:80,  desc:'Smoky tandoori paneer in a rich grilled puff pastry',
+  {id:106, name:'Grilled Tandoori Paneer Puff',cat:'puff',subcat:'Grilled Puff', popular:true,  price:80,  desc:'Smoky tandoori paneer in a rich grilled puff pastry',
    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7zAl_GBtS7ss9eLFwyLfwszsi0fON7n0Laz6pJJb0Fg&s'},
 
   // ── Quick Bites ──
-  {id:201, name:'Masala Bun',                  nameGu:'મસાલા બન',                   cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Soft bun filled with spiced masala filling',
+  {id:201, name:'Masala Bun',                  cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Soft bun filled with spiced masala filling',
    img:'https://images.unsplash.com/photo-1693892863405-109f80ddb9df?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TWFzYWxhJTIwQnVufGVufDB8fDB8fHww'},
-  {id:202, name:'Surprise Vadapav',            nameGu:'સરપ્રાઇઝ વડાપાઉ',           cat:'quickbites', subcat:'Quick Bites', popular:true,  price:50,  desc:'Classic vadapav with a surprise filling inside',
+  {id:202, name:'Surprise Vadapav',            cat:'quickbites', subcat:'Quick Bites', popular:true,  price:50,  desc:'Classic vadapav with a surprise filling inside',
    img:'https://images.unsplash.com/photo-1633669771791-fcda43b7d455?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFN1cnByaXNlJTIwVmFkYXBhdnxlbnwwfHwwfHx8MA%3D%3D'},
-  {id:203, name:'Korean Cream Cheese Garlic Bun',nameGu:'કોરિયન ક્રીમ ચીઝ ગાર્લિક બન',cat:'quickbites',subcat:'Quick Bites',popular:true, price:50, desc:'Trending Korean-style cream cheese filled garlic bun',
+  {id:203, name:'Korean Cream Cheese Garlic Bun',cat:'quickbites',subcat:'Quick Bites',popular:true, price:50, desc:'Trending Korean-style cream cheese filled garlic bun',
    img:'https://images.unsplash.com/photo-1706973912140-6801bb10145e?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8S29yZWFuJTIwQ3JlYW0lMjBDaGVlc2UlMjBHYXJsaWMlMjBCdW58ZW58MHx8MHx8fDA%3D'},
-  {id:204, name:'Dabeli',                      nameGu:'દાબેલી',                     cat:'quickbites', subcat:'Quick Bites', popular:false, price:30,  desc:'Classic Kutchi dabeli with peanuts and pomegranate',
+  {id:204, name:'Dabeli',                      cat:'quickbites', subcat:'Quick Bites', popular:false, price:30,  desc:'Classic Kutchi dabeli with peanuts and pomegranate',
    img:'https://media.istockphoto.com/id/2173847671/photo/dabeli-a-spicy-indian-street-food-made-with-a-potato-filling-tamarind-chutney-and-sev-served.webp?a=1&b=1&s=612x612&w=0&k=20&c=icOBoa1WvOitjejriTuOGouRseHzeOUDzpqwJN1J2G8='},
-  {id:205, name:'Cheese Dabeli',               nameGu:'ચીઝ દાબેલી',                cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Dabeli loaded with extra cheese for indulgence',
+  {id:205, name:'Cheese Dabeli',               cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Dabeli loaded with extra cheese for indulgence',
    img:'food-photo/download (1).jpg'},
-  {id:206, name:'Chur Chur Patti Vadapav',     nameGu:'ચૂર ચૂર પટ્ટી વડાપાઉ',     cat:'quickbites', subcat:'Quick Bites', popular:false, price:30,  desc:'Crunchy patti-style vadapav with special masala',
+  {id:206, name:'Chur Chur Patti Vadapav',     cat:'quickbites', subcat:'Quick Bites', popular:false, price:30,  desc:'Crunchy patti-style vadapav with special masala',
    img:'https://images.unsplash.com/photo-1769030905851-c0e0a4fe5c51?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q2h1ciUyMENodXIlMjBQYXR0aSUyMFZhZGFwYXZ8ZW58MHx8MHx8fDA%3D'},
-  {id:207, name:'Onion Vadapav',               nameGu:'ડુંગળી વડાપાઉ',             cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Spiced vada with crispy fried onions in a pav',
+  {id:207, name:'Onion Vadapav',               cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Spiced vada with crispy fried onions in a pav',
    img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGaPoQlB2W9RPXlGNGilxoJqKIGW3nq3RM8A&s'},
-  {id:208, name:'Cheese Burst Vadapav',        nameGu:'ચીઝ બર્સ્ટ વડાપાઉ',         cat:'quickbites', subcat:'Quick Bites', popular:true,  price:50,  desc:'Vada pav taken to the next level with cheese burst',
+  {id:208, name:'Cheese Burst Vadapav',        cat:'quickbites', subcat:'Quick Bites', popular:true,  price:50,  desc:'Vada pav taken to the next level with cheese burst',
    img:'food-photo/download (1).jpg'},
-  {id:209, name:'Spring Roll',                 nameGu:'સ્પ્રિંગ રોલ',               cat:'quickbites', subcat:'Quick Bites', popular:false, price:100, desc:'Crispy fried spring rolls filled with seasoned veggies',
+  {id:209, name:'Spring Roll',                 cat:'quickbites', subcat:'Quick Bites', popular:false, price:100, desc:'Crispy fried spring rolls filled with seasoned veggies',
    img:'https://images.unsplash.com/photo-1695712641569-05eee7b37b6d?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8U3ByaW5nJTIwUm9sbHxlbnwwfHwwfHx8MA%3D%3D'},
-  {id:210, name:'Samosa Punjabi',              nameGu:'પંજાબી સમોસા',               cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Big flaky Punjabi samosa with spiced potato filling',
+  {id:210, name:'Samosa Punjabi',              cat:'quickbites', subcat:'Quick Bites', popular:false, price:40,  desc:'Big flaky Punjabi samosa with spiced potato filling',
    img:'food-photo/download (2).jpg'},
   // ── Grilled Sandwich ──
-  {id:301, name:'Aloo Cheese Sandwich',        nameGu:'આલૂ ચીઝ સેન્ડવિચ',          cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:70,  desc:'Grilled sandwich with spiced potato and cheese',
+  {id:301, name:'Aloo Cheese Sandwich',        cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:70,  desc:'Grilled sandwich with spiced potato and cheese',
    img:'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=80'},
-  {id:302, name:'Schezwan Aloo Cheese Sandwich',nameGu:'શેઝવાન આલૂ ચીઝ સેન્ડવિચ', cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:80,  desc:'Spicy schezwan potato with melted cheese, grilled to perfection',
+  {id:302, name:'Schezwan Aloo Cheese Sandwich',        cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:80,  desc:'Spicy schezwan potato with melted cheese, grilled to perfection',
    img:'food-photo/download (3).jpg'},
-  {id:303, name:'Schezwan Veg Cheese Sandwich', nameGu:'શેઝવાન વેજ ચીઝ સેન્ડવિચ',  cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:80,  desc:'Mixed vegetables with schezwan sauce and cheese, grilled',
+  {id:303, name:'Schezwan Veg Cheese Sandwich',         cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:80,  desc:'Mixed vegetables with schezwan sauce and cheese, grilled',
    img:'food-photo/download (4).jpg'},
-  {id:304, name:'Cheese Corn Sandwich',        nameGu:'ચીઝ કોર્ન સેન્ડવિચ',        cat:'sandwich', subcat:'Grilled Sandwich', popular:true,  price:90,  desc:'Sweet corn and cheese grilled sandwich — a crowd favourite',
+  {id:304, name:'Cheese Corn Sandwich',        cat:'sandwich', subcat:'Grilled Sandwich', popular:true,  price:90,  desc:'Sweet corn and cheese grilled sandwich — a crowd favourite',
    img:'food-photo/download (5).jpg'},
-  {id:305, name:'Tandoori Paneer Cheese Sandwich',nameGu:'તંદૂરી પનીર ચીઝ સેન્ડવિચ',cat:'sandwich', subcat:'Grilled Sandwich', popular:true, price:90, desc:'Smoky tandoori paneer with cheese in a grilled sandwich',
+  {id:305, name:'Tandoori Paneer Cheese Sandwich',      cat:'sandwich', subcat:'Grilled Sandwich', popular:true,  price:90,  desc:'Smoky tandoori paneer with cheese in a grilled sandwich',
    img:'food-photo/download (6).jpg'},
-  {id:306, name:'Cheese Chutney Sandwich',     nameGu:'ચીઝ ચટણી સેન્ડવિચ',         cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:100, desc:'Cheese and tangy green chutney grilled together',
+  {id:306, name:'Cheese Chutney Sandwich',     cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:100, desc:'Cheese and tangy green chutney grilled together',
    img:'food-photo/download (7).jpg'},
-  {id:307, name:'Loaded Veg Cheese',           nameGu:'લોડેડ વેજ ચીઝ સેન્ડવિચ',    cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:120, desc:'Fully loaded grilled sandwich with veggies and cheese',
+  {id:307, name:'Loaded Veg Cheese',           cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:120, desc:'Fully loaded grilled sandwich with veggies and cheese',
    img:'food-photo/download (8).jpg'},
-  {id:308, name:'Loaded Aloo Veg Cheese',      nameGu:'લોડેડ આલૂ વેજ ચીઝ સેન્ડવિચ',cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:120, desc:'Loaded with aloo, veggies and double cheese, grilled hot',
+  {id:308, name:'Loaded Aloo Veg Cheese',      cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:120, desc:'Loaded with aloo, veggies and double cheese, grilled hot',
    img:'https://images.unsplash.com/photo-1528736235302-52922df5c122?w=500&auto=format&fit=crop&q=80'},
-  {id:309, name:'Ghughra Sandwich',            nameGu:'ઘૂઘરા સેન્ડવિચ',             cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:100, desc:'Unique Gujarati-inspired ghughra-style grilled sandwich',
+  {id:309, name:'Ghughra Sandwich',            cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:100, desc:'Unique Gujarati-inspired ghughra-style grilled sandwich',
    img:'food-photo/download (9).jpg'},
-  {id:310, name:'Garlic Ghughra Sandwich',     nameGu:'ગાર્લિક ઘૂઘરા સેન્ડવિચ',    cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:100, desc:'Garlicky ghughra grilled sandwich with herbed butter',
+  {id:310, name:'Garlic Ghughra Sandwich',     cat:'sandwich', subcat:'Grilled Sandwich', popular:false, price:100, desc:'Garlicky ghughra grilled sandwich with herbed butter',
    img:'food-photo/download (9).jpg'},
 
   // ── Pizza ──
-  {id:401, name:'Margarita Pizza',             nameGu:'માર્ગેરિટા પિઝા',            cat:'pizza', subcat:'Pizza', popular:true,  price:90,  desc:'Classic tomato sauce and mozzarella, simply delicious',
+  {id:401, name:'Margarita Pizza',             cat:'pizza', subcat:'Pizza', popular:true,  price:90,  desc:'Classic tomato sauce and mozzarella, simply delicious',
    img:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop&q=80'},
-  {id:402, name:'Cheese Corn Pizza',           nameGu:'ચીઝ કોર્ન પિઝા',             cat:'pizza', subcat:'Pizza', popular:true,  price:100, desc:'Sweet corn and generous cheese on a crispy base',
+  {id:402, name:'Cheese Corn Pizza',           cat:'pizza', subcat:'Pizza', popular:true,  price:100, desc:'Sweet corn and generous cheese on a crispy base',
    img:'food-photo/download (11).jpg'},
-  {id:403, name:'Paneer Makhani Pizza',        nameGu:'પનીર મખની પિઝા',             cat:'pizza', subcat:'Pizza', popular:true,  price:120, desc:'Rich makhani base with tender paneer and herbs',
+  {id:403, name:'Paneer Makhani Pizza',        cat:'pizza', subcat:'Pizza', popular:true,  price:120, desc:'Rich makhani base with tender paneer and herbs',
    img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=80'},
-  {id:404, name:'Farm Villa Pizza',            nameGu:'ફાર્મ વિલ્લા પિઝા',          cat:'pizza', subcat:'Pizza', popular:false, price:120, desc:'Fresh farm vegetables on a herbed tomato base',
+  {id:404, name:'Farm Villa Pizza',            cat:'pizza', subcat:'Pizza', popular:false, price:120, desc:'Fresh farm vegetables on a herbed tomato base',
    img:'food-photo/download (10).jpg'},
-  {id:405, name:'Five Cheese Pizza',           nameGu:'ફાઇવ ચીઝ પિઝા',              cat:'pizza', subcat:'Pizza', popular:true,  price:150, desc:'An indulgent blend of five cheeses on a golden crust',
+  {id:405, name:'Five Cheese Pizza',           cat:'pizza', subcat:'Pizza', popular:true,  price:150, desc:'An indulgent blend of five cheeses on a golden crust',
    img:'https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?w=500&auto=format&fit=crop&q=80'},
-  {id:406, name:'Flat Bread Pizza',            nameGu:'ફ્લેટ બ્રેડ પિઝા',           cat:'pizza', subcat:'Pizza', popular:false, price:150, desc:'Thin crispy flatbread pizza with gourmet toppings',
+  {id:406, name:'Flat Bread Pizza',            cat:'pizza', subcat:'Pizza', popular:false, price:150, desc:'Thin crispy flatbread pizza with gourmet toppings',
    img:'food-photo/download (12).jpg'},
 
   // ── French Fries ──
-  {id:501, name:'Salted Fries',                nameGu:'સોલ્ટેડ ફ્રાઇઝ',              cat:'fries', subcat:'French Fries', popular:false, price:60,  desc:'Classic crispy fries with just the right amount of salt',
+  {id:501, name:'Salted Fries',                cat:'fries', subcat:'French Fries', popular:false, price:60,  desc:'Classic crispy fries with just the right amount of salt',
    img:'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=500&auto=format&fit=crop&q=80'},
-  {id:502, name:'Peri Peri Fries',             nameGu:'પેરી પેરી ફ્રાઇઝ',           cat:'fries', subcat:'French Fries', popular:true,  price:70,  desc:'Crispy fries dusted with spicy peri peri seasoning',
+  {id:502, name:'Peri Peri Fries',             cat:'fries', subcat:'French Fries', popular:true,  price:70,  desc:'Crispy fries dusted with spicy peri peri seasoning',
    img:'food-photo/download (13).jpg'},
-  {id:503, name:'Chaat Masala Fries',          nameGu:'ચાટ મસાલા ફ્રાઇઝ',           cat:'fries', subcat:'French Fries', popular:false, price:70,  desc:'Tangy chaat masala sprinkled over golden crispy fries',
+  {id:503, name:'Chaat Masala Fries',          cat:'fries', subcat:'French Fries', popular:false, price:70,  desc:'Tangy chaat masala sprinkled over golden crispy fries',
    img:'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=500&auto=format&fit=crop&q=80'},
-  {id:504, name:'Cheesy Fries',                nameGu:'ચીઝી ફ્રાઇઝ',                cat:'fries', subcat:'French Fries', popular:true,  price:80,  desc:'Hot fries smothered in gooey melted cheese sauce',
+  {id:504, name:'Cheesy Fries',                cat:'fries', subcat:'French Fries', popular:true,  price:80,  desc:'Hot fries smothered in gooey melted cheese sauce',
    img:'food-photo/download (14).jpg'},
-  {id:505, name:'Peri Peri Cheesy Fries',      nameGu:'પેરી પેરી ચીઝી ફ્રાઇઝ',     cat:'fries', subcat:'French Fries', popular:true,  price:90,  desc:'Best of both worlds — peri peri spice meets melted cheese',
+  {id:505, name:'Peri Peri Cheesy Fries',      cat:'fries', subcat:'French Fries', popular:true,  price:90,  desc:'Best of both worlds — peri peri spice meets melted cheese',
    img:'food-photo/download (15).jpg'},
-  {id:506, name:'Cheese Jalapeno Fries',       nameGu:'ચીઝ જલાપેનો ફ્રાઇઝ',         cat:'fries', subcat:'French Fries', popular:false, price:90,  desc:'Fiery jalapenos and cheese on crispy golden fries',
+  {id:506, name:'Cheese Jalapeno Fries',       cat:'fries', subcat:'French Fries', popular:false, price:90,  desc:'Fiery jalapenos and cheese on crispy golden fries',
    img:'food-photo/download (16).jpg'},
-  {id:507, name:'Poussin Chips',               nameGu:'પૌસ્સિન ચિપ્સ',               cat:'fries', subcat:'French Fries', popular:false, price:70,  desc:'Thin crispy chips seasoned to crunchy perfection',
+  {id:507, name:'Poussin Chips',               cat:'fries', subcat:'French Fries', popular:false, price:70,  desc:'Thin crispy chips seasoned to crunchy perfection',
    img:'food-photo/download (17).jpg'},
 
   // ── Pasta ──
-  {id:601, name:'Arrabiata Pasta',             nameGu:'અરરાબિયાટા પાસ્તા',          cat:'pasta', subcat:'Pasta', popular:false, price:120, desc:'Classic spicy Italian red sauce pasta with herbs',
+  {id:601, name:'Arrabiata Pasta',             cat:'pasta', subcat:'Pasta', popular:false, price:120, desc:'Classic spicy Italian red sauce pasta with herbs',
    img:'food-photo/download (18).jpg'},
-  {id:602, name:'Alfredo White Sauce Pasta',   nameGu:'અલ્ફ્રેડો વ્હાઇટ સૉસ પાસ્તા',cat:'pasta', subcat:'Pasta', popular:true,  price:150, desc:'Creamy rich Alfredo white sauce pasta, perfectly seasoned',
+  {id:602, name:'Alfredo White Sauce Pasta',   cat:'pasta', subcat:'Pasta', popular:true,  price:150, desc:'Creamy rich Alfredo white sauce pasta, perfectly seasoned',
    img:'food-photo/download (19).jpg'},
-  {id:603, name:'Pink Sauce Pasta',            nameGu:'પિન્ક સૉસ પાસ્તા',            cat:'pasta', subcat:'Pasta', popular:true,  price:150, desc:'A beautiful blend of red and white sauce in one dish',
+  {id:603, name:'Pink Sauce Pasta',            cat:'pasta', subcat:'Pasta', popular:true,  price:150, desc:'A beautiful blend of red and white sauce in one dish',
    img:'food-photo/download (20).jpg'},
 
   // ── Chaat ──
-  {id:701, name:'Pani Puri (6 Flavours)',      nameGu:'પાણીપૂરી (6 ફ્લેવર)',        cat:'chaat', subcat:'Chaat', popular:true,  price:20,  desc:'Crispy puris with 6 different tangy pani flavours',
+  {id:701, name:'Pani Puri (6 Flavours)',      cat:'chaat', subcat:'Chaat', popular:true,  price:20,  desc:'Crispy puris with 6 different tangy pani flavours',
    img:'food-photo/download (21).jpg'},
-  {id:702, name:'Masala Puri',                 nameGu:'મસાલા પૂરી',                  cat:'chaat', subcat:'Chaat', popular:false, price:30,  desc:'Spiced masala filled puris with tangy chutneys',
+  {id:702, name:'Masala Puri',                 cat:'chaat', subcat:'Chaat', popular:false, price:30,  desc:'Spiced masala filled puris with tangy chutneys',
    img:'food-photo/download (22).jpg'},
-  {id:703, name:'Sev Puri',                    nameGu:'સેવ પૂરી',                    cat:'chaat', subcat:'Chaat', popular:false, price:30,  desc:'Crispy puris topped with sev, chutneys and spices',
+  {id:703, name:'Sev Puri',                    cat:'chaat', subcat:'Chaat', popular:false, price:30,  desc:'Crispy puris topped with sev, chutneys and spices',
    img:'food-photo/download (23).jpg'},
-  {id:704, name:'Cheese Sev Puri',             nameGu:'ચીઝ સેવ પૂરી',               cat:'chaat', subcat:'Chaat', popular:false, price:40,  desc:'Sev puri elevated with a generous topping of cheese',
+  {id:704, name:'Cheese Sev Puri',             cat:'chaat', subcat:'Chaat', popular:false, price:40,  desc:'Sev puri elevated with a generous topping of cheese',
    img:'food-photo/download (24).jpg'},
-  {id:705, name:'Dahi Puri',                   nameGu:'દહીં પૂરી',                   cat:'chaat', subcat:'Chaat', popular:false, price:40,  desc:'Puris filled with creamy dahi and sweet-tangy chutneys',
+  {id:705, name:'Dahi Puri',                   cat:'chaat', subcat:'Chaat', popular:false, price:40,  desc:'Puris filled with creamy dahi and sweet-tangy chutneys',
    img:'food-photo/download (25).jpg'},
-  {id:706, name:'Samosa Chaat',                nameGu:'સમોસા ચાટ',                   cat:'chaat', subcat:'Chaat', popular:true,  price:50,  desc:'Crushed samosa with chaat toppings — the ultimate street snack',
+  {id:706, name:'Samosa Chaat',                cat:'chaat', subcat:'Chaat', popular:true,  price:50,  desc:'Crushed samosa with chaat toppings — the ultimate street snack',
    img:'food-photo/download (26).jpg'},
-  {id:707, name:'Bhel',                        nameGu:'ભેળ',                         cat:'chaat', subcat:'Chaat', popular:false, price:50,  desc:'Crispy puffed rice mixed with veggies, sev and chutneys',
+  {id:707, name:'Bhel',                        cat:'chaat', subcat:'Chaat', popular:false, price:50,  desc:'Crispy puffed rice mixed with veggies, sev and chutneys',
    img:'food-photo/download (27).jpg'},
-  {id:708, name:'Bhel Puri',                   nameGu:'ભેળ પૂરી',                    cat:'chaat', subcat:'Chaat', popular:false, price:50,  desc:'Mumbai-style bhel with puris mixed in for extra crunch',
+  {id:708, name:'Bhel Puri',                   cat:'chaat', subcat:'Chaat', popular:false, price:50,  desc:'Mumbai-style bhel with puris mixed in for extra crunch',
    img:'food-photo/download (28).jpg'},
 
   // ── Chinese ──
-  {id:801, name:'Chilli Paneer Dry',           nameGu:'ચિલ્લી પનીર ડ્રાય',          cat:'chinese', subcat:'Chinese', popular:true,  price:100, desc:'Indo-Chinese crispy paneer tossed in spicy chilli sauce',
+  {id:801, name:'Chilli Paneer Dry',           cat:'chinese', subcat:'Chinese', popular:true,  price:100, desc:'Indo-Chinese crispy paneer tossed in spicy chilli sauce',
    img:'https://images.unsplash.com/photo-1676976197902-4a01ee87cd78?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Q2hpbGxpJTIwUGFuZWVyJTIwRHJ5fGVufDB8fDB8fHww'},
-  {id:802, name:'Chilli Paneer Gravy',         nameGu:'ચિલ્લી પનીર ગ્રેવી',         cat:'chinese', subcat:'Chinese', popular:false, price:120, desc:'Paneer in a rich, spicy chilli gravy with bell peppers',
+  {id:802, name:'Chilli Paneer Gravy',         cat:'chinese', subcat:'Chinese', popular:false, price:120, desc:'Paneer in a rich, spicy chilli gravy with bell peppers',
    img:'https://media.istockphoto.com/id/1325271813/photo/green-peas-or-matar-paneer-curry.webp?a=1&b=1&s=612x612&w=0&k=20&c=Fx02N2Izysj2E_6oeT9lDJagwup-yW6c06gnhYeCaJw='},
-  {id:803, name:'Paneer Crispy',               nameGu:'પનીર ક્રિસ્પી',               cat:'chinese', subcat:'Chinese', popular:true,  price:150, desc:'Deep-fried crispy paneer bites with tangy dipping sauce',
+  {id:803, name:'Paneer Crispy',               cat:'chinese', subcat:'Chinese', popular:true,  price:150, desc:'Deep-fried crispy paneer bites with tangy dipping sauce',
    img:'food-photo/download (29).jpg'},
-  {id:804, name:'Veg Manchurian Dry',          nameGu:'વેજ મંચૂરિયન ડ્રાય',          cat:'chinese', subcat:'Chinese', popular:false, price:100, desc:'Crispy vegetable manchurian balls tossed in spicy sauce',
+  {id:804, name:'Veg Manchurian Dry',          cat:'chinese', subcat:'Chinese', popular:false, price:100, desc:'Crispy vegetable manchurian balls tossed in spicy sauce',
    img:'https://media.istockphoto.com/id/1251727218/photo/veg-manchurian-with-dry-popular-food-of-india-made-of-cauliflower.webp?a=1&b=1&s=612x612&w=0&k=20&c=z8xOHbtOtp9RG8562UcVXIIm-PrnnJNGvl3DN6DH3rE='},
-  {id:805, name:'Veg Manchurian Gravy',        nameGu:'વેજ મંચૂરિયન ગ્રેવી',         cat:'chinese', subcat:'Chinese', popular:false, price:120, desc:'Soft vegetable balls in a rich spiced manchurian gravy',
+  {id:805, name:'Veg Manchurian Gravy',        cat:'chinese', subcat:'Chinese', popular:false, price:120, desc:'Soft vegetable balls in a rich spiced manchurian gravy',
    img:'https://media.istockphoto.com/id/1145431419/photo/veg-or-chicken-manchurian.webp?a=1&b=1&s=612x612&w=0&k=20&c=LBpPtcaUkzBLwPcJblm8P89trTJiN2m8YpvRbgN3QxM='},
-  {id:806, name:'Paneer Hakka Noodles',        nameGu:'પનીર હક્કા નૂડલ્સ',           cat:'chinese', subcat:'Chinese', popular:true,  price:100, desc:'Stir-fried noodles with paneer and fresh vegetables',
+  {id:806, name:'Paneer Hakka Noodles',        cat:'chinese', subcat:'Chinese', popular:true,  price:100, desc:'Stir-fried noodles with paneer and fresh vegetables',
    img:'https://images.unsplash.com/photo-1655427221151-870cc71a63c2?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UGFuZWVyJTIwSGFra2ElMjBOb29kbGVzfGVufDB8fDB8fHww'},
-  {id:807, name:'Veg Schezwan Rice',           nameGu:'વેજ શેઝવાન રાઇસ',             cat:'chinese', subcat:'Chinese', popular:false, price:90,  desc:'Fried rice tossed in fiery schezwan sauce with veggies',
+  {id:807, name:'Veg Schezwan Rice',           cat:'chinese', subcat:'Chinese', popular:false, price:90,  desc:'Fried rice tossed in fiery schezwan sauce with veggies',
    img:'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500&auto=format&fit=crop&q=80'},
-  {id:808, name:'Veg Fried Rice',              nameGu:'વેજ ફ્રાઇડ રાઇસ',             cat:'chinese', subcat:'Chinese', popular:false, price:80,  desc:'Classic Indo-Chinese style fried rice with seasonal vegetables',
+  {id:808, name:'Veg Fried Rice',              cat:'chinese', subcat:'Chinese', popular:false, price:80,  desc:'Classic Indo-Chinese style fried rice with seasonal vegetables',
    img:'https://media.istockphoto.com/id/1292617507/photo/tasty-veg-schezwan-fried-rice-served-in-bowl-over-a-rustic-wooden-background-indian-cuisine.webp?a=1&b=1&s=612x612&w=0&k=20&c=cVrmRwkPN8Gru7Spi9pEtHzpbQh0AeGfOUvIosKNhA8='},
-  {id:809, name:'Veg Paneer Rice',             nameGu:'વેજ પનીર રાઇસ',               cat:'chinese', subcat:'Chinese', popular:false, price:90,  desc:'Fried rice with soft paneer pieces and stir-fried vegetables',
+  {id:809, name:'Veg Paneer Rice',             cat:'chinese', subcat:'Chinese', popular:false, price:90,  desc:'Fried rice with soft paneer pieces and stir-fried vegetables',
    img:'https://plus.unsplash.com/premium_photo-1694141252774-c937d97641da?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8VmVnJTIwUGFuZWVyJTIwUmljZXxlbnwwfHwwfHx8MA%3D%3D'},
-  {id:810, name:'Veg Triple Rice',             nameGu:'વેજ ટ્રિપલ રાઇસ',             cat:'chinese', subcat:'Chinese', popular:true,  price:130, desc:'Rice cooked three ways with a trio of rich flavours',
+  {id:810, name:'Veg Triple Rice',             cat:'chinese', subcat:'Chinese', popular:true,  price:130, desc:'Rice cooked three ways with a trio of rich flavours',
    img:'food-photo/download (30).jpg'},
-  {id:811, name:'Veg Hakka Noodles',           nameGu:'વેજ હક્કા નૂડલ્સ',            cat:'chinese', subcat:'Chinese', popular:false, price:70,  desc:'Simple, flavourful hakka noodles with tossed vegetables',
+  {id:811, name:'Veg Hakka Noodles',           cat:'chinese', subcat:'Chinese', popular:false, price:70,  desc:'Simple, flavourful hakka noodles with tossed vegetables',
    img:'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500&auto=format&fit=crop&q=80'},
-  {id:812, name:'Veg Schezwan Hakka Noodles',  nameGu:'વેજ શેઝવાન હક્કા નૂડલ્સ',    cat:'chinese', subcat:'Chinese', popular:false, price:80,  desc:'Hakka noodles amped up with spicy schezwan sauce',
+  {id:812, name:'Veg Schezwan Hakka Noodles',  cat:'chinese', subcat:'Chinese', popular:false, price:80,  desc:'Hakka noodles amped up with spicy schezwan sauce',
    img:'food-photo/download (31).jpg'},
-  {id:813, name:'Chilli Garlic Noodles',       nameGu:'ચિલ્લી ગાર્લિક નૂડલ્સ',      cat:'chinese', subcat:'Chinese', popular:true,  price:90,  desc:'Bold chilli and garlic flavoured noodles — absolutely addictive',
+  {id:813, name:'Chilli Garlic Noodles',       cat:'chinese', subcat:'Chinese', popular:true,  price:90,  desc:'Bold chilli and garlic flavoured noodles — absolutely addictive',
    img:'food-photo/download (32).jpg'},
 
   // ── Drinks › Ice Sparkle ──
-  {id:901, name:'Passion Fruit Ice Sparkle',   nameGu:'પેશન ફ્રૂટ આઇસ સ્પાર્કલ',  cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Refreshing passion fruit sparkling iced drink',
+  {id:901, name:'Passion Fruit Ice Sparkle',   cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Refreshing passion fruit sparkling iced drink',
    img:'https://media.istockphoto.com/id/535040915/photo/iced-passion-juice.webp?a=1&b=1&s=612x612&w=0&k=20&c=uLVEBAWCSO_CdbabAZOPASewr-XSMXN-V7g-NY-yvKU='},
-  {id:902, name:'Green Apple Ice Sparkle',     nameGu:'ગ્રીન એપલ આઇસ સ્પાર્કલ',   cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Crisp green apple flavoured chilled sparkle drink',
+  {id:902, name:'Green Apple Ice Sparkle',     cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Crisp green apple flavoured chilled sparkle drink',
    img:'food-photo/download (33).jpg'},
-  {id:903, name:'Cranberry Ice Sparkle',       nameGu:'ક્રેનબેરી આઇસ સ્પાર્કલ',    cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Tangy cranberry iced sparkle to cool you down',
+  {id:903, name:'Cranberry Ice Sparkle',       cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Tangy cranberry iced sparkle to cool you down',
    img:'food-photo/download (34).jpg'},
-  {id:904, name:'Lemon Ice Tea',               nameGu:'લેમન આઇસ ટી',                cat:'drinks', subcat:'Ice Sparkle', popular:true,  price:40, desc:'Classic chilled lemon ice tea — light and refreshing',
+  {id:904, name:'Lemon Ice Tea',               cat:'drinks', subcat:'Ice Sparkle', popular:true,  price:40, desc:'Classic chilled lemon ice tea — light and refreshing',
    img:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop&q=80'},
-  {id:905, name:'Blueberry Ice Sparkle',       nameGu:'બ્લૂબેરી આઇસ સ્પાર્કલ',     cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Sweet blueberry infused chilled sparkling drink',
+  {id:905, name:'Blueberry Ice Sparkle',       cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Sweet blueberry infused chilled sparkling drink',
    img:'food-photo/download (35).jpg'},
-  {id:906, name:'Citrus Ice Sparkle',          nameGu:'સિટ્રસ આઇસ સ્પાર્કલ',       cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Zesty citrus blend served over ice with sparkle',
+  {id:906, name:'Citrus Ice Sparkle',          cat:'drinks', subcat:'Ice Sparkle', popular:false, price:40, desc:'Zesty citrus blend served over ice with sparkle',
    img:'food-photo/download (36).jpg'},
 
   // ── Drinks › Milkshake ──
-  {id:911, name:'Vanilla Milkshake',           nameGu:'વેનીલા મિલ્કશેક',            cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'Creamy classic vanilla milkshake — smooth and satisfying',
+  {id:911, name:'Vanilla Milkshake',           cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'Creamy classic vanilla milkshake — smooth and satisfying',
    img:'food-photo/download (37).jpg'},
-  {id:912, name:'Strawberry Milkshake',        nameGu:'સ્ટ્રોબેરી મિલ્કશેક',        cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'Thick strawberry milkshake with a fruity fresh taste',
+  {id:912, name:'Strawberry Milkshake',        cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'Thick strawberry milkshake with a fruity fresh taste',
    img:'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&auto=format&fit=crop&q=80'},
-  {id:913, name:'Berry Blast Milkshake',       nameGu:'બેરી બ્લાસ્ટ મિલ્કશેક',     cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'A blissful blend of mixed berries in a thick shake',
+  {id:913, name:'Berry Blast Milkshake',       cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'A blissful blend of mixed berries in a thick shake',
    img:'food-photo/download (38).jpg'},
-  {id:914, name:'Rose Milkshake',              nameGu:'ગુલાબ મિલ્કશેક',             cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'Fragrant rose-flavoured creamy milkshake, chilled and sweet',
+  {id:914, name:'Rose Milkshake',              cat:'drinks', subcat:'Milkshake', popular:false, price:70,  desc:'Fragrant rose-flavoured creamy milkshake, chilled and sweet',
    img:'https://plus.unsplash.com/premium_photo-1695925105336-a32fbaebfe7f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Um9zZSUyME1pbGtzaGFrZXxlbnwwfHwwfHx8MA%3D%3D'},
-  {id:915, name:'Chocolate Milkshake',         nameGu:'ચોકલેટ મિલ્કશેક',            cat:'drinks', subcat:'Milkshake', popular:true,  price:70,  desc:'Rich dark chocolate milkshake to satisfy every craving',
+  {id:915, name:'Chocolate Milkshake',         cat:'drinks', subcat:'Milkshake', popular:true,  price:70,  desc:'Rich dark chocolate milkshake to satisfy every craving',
    img:'https://plus.unsplash.com/premium_photo-1667544654787-cd984212004d?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q2hvY29sYXRlJTIwTWlsa3NoYWtlfGVufDB8fDB8fHww'},
-  {id:916, name:'Oreo Milkshake',              nameGu:'ઓરિઓ મિલ્કશેક',              cat:'drinks', subcat:'Milkshake', popular:true,  price:80,  desc:'Crushed Oreo cookies blended into a thick creamy shake',
+  {id:916, name:'Oreo Milkshake',              cat:'drinks', subcat:'Milkshake', popular:true,  price:80,  desc:'Crushed Oreo cookies blended into a thick creamy shake',
    img:'https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500&auto=format&fit=crop&q=80'},
-  {id:917, name:'Brownie Milkshake',           nameGu:'બ્રાઉની મિલ્કશેક',           cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Fudgy brownie blended into a thick, indulgent shake',
+  {id:917, name:'Brownie Milkshake',           cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Fudgy brownie blended into a thick, indulgent shake',
    img:'https://plus.unsplash.com/premium_photo-1695750678156-ed7b2ad39980?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QnJvd25pZSUyME1pbGtzaGFrZXxlbnwwfHwwfHx8MA%3D%3D'},
-  {id:918, name:'Nutella Milkshake',           nameGu:'ન્યૂટેલ્લા મિલ્કશેક',         cat:'drinks', subcat:'Milkshake', popular:true,  price:100, desc:'Creamy Nutella milkshake — pure hazelnut chocolatey bliss',
+  {id:918, name:'Nutella Milkshake',           cat:'drinks', subcat:'Milkshake', popular:true,  price:100, desc:'Creamy Nutella milkshake — pure hazelnut chocolatey bliss',
    img:'food-photo/download (39).jpg'},
-  {id:919, name:'KitKat Crunch Milkshake',     nameGu:'કિટ કેટ ક્રંચ મિલ્કશેક',    cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Crunchy KitKat pieces blended into a creamy milkshake',
+  {id:919, name:'KitKat Crunch Milkshake',     cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Crunchy KitKat pieces blended into a creamy milkshake',
    img:'https://images.unsplash.com/photo-1714799263245-4fc7cc21911e?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8S2l0S2F0JTIwQ3J1bmNoJTIwTWlsa3NoYWtlfGVufDB8fDB8fHww'},
-  {id:920, name:'Ferrero Rocher Milkshake',    nameGu:'ફેરેરો રોશે મિલ્કશેક',       cat:'drinks', subcat:'Milkshake', popular:true,  price:120, desc:'Luxurious Ferrero Rocher hazelnut chocolate milkshake',
+  {id:920, name:'Ferrero Rocher Milkshake',    cat:'drinks', subcat:'Milkshake', popular:true,  price:120, desc:'Luxurious Ferrero Rocher hazelnut chocolate milkshake',
    img:'food-photo/download (40).jpg'},
-  {id:921, name:'Blueberry Cheesecake Shake',  nameGu:'બ્લૂબેરી ચીઝકેક શેક',        cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Thick blueberry cheesecake blended milkshake — dreamy!',
+  {id:921, name:'Blueberry Cheesecake Shake',  cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Thick blueberry cheesecake blended milkshake — dreamy!',
    img:'https://images.unsplash.com/photo-1729368628907-d82daf94b21a?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Qmx1ZWJlcnJ5JTIwQ2hlZXNlY2FrZSUyMFNoYWtlfGVufDB8fDB8fHww'},
-  {id:922, name:'Redvelvet Milkshake',         nameGu:'રેડ વેલ્વેટ મિલ્કશેક',       cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Red velvet cake flavoured milkshake, velvety and rich',
+  {id:922, name:'Redvelvet Milkshake',         cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Red velvet cake flavoured milkshake, velvety and rich',
    img:'https://media.istockphoto.com/id/467249288/photo/red-velvet-cookie-milkshake.webp?a=1&b=1&s=612x612&w=0&k=20&c=QZoyLxlXHmqxostPuB4LL5MBW3wRDKQXvlbfmO4U8rA='},
-  {id:923, name:'Dryfruit Milkshake',          nameGu:'ડ્રાયફ્રૂટ મિલ્કશેક',         cat:'drinks', subcat:'Milkshake', popular:false, price:120, desc:'Thick and wholesome milkshake loaded with dry fruits',
+  {id:923, name:'Dryfruit Milkshake',          cat:'drinks', subcat:'Milkshake', popular:false, price:120, desc:'Thick and wholesome milkshake loaded with dry fruits',
    img:'food-photo/download (41).jpg'},
-  {id:924, name:'Cold Coco',                   nameGu:'કોલ્ડ કોકો',                  cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Chilled cocoa drink — chocolatey, light and refreshing',
+  {id:924, name:'Cold Coco',                   cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Chilled cocoa drink — chocolatey, light and refreshing',
    img:'food-photo/download (42).jpg'},
-  {id:925, name:'Cold Coffee',                 nameGu:'કોલ્ડ કોફી',                  cat:'drinks', subcat:'Milkshake', popular:true,  price:70,  desc:'Chilled blended coffee — the classic cold coffee',
+  {id:925, name:'Cold Coffee',                 cat:'drinks', subcat:'Milkshake', popular:true,  price:70,  desc:'Chilled blended coffee — the classic cold coffee',
    img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&auto=format&fit=crop&q=80'},
-  {id:926, name:'French Vanilla Cold Coffee',  nameGu:'ફ્રેન્ચ વેનીલા કોલ્ડ કોફી',  cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Cold coffee with a rich French vanilla twist',
+  {id:926, name:'French Vanilla Cold Coffee',  cat:'drinks', subcat:'Milkshake', popular:false, price:80,  desc:'Cold coffee with a rich French vanilla twist',
    img:'food-photo/download (43).jpg'},
-  {id:927, name:'Nutella Cold Coffee',         nameGu:'ન્યૂટેલ્લા કોલ્ડ કોફી',       cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Cold coffee blended with luscious Nutella — decadent!',
+  {id:927, name:'Nutella Cold Coffee',         cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Cold coffee blended with luscious Nutella — decadent!',
    img:'food-photo/download (44).jpg'},
-  {id:928, name:'Brownie Cold Coffee',         nameGu:'બ્રાઉની કોલ્ડ કોફી',          cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Cold coffee with brownie chunks — the perfect dessert drink',
+  {id:928, name:'Brownie Cold Coffee',         cat:'drinks', subcat:'Milkshake', popular:false, price:100, desc:'Cold coffee with brownie chunks — the perfect dessert drink',
    img:'https://images.unsplash.com/photo-1584356266446-f7efa6bd8f6a?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fEJyb3duaWUlMjBDb2xkJTIwQ29mZmVlfGVufDB8fDB8fHww'},
-  {id:929, name:'Caramel Cold Coffee',         nameGu:'કેરામેલ કોલ્ડ કોફી',          cat:'drinks', subcat:'Milkshake', popular:true,  price:100, desc:'Cold coffee with a silky smooth caramel swirl',
+  {id:929, name:'Caramel Cold Coffee',         cat:'drinks', subcat:'Milkshake', popular:true,  price:100, desc:'Cold coffee with a silky smooth caramel swirl',
    img:'https://plus.unsplash.com/premium_photo-1695035005979-0682199ef755?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q2FyYW1lbCUyMENvbGQlMjBDb2ZmZWV8ZW58MHx8MHx8fDA%3D'},
 
   // ── Combos ──
-  {id:1001, name:'Burger + Fries + Shake Combo',   nameGu:'બર્ગર + ફ્રાઇઝ + શેક કોમ્બો',     cat:'combos', subcat:'Combos', popular:true,  price:200, desc:'Aloo Tikki or Veggie Burger + Peri Peri Cheese Fries + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
+  {id:1001, name:'Burger + Fries + Shake Combo',   cat:'combos', subcat:'Combos', popular:true,  price:200, desc:'Aloo Tikki or Veggie Burger + Peri Peri Cheese Fries + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
    img:'food-photo/download (45).png'},
-  {id:1002, name:'Five Cheese Pizza + Shake Combo', nameGu:'ફાઇવ ચીઝ પિઝા + શેક કોમ્બો',     cat:'combos', subcat:'Combos', popular:false, price:200, desc:'Five Cheese Pizza + Milkshake (Oreo, Brownie or Redvelvet)',
+  {id:1002, name:'Five Cheese Pizza + Shake Combo', cat:'combos', subcat:'Combos', popular:false, price:200, desc:'Five Cheese Pizza + Milkshake (Oreo, Brownie or Redvelvet)',
    img:'food-photo/download (46).png'},
-  {id:1003, name:'Loaded Sandwich + Shake Combo',   nameGu:'લોડેડ સેન્ડવિચ + શેક કોમ્બો',    cat:'combos', subcat:'Combos', popular:false, price:200, desc:'Loaded Veg Cheese or Loaded Aloo Veg Cheese Sandwich + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
+  {id:1003, name:'Loaded Sandwich + Shake Combo',   cat:'combos', subcat:'Combos', popular:false, price:200, desc:'Loaded Veg Cheese or Loaded Aloo Veg Cheese Sandwich + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
    img:'food-photo/download (47).png'},
-  {id:1004, name:'Double Pizza + Shake Combo',      nameGu:'ડબલ પિઝા + શેક કોમ્બો',          cat:'combos', subcat:'Combos', popular:true,  price:250, desc:'Margarita Pizza + Cheese Corn Pizza + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
+  {id:1004, name:'Double Pizza + Shake Combo',      cat:'combos', subcat:'Combos', popular:true,  price:250, desc:'Margarita Pizza + Cheese Corn Pizza + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
    img:'food-photo/download (48).png'},
-  {id:1005, name:'Hakka Noodles + Manchurian',      nameGu:'હક્કા નૂડલ્સ + મંચૂરિયન',        cat:'combos', subcat:'Combos', popular:false, price:150, desc:'Veg Hakka Noodles + Veg Manchurian Dry — the perfect Chinese combo',
+  {id:1005, name:'Hakka Noodles + Manchurian',      cat:'combos', subcat:'Combos', popular:false, price:150, desc:'Veg Hakka Noodles + Veg Manchurian Dry — the perfect Chinese combo',
    img:'food-photo/download (49).png'},
-  {id:1006, name:'Paneer Rice + Manchurian Gravy',  nameGu:'પનીર રાઇસ + મંચૂરિયન ગ્રેવી',   cat:'combos', subcat:'Combos', popular:false, price:180, desc:'Veg Paneer Fried Rice + Veg Manchurian Gravy — a satisfying meal',
+  {id:1006, name:'Paneer Rice + Manchurian Gravy',  cat:'combos', subcat:'Combos', popular:false, price:180, desc:'Veg Paneer Fried Rice + Veg Manchurian Gravy — a satisfying meal',
    img:'food-photo/download (50).png'},
-  {id:1007, name:'Puff + Bun + Pastry + Shake',     nameGu:'પફ + બન + પેસ્ટ્રી + શેક',       cat:'combos', subcat:'Combos', popular:true,  price:250, desc:'Grilled Cheese Chutney/Corn/Mexican Puff + Korean Cream Cheese Bun + Pastry + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
+  {id:1007, name:'Puff + Bun + Pastry + Shake',     cat:'combos', subcat:'Combos', popular:true,  price:250, desc:'Grilled Cheese Chutney/Corn/Mexican Puff + Korean Cream Cheese Bun + Pastry + Milkshake (Nutella/KitKat/Blueberry Cheesecake)',
    img:'food-photo/download (51).png'},
 ];
 
 /* subcat lists per main category */
 const SUBCATS = {
-  all:        ['All','Burger','Pizza','Sandwich','Snacks','Pav Bhaji','Grilled Puff','Quick Bites','Grilled Sandwich','French Fries','Pasta','Chaat','Chinese','Ice Sparkle','Milkshake','Combos','Pastry','Cake','Stick Gola','Dish Gola','Mava Dish','Sugar Free'],
+  all:        ['All','Burger','Pizza','Sandwich','Snacks','Pav Bhaji','Grilled Puff','Quick Bites','Grilled Sandwich','French Fries','Pasta','Chaat','Chinese','Ice Sparkle','Milkshake','Combos','Chocolate','Cream Cake','Pastry','Stick Gola','Dish Gola','Mava Dish','Sugar Free'],
   fastfood:   ['All'],
   pavbhaji:   ['All','Pav Bhaji'],
   burger:     ['All','Burger'],
@@ -902,7 +816,7 @@ const SUBCATS = {
   chinese:    ['All','Chinese'],
   drinks:     ['All','Ice Sparkle','Milkshake'],
   combos:     ['All','Combos'],
-  cake:       ['All','Pastry','Cake'],
+  cake:       ['All','Chocolate','Cream Cake','Pastry'],
   gola:       ['All','Stick Gola','Dish Gola','Mava Dish','Sugar Free'],
 };
 
@@ -953,39 +867,31 @@ function renderMenu() {
   grid.innerHTML = items.map(item => {
     const inCart = cart.find(c=>c.id===item.id);
     const preQty = pendingQty[item.id] || 1;
-    const isCakeGallery = item.imgs && item.imgs.length > 1;
-    const displayPrice = item.sizes ? `from ₹${item.sizes[0].price}` : `₹${item.price}`;
-    return `<div class="menu-item" onclick="openItemDetail(${item.id})" style="cursor:pointer">
+    return `<div class="menu-item">
       <div class="item-img">
         ${item.popular?'<div class="pop-ribbon">⭐ Popular</div>':''}
         <img src="${item.img}" alt="${item.name}" loading="lazy"
              onerror="this.style.display='none';this.parentNode.querySelector('.img-ph').style.display='flex'"/>
         <div class="img-ph">${catFallback[item.cat]}</div>
         <div class="subcat-tag">${item.subcat}</div>
-        ${item.sizes?'<div class="cake-size-badge">Multiple Sizes</div>':''}
       </div>
-      ${isCakeGallery ? `<div class="cake-gallery-strip" onclick="event.stopPropagation()">
-        ${item.imgs.map((src,i)=>`<div class="cake-thumb${i===0?' active':''}" onclick="event.stopPropagation();openItemDetail(${item.id})"><img src="${src}" loading="lazy"/></div>`).join('')}
-      </div>` : ''}
       <div class="item-body">
         <div class="item-name">${item.name}</div>
-        <div class="item-desc">${item.desc.length>90?item.desc.slice(0,90)+'…':item.desc}</div>
+        <div class="item-desc">${item.desc}</div>
         <div class="item-footer">
-          <span class="item-price">${displayPrice}</span>
-          ${item.sizes
-            ? `<button class="add-btn" onclick="event.stopPropagation();openItemDetail(${item.id})">🎂 Customise</button>`
-            : inCart
-              ? `<div class="item-qty-row" onclick="event.stopPropagation()">
-                  <button class="item-qty-btn" onclick="changeQty(${item.id},-1)">−</button>
-                  <span class="item-qty-num">${inCart.qty}</span>
-                  <button class="item-qty-btn" onclick="changeQty(${item.id},1)">+</button>
-                 </div>`
-              : `<div class="item-qty-row" onclick="event.stopPropagation()">
-                  <button class="item-qty-btn" onclick="changePreQty(${item.id},-1)">−</button>
-                  <span class="item-qty-num">${preQty}</span>
-                  <button class="item-qty-btn" onclick="changePreQty(${item.id},1)">+</button>
-                  <button class="add-btn" onclick="addToCart(${item.id})">＋ Add</button>
-                 </div>`
+          <span class="item-price">₹${item.price}</span>
+          ${inCart
+            ? `<div class="item-qty-row">
+                <button class="item-qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+                <span class="item-qty-num">${inCart.qty}</span>
+                <button class="item-qty-btn" onclick="changeQty(${item.id},1)">+</button>
+               </div>`
+            : `<div class="item-qty-row">
+                <button class="item-qty-btn" onclick="changePreQty(${item.id},-1)">−</button>
+                <span class="item-qty-num">${preQty}</span>
+                <button class="item-qty-btn" onclick="changePreQty(${item.id},1)">+</button>
+                <button class="add-btn" onclick="addToCart(${item.id})">＋ Add</button>
+               </div>`
           }
         </div>
       </div>
@@ -1080,127 +986,12 @@ document.getElementById('placeOrderBtn').addEventListener('click', () => {
   const note    = document.getElementById('custNote').value.trim();
   if (!name||!phone||!address) { showToast('⚠️ Please fill all required fields!'); return; }
   if (!/^\d{10}$/.test(phone))  { showToast('⚠️ Enter a valid 10-digit phone number!'); return; }
-  const lines = cart.map(c=>`• ${c.name}${c.nameGu?' ('+c.nameGu+')':''} ×${c.qty} — ₹${c.price*c.qty}`).join('\n');
+  const lines = cart.map(c=>`• ${c.name} (${c.subcat}) ×${c.qty} — ₹${c.price*c.qty}\n  🖼 ${c.img}`).join('\n');
   const msg = `🍔 *New Order – Patel Fast Food*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Address:* ${address}\n\n🛒 *Items:*\n${lines}\n\n💰 *Total: ₹${getTotal()}*${note?`\n\n📝 *Note:* ${note}`:''}\n\n_via Patel Fast Food website_`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
   cart=[]; saveCart(); renderMenu(); renderCart(); closeCheckout();
   showToast('🎉 Order sent via WhatsApp!');
   ['custName','custPhone','custAddress','custNote'].forEach(id=>document.getElementById(id).value='');
-});
-
-/* ITEM DETAIL MODAL */
-let imdItemId=null, imdQty=1, imdGalleryIdx=0, imdSelectedSize=null;
-
-function buildGallery(imgs){
-  const wrap = document.getElementById('imdImgWrap');
-  wrap.innerHTML = '';
-  if(!imgs||imgs.length<=1){
-    // single image
-    const img = document.createElement('img');
-    img.id='imdImg'; img.src=imgs?imgs[0]:''; img.alt='';
-    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
-    wrap.appendChild(img);
-    return;
-  }
-  // multi-image gallery
-  imdGalleryIdx=0;
-  const rel = document.createElement('div'); rel.className='imd-img-wrap-rel'; rel.style.cssText='height:100%;width:100%';
-  const gallery = document.createElement('div'); gallery.className='imd-gallery'; gallery.id='imdGallery';
-  imgs.forEach((src,i)=>{
-    const slide=document.createElement('div'); slide.className='imd-gallery-slide';
-    const im=document.createElement('img'); im.src=src; im.alt='Cake '+(i+1); im.loading='lazy';
-    slide.appendChild(im); gallery.appendChild(slide);
-  });
-  // nav arrows
-  const prev=document.createElement('button'); prev.className='imd-gallery-nav prev'; prev.innerHTML='&#8249;';
-  const next=document.createElement('button'); next.className='imd-gallery-nav next'; next.innerHTML='&#8250;';
-  prev.addEventListener('click',e=>{e.stopPropagation();scrollGallery(imgs.length,-1);});
-  next.addEventListener('click',e=>{e.stopPropagation();scrollGallery(imgs.length,1);});
-  rel.appendChild(gallery); rel.appendChild(prev); rel.appendChild(next);
-  wrap.appendChild(rel);
-  // dots below
-  const dotsWrap=document.createElement('div'); dotsWrap.className='imd-gallery-dots'; dotsWrap.id='imdGalleryDots';
-  imgs.forEach((_,i)=>{
-    const d=document.createElement('div'); d.className='imd-gallery-dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>goGallery(imgs.length,i));
-    dotsWrap.appendChild(d);
-  });
-  wrap.appendChild(dotsWrap);
-}
-
-function scrollGallery(total, dir){
-  imdGalleryIdx=(imdGalleryIdx+dir+total)%total;
-  goGallery(total, imdGalleryIdx);
-}
-function goGallery(total, idx){
-  imdGalleryIdx=idx;
-  const gallery=document.getElementById('imdGallery'); if(!gallery)return;
-  gallery.scrollTo({left: idx*gallery.offsetWidth, behavior:'smooth'});
-  document.querySelectorAll('.imd-gallery-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
-}
-
-function buildSizes(item){
-  const container=document.getElementById('imdSizeContainer');
-  if(!item.sizes){container.style.display='none'; imdSelectedSize=null; return;}
-  container.style.display='';
-  imdSelectedSize=item.sizes[0];
-  document.getElementById('imdPrice').textContent='₹'+imdSelectedSize.price;
-  container.innerHTML='<span class="imd-size-label">Select Size:</span><div class="imd-sizes" id="imdSizeBtns">'+
-    item.sizes.map((s,i)=>`<button class="imd-size-btn${i===0?' active':''}" data-idx="${i}">${s.label} — ₹${s.price}</button>`).join('')+
-    '</div>';
-  container.querySelectorAll('.imd-size-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      imdSelectedSize=item.sizes[+btn.dataset.idx];
-      document.getElementById('imdPrice').textContent='₹'+imdSelectedSize.price;
-      container.querySelectorAll('.imd-size-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-}
-
-function openItemDetail(id){
-  const item=MENU.find(m=>m.id===id); if(!item)return;
-  imdItemId=id; imdQty=1;
-  buildGallery(item.imgs||[item.img]);
-  document.getElementById('imdSubcat').textContent=item.subcat;
-  document.getElementById('imdName').textContent=item.name;
-  document.getElementById('imdNameGu').textContent=item.nameGu ? '('+item.nameGu+')' : '';
-  document.getElementById('imdDesc').textContent=item.desc;
-  document.getElementById('imdPrice').textContent='₹'+item.price;
-  document.getElementById('imdQtyNum').textContent=1;
-  buildSizes(item);
-  document.getElementById('itemDetailModal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeItemDetail(){
-  document.getElementById('itemDetailModal').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.getElementById('itemDetailClose').addEventListener('click', closeItemDetail);
-document.getElementById('itemDetailModal').addEventListener('click', e=>{
-  if(e.target===document.getElementById('itemDetailModal')) closeItemDetail();
-});
-document.getElementById('imdMinus').addEventListener('click', ()=>{
-  if(imdQty>1) imdQty--;
-  document.getElementById('imdQtyNum').textContent=imdQty;
-});
-document.getElementById('imdPlus').addEventListener('click', ()=>{
-  imdQty++;
-  document.getElementById('imdQtyNum').textContent=imdQty;
-});
-document.getElementById('imdAddBtn').addEventListener('click', ()=>{
-  const item=MENU.find(m=>m.id===imdItemId); if(!item)return;
-  let cartItem={...item, qty:imdQty};
-  if(imdSelectedSize){
-    cartItem.name=item.name+' ('+imdSelectedSize.label+')';
-    cartItem.price=imdSelectedSize.price;
-    cartItem.id=item.id+'_'+imdSelectedSize.label;
-  }
-  const ex=cart.find(c=>c.id===cartItem.id);
-  if(ex) ex.qty+=imdQty; else cart.push(cartItem);
-  saveCart(); renderMenu(); renderCart();
-  showToast('🛒 '+cartItem.name+' ×'+imdQty+' added to cart!');
-  closeItemDetail();
 });
 
 /* SEARCH */
