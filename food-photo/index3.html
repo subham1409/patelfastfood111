@@ -1258,29 +1258,6 @@ function showToast(msg) {
 
 /* INIT */
 renderMenu(); renderCart();
-
-
-// ===== GOOGLE ADDRESS AUTOCOMPLETE =====
-function initAutocomplete() {
-  const input = document.getElementById("custAddress");
-
-  const autocomplete = new google.maps.places.Autocomplete(input, {
-    componentRestrictions: { country: "in" } // only India (optional)
-  });
-
-  autocomplete.addListener("place_changed", function () {
-    const place = autocomplete.getPlace();
-
-    if (!place.geometry) return;
-
-    console.log("Selected Address:", place.formatted_address);
-  });
-}
-
-// RUN AFTER PAGE LOAD
-window.onload = initAutocomplete;
 </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 </body>
 </html>
