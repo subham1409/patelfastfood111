@@ -69,13 +69,22 @@
     .hero-stat{text-align:center}
     .hero-stat strong{display:block;font-family:'Baloo 2',cursive;font-size:1.8rem;font-weight:800;color:var(--red)}
     .hero-stat span{font-size:.8rem;color:var(--text3);font-weight:600}
+    /* ANIMATED PROMO PANEL */
     .hero-visual{display:flex;justify-content:center;align-items:center;position:relative;animation:fadeInRight .8s .2s ease both}
-    .hero-img-wrap{width:320px;height:320px;border-radius:50%;overflow:hidden;border:6px solid var(--red);box-shadow:0 20px 60px rgba(232,25,44,.3);animation:floatY 3s ease-in-out infinite;flex-shrink:0}
-    .hero-img-wrap img{width:100%;height:100%;object-fit:cover}
-    .hero-badge{position:absolute;background:var(--white);border-radius:16px;padding:.7rem 1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.85rem;animation:floatX 4s ease-in-out infinite;white-space:nowrap}
-    [data-theme=dark] .hero-badge{background:var(--card-bg)}
-    .hero-badge:nth-child(2){top:10%;right:-2%;animation-delay:.5s}
-    .hero-badge:nth-child(3){bottom:18%;left:-8%;animation-delay:1s}
+    .promo-panel{width:100%;max-width:460px;border-radius:28px;overflow:hidden;position:relative;padding:2.5rem 2rem 2rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.9rem;background:linear-gradient(135deg,#1a0300,#3a0800);box-shadow:0 24px 60px rgba(232,25,44,.35),0 0 0 1.5px rgba(232,25,44,.25)}
+    .promo-canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
+    .promo-panel>*:not(.promo-canvas){position:relative;z-index:1}
+    .promo-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--yellow);color:#1a0a00;font-size:.78rem;font-weight:900;padding:.3rem .9rem;border-radius:20px;letter-spacing:.05em;text-transform:uppercase;animation:pulse 2s ease-in-out infinite}
+    .promo-pct{font-family:'Baloo 2',cursive;font-size:clamp(4rem,10vw,6.5rem);font-weight:800;line-height:1;color:#fff;text-shadow:0 0 40px rgba(232,25,44,.8),0 4px 0 rgba(0,0,0,.4)}
+    .promo-pct span{color:var(--red)}
+    .promo-title{font-family:'Baloo 2',cursive;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:800;color:#fff;line-height:1.3}
+    .promo-sub{font-size:.88rem;color:rgba(255,255,255,.65);font-weight:600}
+    .promo-countdown{display:flex;gap:.75rem;margin-top:.3rem;justify-content:center}
+    .cd-box{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);border-radius:14px;padding:.6rem .9rem;min-width:62px;text-align:center}
+    .cd-num{font-family:'Baloo 2',cursive;font-size:1.8rem;font-weight:800;color:#fff;line-height:1;display:block}
+    .cd-lbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em}
+    .promo-note{font-size:.74rem;color:rgba(255,255,255,.4);margin-top:.1rem}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 
     /* MENU SECTION */
     .section-sub {
@@ -364,11 +373,20 @@ margin-left: -12px;}
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=640&auto=format&fit=crop&q=80" alt="Burger" loading="eager"/>
+        <div class="promo-panel">
+          <canvas class="promo-canvas" id="promoCanvas"></canvas>
+          <div class="promo-badge">🎉 Limited Time Offer</div>
+          <div class="promo-pct"><span>10</span>% OFF</div>
+          <div class="promo-title">On Every Online Order!<br>via WhatsApp</div>
+          <div class="promo-sub">Offer valid till 30 April 2026 · Hurry up!</div>
+          <div class="promo-countdown" id="promoCountdown">
+            <div class="cd-box"><span class="cd-num" id="cd-days">00</span><span class="cd-lbl">Days</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-hrs">00</span><span class="cd-lbl">Hours</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-min">00</span><span class="cd-lbl">Mins</span></div>
+            <div class="cd-box"><span class="cd-num" id="cd-sec">00</span><span class="cd-lbl">Secs</span></div>
+          </div>
+          <div class="promo-note">* Discount applied at checkout automatically</div>
         </div>
-        <div class="hero-badge">🌟 Top Rated</div>
-        <div class="hero-badge">⚡ Fast Delivery</div>
       </div>
     </div>
   </div>
@@ -482,7 +500,8 @@ margin-left: -12px;}
   <div class="cart-header"><h2>🛒 Your Cart</h2><button class="cart-close" id="cartClose">✕</button></div>
   <div class="cart-items" id="cartItemsContainer"></div>
   <div class="cart-footer">
-    <div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-price" id="cartTotal">₹0</span></div>
+    <div class="cart-total-row"><span class="cart-total-label">Price</span><span class="cart-total-price" id="cartTotal" style="font-size:1.1rem;color:var(--text3);text-decoration:line-through;">₹0</span></div>
+    <div class="cart-total-row" style="margin-top:-.3rem;margin-bottom:1rem"><span class="cart-total-label" style="color:var(--red)">Final Price <span style="font-size:.75rem;font-weight:700;background:var(--red);color:#fff;padding:2px 7px;border-radius:20px;margin-left:.3rem">10% OFF</span></span><span class="cart-total-price" id="cartFinalTotal">₹0</span></div>
     <button class="checkout-btn" id="checkoutBtn">🛍️ Proceed to Order</button>
   </div>
 </div>
@@ -495,7 +514,7 @@ margin-left: -12px;}
       <div class="order-summary-box" id="orderSummary"></div>
       <div class="form-group"><label>Your Name *</label><input type="text" id="custName" placeholder="e.g. Rahul Patel"/></div>
       <div class="form-group"><label>Phone Number *</label><input type="tel" id="custPhone" placeholder="e.g. 8849110467"/></div>
-      <div class="form-group"><label>Delivery Address *</label><textarea id="custAddress" placeholder="House no, Street, Area, City..."></textarea></div>
+      <div class="form-group"><label>Delivery Address *</label><textarea id="custAddress" placeholder="House no, Street, Area, City..."></textarea><p style="font-size:.75rem;color:var(--text3);margin-top:.35rem;display:flex;align-items:center;gap:.3rem">📍 <em>Delivery only available within 3 km radius from our shop.</em></p></div>
       <div class="form-group"><label>Special Instructions</label><textarea id="custNote" placeholder="Extra chutney, less spicy…" style="min-height:60px"></textarea></div>
       <button class="whatsapp-btn" id="placeOrderBtn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -514,7 +533,7 @@ const MENU = [
   {id:2, name:'Cheese Butter Burger',   nameGu:'ચીઝ બટર બર્ગર',          nameHi:'चीज़ बटर बर्गर',          cat:'burger', subcat:'Burger',     popular:true,  price:100, desc:'Double cheese with melted butter on a perfectly toasted bun',
    img:'https://images.unsplash.com/photo-1603064752734-4c48eff53d05?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnVyZ2VyfGVufDB8fDB8fHws'},
   {id:3, name:'Spicy Aloo Burger',      nameGu:'સ્પાઇસી આલૂ બર્ગર',       nameHi:'स्पाइसी आलू बर्गर',       cat:'burger', subcat:'Burger',     popular:false, price:70,  desc:'Spiced potato patty with mint chutney & crispy onion rings',
-   img:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&auto=format&fit=crop&q=80'},
+   img:'https://images.unsplash.com/photo-1603064752734-4c48eff53d05?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YnVyZ2VyfGVufDB8fDB8fHww'},
 
   // ── Fast Food › Pizza ──
   {id:4, name:'Margherita Pizza',       nameGu:'માર્ગેરિટા પિઝા',         nameHi:'मार्गेरिटा पिज़्ज़ा',       cat:'fastfood', subcat:'Pizza',      popular:true,  price:150, desc:'Classic tomato base, mozzarella & fresh basil leaves',
@@ -540,157 +559,155 @@ const MENU = [
   {id:11, name:'Custom Pastry Box', nameGu:'કસ્ટમ પેસ્ટ્રી બોક્સ', nameHi:'कस्टम पेस्ट्री बॉक्स', cat:'cake', subcat:'Pastry', popular:true, price:60,
    desc:'Handpicked assorted pastries made fresh to order — choose your flavours from Pineapple, Strawberry, Chocolate, Black Forest, Red Velvet & Butterscotch. Perfect for gifting, parties or a sweet treat for the whole family. Available in boxes of 2, 4, 6 or 12 pieces with custom mix.',
    imgs:[
-     'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&auto=format&fit=crop&q=80',
+     'food-photo/1 (5).jpeg',
+     'food-photo/1 (7).jpeg',
+     'food-photo/1(12).jpeg',
+     'food-photo/1(10).jpeg',
+     'food-photo/1(11).jpeg',
    ],
-   img:'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&auto=format&fit=crop&q=80',
-   sizes:[{label:'2 Pcs',price:60},{label:'4 Pcs',price:110},{label:'6 Pcs',price:160},{label:'12 Pcs',price:300}]
+   img:'food-photo/1 (9).jpeg',
+   sizes:[{label:'1 Pcs',price:80},{label:'2 Pcs',price:150},{label:'6 Pcs',price:440}]
   },
 
   // ── Cake › Cake ──
   {id:17, name:'Custom Celebration Cake', nameGu:'કસ્ટમ સેલિબ્રેશન કેક', nameHi:'कस्टम सेलिब्रेशन केक', cat:'cake',     subcat:'Cake',       popular:true,  price:400,
    desc:'Made fresh to order — choose your flavour, size & design. Perfect for birthdays, anniversaries & every special moment. Each cake is crafted with premium ingredients, fluffy layered sponge, rich cream frosting and personalised decoration. Available in multiple sizes with pricing from ₹400 (500g) onwards.',
    imgs:[
-     'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&auto=format&fit=crop&q=80',
-     'https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&auto=format&fit=crop&q=80',
+     'food-photo/1 (1).jpeg',
+     'food-photo/1 (2).jpeg',
+     'food-photo/1 (3).jpeg',
+     'food-photo/1 (4).jpeg',
+     'food-photo/1 (6).jpeg',
    ],
-   img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop&q=80',
+   img:'food-photo/1 (3).jpeg',
    sizes:[{label:'500g',price:400},{label:'1 Kg',price:750},{label:'1.5 Kg',price:1100},{label:'2 Kg',price:1450}]
   },
 
   // ── Gola › Stick Gola ──
-  {id:19, name:'Orange Gola',           nameGu:'ઓરેન્જ ગોળો',             nameHi:'ऑरेंज गोला',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Classic sweet orange syrup on crushed ice stick',
+  {id:19, name:'Orange Gola',           nameGu:'ઓરેન્જ ગોલા',             nameHi:'ऑरेंज गोला',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Classic sweet orange syrup on crushed ice stick',
    img:'food-photo/orange.jpeg'},
-  {id:20, name:'Pineapple Gola',        nameGu:'પાઇનેપલ ગોળો',            nameHi:'पाइनेपल गोला',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Tangy pineapple syrup on a refreshing crushed ice stick',
+  {id:20, name:'Pineapple Gola',        nameGu:'પાઇનેપલ ગોલા',            nameHi:'पाइनेपल गोला',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Tangy pineapple syrup on a refreshing crushed ice stick',
    img:'food-photo/mango.jpeg'},
-  {id:21, name:'Falsa Gola',            nameGu:'ફાલસા ગોળો',              nameHi:'फालसा गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Rare summer falsa (phalsa) berry syrup on crushed ice',
+  {id:21, name:'Falsa Gola',            nameGu:'ફાલસા ગોલા',              nameHi:'फालसा गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Rare summer falsa (phalsa) berry syrup on crushed ice',
    img:'food-photo/brown.jpeg'},
-  {id:22, name:'Kachi Keri Gola',       nameGu:'કાચી કેરી ગોળો',          nameHi:'कच्ची केरी गोला',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Raw mango with chaat masala on a tangy crushed ice stick',
+  {id:22, name:'Kachi Keri Gola',       nameGu:'કાચી કેરી ગોલા',          nameHi:'कच्ची केरी गोला',          cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Raw mango with chaat masala on a tangy crushed ice stick',
    img:'food-photo/green.jpeg'},
-  {id:23, name:'Mango Gola',            nameGu:'કેરી ગોળો',               nameHi:'आम गोला',               cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Sweet ripe mango syrup generously poured over crushed ice',
+  {id:23, name:'Mango Gola',            nameGu:'કેરી ગોલા',               nameHi:'आम गोला',               cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Sweet ripe mango syrup generously poured over crushed ice',
    img:'food-photo/orange.jpeg'},
-  {id:24, name:'Kala Khatta Gola',      nameGu:'કાળા ખટ્ટા ગોળો',         nameHi:'काला खट्टा गोला',         cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy black plum syrup on crushed ice — the street classic',
+  {id:24, name:'Kala Khatta Gola',      nameGu:'કાળા ખટ્ટા ગોલા',         nameHi:'काला खट्टा गोला',         cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy black plum syrup on crushed ice — the street classic',
    img:'food-photo/kalakhata.jpeg'},
-  {id:25, name:'Rajwadi Gola',          nameGu:'રાજવાડી ગોળો',            nameHi:'राजवाड़ी गोला',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Royal Rajwadi flavour on crushed ice with a rich taste',
+  {id:25, name:'Rajwadi Gola',          nameGu:'રાજવાડી ગોલા',            nameHi:'राजवाड़ी गोला',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Royal Rajwadi flavour on crushed ice with a rich taste',
    img:'food-photo/brown.jpeg'},
-  {id:26, name:'Cadbury Gola',          nameGu:'કેડબરી ગોળો',             nameHi:'कैडबरी गोला',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Chocolate Cadbury drizzle on crushed ice — a sweet treat',
+  {id:26, name:'Cadbury Gola',          nameGu:'કેડબરી ગોલા',             nameHi:'कैडबरी गोला',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Chocolate Cadbury drizzle on crushed ice — a sweet treat',
    img:'food-photo/strawberry.jpeg'},
-  {id:27, name:'Gulkand Gola',          nameGu:'ગુલકંદ ગોળો',             nameHi:'गुलकंद गोला',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fragrant rose petal gulkand syrup on refreshing crushed ice',
+  {id:27, name:'Gulkand Gola',          nameGu:'ગુલકંદ ગોલા',             nameHi:'गुलकंद गोला',             cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fragrant rose petal gulkand syrup on refreshing crushed ice',
    img:'food-photo/gulkand.jpeg'},
-  {id:28, name:'Jamphal Gola',          nameGu:'જામફળ ગોળો',              nameHi:'जामफल गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Unique jamphal (guava) flavoured syrup on crushed ice stick',
+  {id:28, name:'Jamphal Gola',          nameGu:'જામફળ ગોલા',              nameHi:'जामफल गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Unique jamphal (guava) flavoured syrup on crushed ice stick',
    img:'food-photo/green.jpeg'},
-  {id:29, name:'Kiwi Gola',             nameGu:'કીવી ગોળો',               nameHi:'कीवी गोला',               cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Zesty kiwi syrup on crushed ice for a tropical refresher',
+  {id:29, name:'Kiwi Gola',             nameGu:'કીવી ગોલા',               nameHi:'कीवी गोला',               cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Zesty kiwi syrup on crushed ice for a tropical refresher',
    img:'food-photo/green.jpeg'},
-  {id:30, name:'Blueberry Gola',        nameGu:'બ્લૂબેરી ગોળો',           nameHi:'ब्लूबेरी गोला',           cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet blueberry syrup on crushed ice — fruity and cool',
+  {id:30, name:'Blueberry Gola',        nameGu:'બ્લૂબેરી ગોલા',           nameHi:'ब्लूबेरी गोला',           cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet blueberry syrup on crushed ice — fruity and cool',
    img:'food-photo/blue.jpeg'},
-  {id:31, name:'Strawberry Gola',       nameGu:'સ્ટ્રોબેરી ગોળો',         nameHi:'स्ट्रॉबेरी गोला',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet strawberry syrup with a lemon twist on crushed ice',
+  {id:31, name:'Strawberry Gola',       nameGu:'સ્ટ્રોબેરી ગોલા',         nameHi:'स्ट्रॉबेरी गोला',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet strawberry syrup with a lemon twist on crushed ice',
    img:'food-photo/strawberry.jpeg'},
-  {id:32, name:'Blackcurrant Gola',     nameGu:'બ્લેકકરન્ટ ગોળો',         nameHi:'ब्लैककरंट गोला',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Deep blackcurrant syrup on crushed ice — bold and tangy',
+  {id:32, name:'Blackcurrant Gola',     nameGu:'બ્લેકકરન્ટ ગોલા',         nameHi:'ब्लैककरंट गोला',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Deep blackcurrant syrup on crushed ice — bold and tangy',
    img:'food-photo/black.jpeg'},
-  {id:33, name:'Jambu Gola',            nameGu:'જામ્બુ ગોળો',              nameHi:'जामुन गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Java plum jambu syrup on crushed ice with a purple hue',
+  {id:33, name:'Jambu Gola',            nameGu:'જામ્બુ ગોલા',              nameHi:'जामुन गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Java plum jambu syrup on crushed ice with a purple hue',
    img:'food-photo/kalakhata.jpeg'},
-  {id:34, name:'Imli Gola',             nameGu:'આમલી ગોળો',               nameHi:'इमली गोला',               cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy tamarind imli syrup on crushed ice — spicy and sour',
+  {id:34, name:'Imli Gola',             nameGu:'આમલી ગોલા',               nameHi:'इमली गोला',               cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Tangy tamarind imli syrup on crushed ice — spicy and sour',
    img:'food-photo/brown.jpeg'},
-  {id:35, name:'Gulab Gola',            nameGu:'ગુલાબ ગોળો',              nameHi:'गुलाब गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Floral rose gulab syrup on a delicate crushed ice stick',
+  {id:35, name:'Gulab Gola',            nameGu:'ગુલાબ ગોલા',              nameHi:'गुलाब गोला',              cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Floral rose gulab syrup on a delicate crushed ice stick',
    img:'food-photo/strawberry.jpeg'},
-  {id:36, name:'Chiku Gola',            nameGu:'ચીકૂ ગોળો',               nameHi:'चीकू गोला',               cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet sapota chiku syrup on crushed ice — mildly earthy',
+  {id:36, name:'Chiku Gola',            nameGu:'ચીકૂ ગોલા',               nameHi:'चीकू गोला',               cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Sweet sapota chiku syrup on crushed ice — mildly earthy',
    img:'food-photo/brown.jpeg'},
-  {id:37, name:'Masala Soda Gola',      nameGu:'મસાલા સોડા ગોળો',         nameHi:'मसाला सोडा गोला',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Spiced masala soda flavour on crushed ice — chatpata hit',
+  {id:37, name:'Masala Soda Gola',      nameGu:'મસાલા સોડા ગોલા',         nameHi:'मसाला सोडा गोला',         cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Spiced masala soda flavour on crushed ice — chatpata hit',
    img:'food-photo/green.jpeg'},
-  {id:38, name:'Chocolate Gola',        nameGu:'ચોકલેટ ગોળો',             nameHi:'चॉकलेट गोला',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Rich chocolate syrup drizzled over a crushed ice stick',
+  {id:38, name:'Chocolate Gola',        nameGu:'ચોકલેટ ગોલા',             nameHi:'चॉकलेट गोला',             cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Rich chocolate syrup drizzled over a crushed ice stick',
    img:'food-photo/black.jpeg'},
-  {id:39, name:'Variyali Gola',         nameGu:'વરિયાળી ગોળો',            nameHi:'सौंफ गोला',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fennel-flavoured variyali syrup on crushed ice — aromatic',
+  {id:39, name:'Variyali Gola',         nameGu:'વરિયાળી ગોલા',            nameHi:'सौंफ गोला',            cat:'gola', subcat:'Stick Gola',  popular:false, price:50,  desc:'Fennel-flavoured variyali syrup on crushed ice — aromatic',
    img:'food-photo/green.jpeg'},
-  {id:40, name:'Rainbow Gola',          nameGu:'રેઇન્બો ગોળો',            nameHi:'रेनबो गोला',            cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Multi-colour rainbow syrup on crushed ice — the fun one!',
+  {id:40, name:'Rainbow Gola',          nameGu:'રેઇન્બો ગોલા',            nameHi:'रेनबो गोला',            cat:'gola', subcat:'Stick Gola',  popular:true,  price:50,  desc:'Multi-colour rainbow syrup on crushed ice — the fun one!',
    img:'food-photo/rainbow.jpeg'},
 
   // ── Gola › Dish Gola ──
-  {id:41, name:'Orange Dish Gola',      nameGu:'ઓરેન્જ ડિશ ગોળો',        nameHi:'ऑरेंज डिश गोला',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Orange syrup on a generous serving of crushed ice in a dish',
+  {id:41, name:'Orange Dish Gola',      nameGu:'ઓરેન્જ ડિશ ગોલા',        nameHi:'ऑरेंज डिश गोला',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Orange syrup on a generous serving of crushed ice in a dish',
    img:'food-photo/oranged.jpeg'},
-  {id:42, name:'Pineapple Dish Gola',   nameGu:'પાઇનેપલ ડિશ ગોળો',       nameHi:'पाइनेपल डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Pineapple syrup on a large crushed ice dish — super cool',
+  {id:42, name:'Pineapple Dish Gola',   nameGu:'પાઇનેપલ ડિશ ગોલા',       nameHi:'पाइनेपल डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Pineapple syrup on a large crushed ice dish — super cool',
    img:'food-photo/yellowd.jpeg'},
-  {id:43, name:'Falsa Dish Gola',       nameGu:'ફાલસા ડિશ ગોળો',         nameHi:'फालसा डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Falsa berry syrup on a big dish of crushed ice',
+  {id:43, name:'Falsa Dish Gola',       nameGu:'ફાલસા ડિશ ગોલા',         nameHi:'फालसा डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Falsa berry syrup on a big dish of crushed ice',
    img:'food-photo/brownd.jpeg'},
-  {id:44, name:'Kachi Keri Dish Gola',  nameGu:'કાચી કેરી ડિશ ગોળો',     nameHi:'कच्ची केरी डिश गोला',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Raw mango masala on a large dish of crushed ice',
+  {id:44, name:'Kachi Keri Dish Gola',  nameGu:'કાચી કેરી ડિશ ગોલા',     nameHi:'कच्ची केरी डिश गोला',     cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Raw mango masala on a large dish of crushed ice',
    img:'food-photo/greend.jpeg'},
-  {id:45, name:'Mango Dish Gola',       nameGu:'કેરી ડિશ ગોળો',           nameHi:'आम डिश गोला',           cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Sweet mango syrup on a heaping crushed ice dish',
+  {id:45, name:'Mango Dish Gola',       nameGu:'કેરી ડિશ ગોલા',           nameHi:'आम डिश गोला',           cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Sweet mango syrup on a heaping crushed ice dish',
    img:'food-photo/oranged.jpeg'},
-  {id:46, name:'Kala Khatta Dish Gola', nameGu:'કાળા ખટ્ટા ડિશ ગોળો',    nameHi:'काला खट्टा डिश गोला',    cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tangy kala khatta syrup on a large crushed ice dish',
+  {id:46, name:'Kala Khatta Dish Gola', nameGu:'કાળા ખટ્ટા ડિશ ગોલા',    nameHi:'काला खट्टा डिश गोला',    cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tangy kala khatta syrup on a large crushed ice dish',
    img:'food-photo/brownd.jpeg'},
-  {id:47, name:'Rajwadi Dish Gola',     nameGu:'રાજવાડી ડિશ ગોળો',       nameHi:'राजवाड़ी डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Royal Rajwadi flavour served in a generous ice dish',
+  {id:47, name:'Rajwadi Dish Gola',     nameGu:'રાજવાડી ડિશ ગોલા',       nameHi:'राजवाड़ी डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Royal Rajwadi flavour served in a generous ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:48, name:'Cadbury Dish Gola',     nameGu:'કેડબરી ડિશ ગોળો',        nameHi:'कैडबरी डिश गोला',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Cadbury chocolate drizzle on a big crushed ice dish',
+  {id:48, name:'Cadbury Dish Gola',     nameGu:'કેડબરી ડિશ ગોલા',        nameHi:'कैडबरी डिश गोला',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Cadbury chocolate drizzle on a big crushed ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:49, name:'Gulkand Dish Gola',     nameGu:'ગુલકંદ ડિશ ગોળો',        nameHi:'गुलकंद डिश गोला',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Rose petal gulkand on a refreshing large crushed ice dish',
+  {id:49, name:'Gulkand Dish Gola',     nameGu:'ગુલકંદ ડિશ ગોલા',        nameHi:'गुलकंद डिश गोला',        cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Rose petal gulkand on a refreshing large crushed ice dish',
    img:'food-photo/pinkd.jpeg'},
-  {id:50, name:'Jamphal Dish Gola',     nameGu:'જામફળ ડિશ ગોળો',         nameHi:'जामफल डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Guava jamphal syrup on a heaped ice dish — chatpata fun',
+  {id:50, name:'Jamphal Dish Gola',     nameGu:'જામફળ ડિશ ગોલા',         nameHi:'जामफल डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Guava jamphal syrup on a heaped ice dish — chatpata fun',
    img:'food-photo/greend.jpeg'},
-  {id:51, name:'Kiwi Dish Gola',        nameGu:'કીવી ડિશ ગોળો',           nameHi:'कीवी डिश गोला',           cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Tropical kiwi syrup on a generous serving of crushed ice',
+  {id:51, name:'Kiwi Dish Gola',        nameGu:'કીવી ડિશ ગોલા',           nameHi:'कीवी डिश गोला',           cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Tropical kiwi syrup on a generous serving of crushed ice',
    img:'food-photo/greend.jpeg'},
-  {id:52, name:'Blueberry Dish Gola',   nameGu:'બ્લૂબેરી ડિશ ગોળો',      nameHi:'ब्लूबेरी डिश गोला',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet blueberry syrup served in a large crushed ice dish',
+  {id:52, name:'Blueberry Dish Gola',   nameGu:'બ્લૂબેરી ડિશ ગોલા',      nameHi:'ब्लूबेरी डिश गोला',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet blueberry syrup served in a large crushed ice dish',
    img:'food-photo/blued.jpeg'},
-  {id:53, name:'Strawberry Dish Gola',  nameGu:'સ્ટ્રોબેરી ડિશ ગોળો',    nameHi:'स्ट्रॉबेरी डिश गोला',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Strawberry syrup on a big crushed ice dish — fresh and sweet',
+  {id:53, name:'Strawberry Dish Gola',  nameGu:'સ્ટ્રોબેરી ડિશ ગોલા',    nameHi:'स्ट्रॉबेरी डिश गोला',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Strawberry syrup on a big crushed ice dish — fresh and sweet',
    img:'food-photo/redd.jpeg'},
-  {id:54, name:'Blackcurrant Dish Gola',nameGu:'બ્લેકકરન્ટ ડિશ ગોળો',    nameHi:'ब्लैककरंट डिश गोला',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Bold blackcurrant syrup on a heaped crushed ice dish',
+  {id:54, name:'Blackcurrant Dish Gola',nameGu:'બ્લેકકરન્ટ ડિશ ગોલા',    nameHi:'ब्लैककरंट डिश गोला',    cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Bold blackcurrant syrup on a heaped crushed ice dish',
    img:'food-photo/brownd.jpeg'},
-  {id:55, name:'Jambu Dish Gola',       nameGu:'જામ્બુ ડિશ ગોળો',         nameHi:'जामुन डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Java plum jambu syrup on a large dish of crushed ice',
+  {id:55, name:'Jambu Dish Gola',       nameGu:'જામ્બુ ડિશ ગોલા',         nameHi:'जामुन डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Java plum jambu syrup on a large dish of crushed ice',
    img:'food-photo/blued.jpeg'},
-  {id:56, name:'Imli Dish Gola',        nameGu:'આમલી ડિશ ગોળો',          nameHi:'इमली डिश गोला',          cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tamarind imli syrup on a big crushed ice dish — spicy sour',
+  {id:56, name:'Imli Dish Gola',        nameGu:'આમલી ડિશ ગોલા',          nameHi:'इमली डिश गोला',          cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Tamarind imli syrup on a big crushed ice dish — spicy sour',
    img:'food-photo/cadburryd.jpeg'},
-  {id:57, name:'Gulab Dish Gola',       nameGu:'ગુલાબ ડિશ ગોળો',         nameHi:'गुलाब डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Floral rose gulab syrup served in a large crushed ice dish',
+  {id:57, name:'Gulab Dish Gola',       nameGu:'ગુલાબ ડિશ ગોલા',         nameHi:'गुलाब डिश गोला',         cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Floral rose gulab syrup served in a large crushed ice dish',
    img:'food-photo/redd.jpeg'},
-  {id:58, name:'Chiku Dish Gola',       nameGu:'ચીકૂ ડિશ ગોળો',           nameHi:'चीकू डिश गोला',           cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet chiku sapota syrup on a generous crushed ice dish',
+  {id:58, name:'Chiku Dish Gola',       nameGu:'ચીકૂ ડિશ ગોલા',           nameHi:'चीकू डिश गोला',           cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Sweet chiku sapota syrup on a generous crushed ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:59, name:'Butterscotch Dish Gola',nameGu:'બટરસ્કોચ ડિશ ગોળો',      nameHi:'बटरस्कॉच डिश गोला',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Creamy butterscotch syrup on a heaped crushed ice dish',
+  {id:59, name:'Butterscotch Dish Gola',nameGu:'બટરસ્કોચ ડિશ ગોલા',      nameHi:'बटरस्कॉच डिश गोला',      cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Creamy butterscotch syrup on a heaped crushed ice dish',
    img:'food-photo/cadburryd.jpeg'},
-  {id:60, name:'Variyali Dish Gola',    nameGu:'વરિયાળી ડિશ ગોળો',       nameHi:'सौंफ डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Aromatic fennel variyali syrup on a large crushed ice dish',
+  {id:60, name:'Variyali Dish Gola',    nameGu:'વરિયાળી ડિશ ગોલા',       nameHi:'सौंफ डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:false, price:100, desc:'Aromatic fennel variyali syrup on a large crushed ice dish',
    img:'food-photo/greend.jpeg'},
-  {id:61, name:'Rainbow Dish Gola',     nameGu:'રેઇન્બો ડિશ ગોળો',       nameHi:'रेनबो डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Multi-colour rainbow syrup on a big crushed ice dish',
+  {id:61, name:'Rainbow Dish Gola',     nameGu:'રેઇન્બો ડિશ ગોલા',       nameHi:'रेनबो डिश गोला',       cat:'gola', subcat:'Dish Gola',   popular:true,  price:100, desc:'Multi-colour rainbow syrup on a big crushed ice dish',
    img:'food-photo/rainbowd.jpeg'},
 
   // ── Gola › Mava Dish ──
   {id:62, name:'Rajbhog Mava Dish',            nameGu:'રાજભોગ માવા ડિશ',          nameHi:'राजभोग मावा डिश',          cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Rich Rajbhog mava on crushed ice. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Butterscotch.jpeg'},
   {id:63, name:'Kesar Pista Mava Dish',        nameGu:'કેસર પિસ્તા માવા ડિશ',     nameHi:'केसर पिस्ता मावा डिश',     cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Saffron kesar pista mava on crushed ice — royal flavour. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/kesarpista.jpeg'},
   {id:64, name:'Mava Badam Dish',              nameGu:'માવા બદામ ડિશ',             nameHi:'मावा बादाम डिश',             cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Creamy mava with crunchy badam on refreshing crushed ice. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/mavabadam.jpeg'},
   {id:65, name:'Mava Malai Dish',              nameGu:'માવા મલાઈ ડિશ',             nameHi:'मावा मलाई डिश',             cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Silky mava malai on crushed ice — rich and indulgent. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/mavabadam.jpeg'},
   {id:66, name:'Cadbury Mava Malai Dish',      nameGu:'કેડબરી માવા મલાઈ ડિશ',     nameHi:'कैडबरी मावा मलाई डिश',     cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Cadbury chocolate with mava malai on crushed ice — decadent. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/mavabadam.jpeg'},
   {id:67, name:'Gulkand Mava Malai Dish',      nameGu:'ગુલકંદ માવા મલાઈ ડિશ',    nameHi:'गुलकंद मावा मलाई डिश',    cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Gulkand rose petal with mava malai on crushed ice. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Sahigulab.jpeg'},
   {id:68, name:'Chiku Mava Malai Dish',        nameGu:'ચીકૂ માવા મલાઈ ડિશ',       nameHi:'चीकू मावा मलाई डिश',       cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Sweet chiku with creamy mava malai on a crushed ice dish. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Butterscotch.jpeg'},
   {id:69, name:'Butterscotch Rabadi Dish',     nameGu:'બટરસ્કોચ રબડી ડિશ',        nameHi:'बटरस्कॉच रबड़ी डिश',        cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Butterscotch with thick rabadi on crushed ice — creamy bliss. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Butterscotch.jpeg'},
   {id:70, name:'Mango Rabadi Malai Dish',      nameGu:'કેરી રબડી મલાઈ ડિશ',       nameHi:'आम रबड़ी मलाई डिश',       cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Mango pulp with rabadi malai on crushed ice — summer special. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/kesarpista.jpeg'},
   {id:71, name:'Shahi Gulab Masti Dish',       nameGu:'શાહી ગુલાબ મસ્તી ડિશ',    nameHi:'शाही गुलाब मस्ती डिश',    cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Shahi gulab masti — a royal rose flavoured mava ice treat. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Sahigulab.jpeg'},
   {id:72, name:'Kaju Katri Mava Malai Dish',   nameGu:'કાજુ કતરી માવા મલાઈ ડિશ',  nameHi:'काजू कतरी मावा मलाई डिश',  cat:'gola', subcat:'Mava Dish', popular:false, price:120, desc:'Kaju katri with mava malai on crushed ice — nutty premium. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Butterscotch.jpeg'},
   {id:73, name:'Mava Chocolate Dish',          nameGu:'માવા ચોકલેટ ડિશ',          nameHi:'मावा चॉकलेट डिश',          cat:'gola', subcat:'Mava Dish', popular:true,  price:120, desc:'Rich chocolate with creamy mava on a crushed ice dish. With vanilla/choc ice cream option at ₹160',
-   img:'https://images.unsplash.com/photo-1562133567-b6a0a9c7e6eb?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Chocolate.jpeg'},
   {id:74, name:'Double Chocolate Dip Dish',    nameGu:'ડબલ ચોકલેટ ડિપ ડિશ',      nameHi:'डबल चॉकलेट डिप डिश',      cat:'gola', subcat:'Mava Dish', popular:true,  price:140, desc:'Double chocolate dip on crushed ice — the ultimate choco treat. With vanilla/choc ice cream option at ₹180',
-   img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=80'},
+   img:'food-photo/Chocolate.jpeg'},
 
   // ── Gola › Sugar Free ──
-  {id:75, name:'Orange Sugar Free Gola',       nameGu:'ઓરેન્જ સુગર ફ્રી ગોળો',   nameHi:'ऑरेंज शुगर फ्री गोला',   cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Orange flavour gola made with zero sugar — guilt-free treat',
-   img:'https://images.unsplash.com/photo-1597528662465-55ece5734101?w=500&auto=format&fit=crop&q=80'},
-  {id:76, name:'Kalakhata Sugar Free Gola',    nameGu:'કાળા ખટ્ટા સુગર ફ્રી ગોળો',nameHi:'काला खट्टा शुगर फ्री गोला',cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Tangy kala khatta flavour with absolutely no added sugar',
-   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&auto=format&fit=crop&q=80'},
-  {id:77, name:'Rose Sugar Free Gola',         nameGu:'ગુલાબ સુગર ફ્રી ગોળો',    nameHi:'गुलाब शुगर फ्री गोला',    cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Floral rose flavour gola with zero sugar — light and healthy',
-   img:'https://images.unsplash.com/photo-1464347744102-11db6282f854?w=500&auto=format&fit=crop&q=80'},
+  {id:75, name:'Orange Sugar Free Gola',       nameGu:'ઓરેન્જ સુગર ફ્રી ગોલા',   nameHi:'ऑरेंज शुगर फ्री गोला',   cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Orange flavour gola made with zero sugar — guilt-free treat',
+   img:'food-photo/kesarpista.jpeg'},
+  {id:76, name:'Kalakhata Sugar Free Gola',    nameGu:'કાળા ખટ્ટા સુગર ફ્રી ગોલા',nameHi:'काला खट्टा शुगर फ्री गोला',cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Tangy kala khatta flavour with absolutely no added sugar',
+   img:'food-photo/mavabadam.jpeg'},
+  {id:77, name:'Rose Sugar Free Gola',         nameGu:'ગુલાબ સુગર ફ્રી ગોલા',    nameHi:'गुलाब शुगर फ्री गोला',    cat:'gola', subcat:'Sugar Free', popular:false, price:200, desc:'Floral rose flavour gola with zero sugar — light and healthy',
+   img:'food-photo/redd.jpeg'},
 
   // ── Grilled Puff ──
   {id:101, name:'Grilled Masala Puff',        nameGu:'ગ્રિલ્ડ મસાલા પફ',          nameHi:'ग्रिल्ड मसाला पफ',          cat:'puff', subcat:'Grilled Puff', popular:false, price:50,  desc:'Classic masala stuffed grilled puff pastry',
@@ -1044,7 +1061,10 @@ function getTotal() { return cart.reduce((a,b)=>a+b.price*b.qty,0); }
 
 function renderCart() {
   const c = document.getElementById('cartItemsContainer');
-  document.getElementById('cartTotal').textContent = `₹${getTotal()}`;
+  const total = getTotal();
+  const finalTotal = Math.round(total * 0.9);
+  document.getElementById('cartTotal').textContent = `₹${total}`;
+  document.getElementById('cartFinalTotal').textContent = `₹${finalTotal}`;
   document.getElementById('cartCount').textContent  = cart.reduce((a,b)=>a+b.qty,0);
   if (!cart.length) {
     c.innerHTML = `<div class="cart-empty"><div class="big">🛒</div><strong>Your cart is empty</strong><p style="margin-top:.5rem;color:var(--text3)">Add some delicious items!</p></div>`;
@@ -1096,14 +1116,63 @@ document.getElementById('placeOrderBtn').addEventListener('click', () => {
   const phone   = document.getElementById('custPhone').value.trim();
   const address = document.getElementById('custAddress').value.trim();
   const note    = document.getElementById('custNote').value.trim();
-  if (!name||!phone||!address) { showToast('⚠️ Please fill all required fields!'); return; }
-  if (!/^\d{10}$/.test(phone))  { showToast('⚠️ Enter a valid 10-digit phone number!'); return; }
-  const lines = cart.map((c,i)=>`${i+1}. ${c.name}${(c.nameGu||c.nameHi)?' ('+[c.nameGu,c.nameHi].filter(Boolean).join(', ')+')':''} x${c.qty} - Rs.${c.price*c.qty}`).join('\n');
-  const msg = `🍔 *New Order – Patel Fast Food*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Address:* ${address}\n\n🛒 *Items:*\n——————————————\n${lines}\n——————————————\n\n💰 *Total: Rs.${getTotal()}*${note?`\n\n📝 *Note:* ${note}`:''}\n\n_via Patel Fast Food website_`;
-  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
-  cart=[]; saveCart(); renderMenu(); renderCart(); closeCheckout();
+
+  // Validation
+  if (!name || !phone || !address) {
+    showToast('⚠️ Please fill all required fields!');
+    return;
+  }
+
+  if (!/^\d{10}$/.test(phone)) {
+    showToast('⚠️ Enter a valid 10-digit phone number!');
+    return;
+  }
+
+  // Cart lines
+  const lines = cart.map((c, i) => {
+    const extraNames = [c.nameGu, c.nameHi].filter(Boolean).join(', ');
+    return `${i + 1}. *${c.name}*${extraNames ? ` (${extraNames})` : ''} x${c.qty} - Rs.${c.price * c.qty}`;
+  }).join('\n\n');
+
+  // ✅ Price + Discount Logic
+  const totalPrice = getTotal();
+  const finalPrice = Math.round(totalPrice * 0.9); // 10% discount
+
+  // Message
+  const msg = `🍔 *New Order – Patel Fast Food*
+
+👤 *Name:* ${name}
+📞 *Phone:* ${phone}
+📍 *Address:* ${address}
+
+🛒 *Items:*
+——————————————
+${lines}
+——————————————
+
+💵 Price: Rs.~${totalPrice}~
+🔥 *Final Price (10% OFF): Rs.${finalPrice}*${note ? `
+
+📝 *Note:* ${note}` : ''}
+
+_via Patel Fast Food website_`;
+
+  // WhatsApp send
+  const encodedMsg = encodeURIComponent(msg);
+  window.open(`https://wa.me/${WA}?text=${encodedMsg}`, '_blank');
+
+  // Reset
+  cart = [];
+  saveCart();
+  renderMenu();
+  renderCart();
+  closeCheckout();
+
   showToast('🎉 Order sent via WhatsApp!');
-  ['custName','custPhone','custAddress','custNote'].forEach(id=>document.getElementById(id).value='');
+
+  ['custName', 'custPhone', 'custAddress', 'custNote'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
 });
 
 /* ITEM DETAIL MODAL */
@@ -1256,6 +1325,101 @@ function showToast(msg) {
   document.getElementById('toastContainer').appendChild(t);
   setTimeout(()=>t.remove(), 3200);
 }
+
+/* PROMO COUNTDOWN */
+(function(){
+  const target = new Date('2026-04-30T23:59:59');
+  function tick(){
+    const now = new Date();
+    const diff = target - now;
+    if(diff <= 0){
+      ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent='00'; });
+      return;
+    }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    const pad = n=>String(n).padStart(2,'0');
+    const setEl = (id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=pad(v); };
+    setEl('cd-days',d); setEl('cd-hrs',h); setEl('cd-min',m); setEl('cd-sec',s);
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* PROMO CANVAS ANIMATION */
+(function(){
+  const canvas = document.getElementById('promoCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W,H,particles=[];
+  function resize(){
+    W=canvas.width=canvas.offsetWidth;
+    H=canvas.height=canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = ['rgba(232,25,44,', 'rgba(255,107,0,', 'rgba(255,214,0,', 'rgba(255,80,80,'];
+  class Particle {
+    constructor(){this.reset(true);}
+    reset(init){
+      this.x = Math.random()*W;
+      this.y = init ? Math.random()*H : H+10;
+      this.r = Math.random()*3+1;
+      this.vx = (Math.random()-.5)*.4;
+      this.vy = -(Math.random()*.6+.3);
+      this.alpha = Math.random()*.6+.2;
+      this.color = COLORS[Math.floor(Math.random()*COLORS.length)];
+      this.pulse = Math.random()*Math.PI*2;
+    }
+    update(){
+      this.x += this.vx; this.y += this.vy;
+      this.pulse += .04;
+      this.alpha = (.4+Math.sin(this.pulse)*.2);
+      if(this.y < -10) this.reset(false);
+    }
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle = this.color+this.alpha+')';
+      ctx.fill();
+    }
+  }
+
+  // rings
+  class Ring {
+    constructor(){ this.reset(); }
+    reset(){
+      this.x=Math.random()*W; this.y=Math.random()*H;
+      this.r=Math.random()*30+10; this.maxR=this.r+Math.random()*60+20;
+      this.alpha=.25; this.color=COLORS[Math.floor(Math.random()*COLORS.length)];
+    }
+    update(){
+      this.r+=.5; this.alpha-=.004;
+      if(this.alpha<=0){this.reset(); this.r=10; this.alpha=.25;}
+    }
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.strokeStyle=this.color+this.alpha+')';
+      ctx.lineWidth=1.5;
+      ctx.stroke();
+    }
+  }
+
+  for(let i=0;i<60;i++) particles.push(new Particle());
+  const rings=[];
+  for(let i=0;i<8;i++){const rg=new Ring(); rg.r=Math.random()*80; rings.push(rg);}
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    rings.forEach(r=>{r.update();r.draw();});
+    particles.forEach(p=>{p.update();p.draw();});
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
 
 /* INIT */
 renderMenu(); renderCart();
