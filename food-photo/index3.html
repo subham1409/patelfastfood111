@@ -5,19 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Patel Fast Food – Delicious burgers, cakes, and gola delivered fast. Order now via WhatsApp!" />
   <title>Patel Fast Food – Delicious Food Delivered Fast 🍔</title>
-  <script>
-    // Google Maps / Places will be loaded dynamically
-    window.GMAPS_LOADED = false;
-    window.GMAPS_CB_QUEUE = [];
-    function onGmapsReady() {
-      window.GMAPS_LOADED = true;
-      window.GMAPS_CB_QUEUE.forEach(fn => fn());
-      window.GMAPS_CB_QUEUE = [];
-    }
-  </script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_YOUR_API_KEY_HERE&libraries=places&callback=onGmapsReady">
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root{--red:#E8192C;--red-dark:#c0111e;--orange:#FF6B00;--yellow:#FFD600;--white:#fff;--dark:#1a0a00;--gray-light:#f5f5f5;--border:#e8e0d5;--bg:#FFF8F0;--bg2:#fff;--bg3:#f9f1e7;--text:#1a0a00;--text2:#4a3728;--text3:#6b5744;--card-bg:#fff;--nav-bg:rgba(255,248,240,0.96);--shadow:0 4px 24px rgba(232,25,44,0.08);--shadow-hover:0 12px 40px rgba(232,25,44,0.18);--input-bg:#fff;--input-border:#e0d0c0}
@@ -240,40 +228,7 @@
     .toast{background:var(--dark);color:#fff;padding:.75rem 1.2rem;border-radius:12px;font-weight:700;font-size:.88rem;box-shadow:0 4px 20px rgba(0,0,0,.25);display:flex;align-items:center;gap:.6rem;animation:toastIn .4s ease,toastOut .4s ease 2.6s forwards;border-left:4px solid var(--red);max-width:280px}
     [data-theme=dark] .toast{background:var(--card-bg)}
 
-    /* ADDRESS SEARCH UI */
-    .addr-search-wrap{position:relative;display:flex;align-items:center}
-    .addr-search-icon{position:absolute;left:1rem;font-size:1rem;pointer-events:none;z-index:1}
-    #addrSearchInput{width:100%;background:var(--input-bg);border:2px solid var(--input-border);border-radius:10px;padding:.7rem 1rem .7rem 2.8rem;font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--text);transition:border-color .2s}
-    #addrSearchInput:focus{border-color:var(--red);outline:none}
-    .addr-dropdown{position:relative;z-index:9999;background:var(--bg2);border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1.5px solid var(--border);max-height:260px;overflow-y:auto;margin-top:.3rem;display:none}
-    .addr-dropdown.open{display:block}
-    .addr-dropdown-item{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;cursor:pointer;transition:background .15s;border-bottom:1px solid var(--border)}
-    .addr-dropdown-item:last-child{border-bottom:none}
-    .addr-dropdown-item:hover{background:var(--gray-light)}
-    .addr-dropdown-item .addr-icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
-    .addr-dropdown-item .addr-text strong{display:block;font-size:.9rem;font-weight:700;color:var(--text)}
-    .addr-dropdown-item .addr-text small{font-size:.78rem;color:var(--text3)}
-    .addr-dropdown-loading{padding:1rem;text-align:center;color:var(--text3);font-size:.88rem}
-
-    .addr-selected-card{display:flex;align-items:center;gap:.75rem;background:rgba(37,211,102,.08);border:2px solid rgba(37,211,102,.35);border-radius:12px;padding:.8rem 1rem;margin-bottom:.8rem}
-    .addr-pin{font-size:1.4rem}
-    .addr-selected-text{flex:1;min-width:0}
-    .addr-selected-main{font-weight:700;font-size:.9rem;color:var(--text)}
-    .addr-selected-sub{font-size:.78rem;color:var(--text3);margin-top:.1rem}
-    .addr-change-btn{background:transparent;color:var(--red);font-weight:700;font-size:.82rem;border:1.5px solid var(--red);border-radius:8px;padding:.3rem .7rem;white-space:nowrap;transition:all .2s}
-    .addr-change-btn:hover{background:var(--red);color:#fff}
-
-    .addr-distance-error{display:flex;align-items:flex-start;gap:.8rem;background:#fee2e2;border:2px solid #fca5a5;border-radius:12px;padding:.9rem 1rem;margin:.5rem 0 .8rem;color:#991b1b;font-size:.85rem}
-    .addr-distance-error span{font-size:1.4rem;flex-shrink:0}
-
-    .addr-details-grid{display:grid;grid-template-columns:1fr 1fr;gap:.3rem 1rem}
-    @media(max-width:480px){.addr-details-grid{grid-template-columns:1fr}}
-
-    /* OVERRIDE: hide old address textarea */
-    #custAddress{display:none!important}
-
-    .addr-searching{display:flex;align-items:center;gap:.5rem;padding:1rem;color:var(--text3);font-size:.88rem;justify-content:center}
-    .addr-no-result{padding:1rem;text-align:center;color:var(--text3);font-size:.88rem}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
     @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
     @keyframes floatX{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.03)}}
@@ -540,42 +495,7 @@ margin-left: -12px;}
       <div class="order-summary-box" id="orderSummary"></div>
       <div class="form-group"><label>Your Name *</label><input type="text" id="custName" placeholder="e.g. Rahul Patel"/></div>
       <div class="form-group"><label>Phone Number *</label><input type="tel" id="custPhone" placeholder="e.g. 8849110467"/></div>
-      <!-- ADDRESS STEP 1: Google Places Search -->
-      <div class="form-group" id="addressSearchGroup">
-        <label>📍 Search Your Delivery Address *</label>
-        <div class="addr-search-wrap">
-          <span class="addr-search-icon">🔍</span>
-          <input type="text" id="addrSearchInput" placeholder="Search area, street or landmark…" autocomplete="off"/>
-        </div>
-        <div id="addrDropdown" class="addr-dropdown"></div>
-      </div>
-
-      <!-- ADDRESS STEP 2: Detail form (shown after place selected) -->
-      <div id="addrDetailSection" style="display:none">
-        <div class="addr-selected-card" id="addrSelectedCard">
-          <span class="addr-pin">📍</span>
-          <div class="addr-selected-text">
-            <div class="addr-selected-main" id="addrSelectedMain"></div>
-            <div class="addr-selected-sub" id="addrSelectedSub"></div>
-          </div>
-          <button class="addr-change-btn" id="addrChangeBtn">Change</button>
-        </div>
-        <div id="addrMapContainer" style="height:160px;border-radius:12px;overflow:hidden;margin:.8rem 0;border:2px solid var(--border)"></div>
-        <div class="addr-distance-error" id="addrDistanceError" style="display:none">
-          <span>🚫</span>
-          <div>
-            <strong>Your location is far away from our shop.</strong><br>
-            <span>You can visit our shop at Western Unity, Vaishno Devi Circle, Ahmedabad.</span>
-          </div>
-        </div>
-        <div class="addr-details-grid">
-          <div class="form-group"><label>Flat / House No. *</label><input type="text" id="addrFlat" placeholder="e.g. B-204"/></div>
-          <div class="form-group"><label>Floor</label><input type="text" id="addrFloor" placeholder="e.g. 2nd Floor"/></div>
-          <div class="form-group" style="grid-column:1/-1"><label>Building / Society Name</label><input type="text" id="addrBuilding" placeholder="e.g. Shyam Residency"/></div>
-          <div class="form-group" style="grid-column:1/-1"><label>Landmark (optional)</label><input type="text" id="addrLandmark" placeholder="e.g. Near SBI Bank"/></div>
-        </div>
-      </div>
-
+      <div class="form-group"><label>Delivery Address *</label><textarea id="custAddress" placeholder="House no, Street, Area, City..."></textarea></div>
       <div class="form-group"><label>Special Instructions</label><textarea id="custNote" placeholder="Extra chutney, less spicy…" style="min-height:60px"></textarea></div>
       <button class="whatsapp-btn" id="placeOrderBtn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1173,25 +1093,16 @@ document.getElementById('checkoutModal').addEventListener('click', e => { if(e.t
 document.getElementById('placeOrderBtn').addEventListener('click', () => {
   const name    = document.getElementById('custName').value.trim();
   const phone   = document.getElementById('custPhone').value.trim();
-  const flat    = document.getElementById('addrFlat') ? document.getElementById('addrFlat').value.trim() : '';
+  const address = document.getElementById('custAddress').value.trim();
   const note    = document.getElementById('custNote').value.trim();
-
-  if (!name || !phone) { showToast('⚠️ Please fill all required fields!'); return; }
-  if (!/^\d{10}$/.test(phone)) { showToast('⚠️ Enter a valid 10-digit phone number!'); return; }
-  if (!window.selectedAddress) { showToast('⚠️ Please select your delivery address!'); return; }
-  if (window.addressTooFar) { showToast('🚫 Your location is too far from our shop!'); return; }
-  if (!flat) { showToast('⚠️ Please enter your flat/house number!'); return; }
-
-  const addrParts = [flat, document.getElementById('addrFloor').value.trim(), document.getElementById('addrBuilding').value.trim(), window.selectedAddress.main, window.selectedAddress.secondary, document.getElementById('addrLandmark').value.trim()].filter(Boolean);
-  const fullAddress = addrParts.join(', ');
-
+  if (!name||!phone||!address) { showToast('⚠️ Please fill all required fields!'); return; }
+  if (!/^\d{10}$/.test(phone))  { showToast('⚠️ Enter a valid 10-digit phone number!'); return; }
   const lines = cart.map(c=>`• ${c.name}${c.nameGu?' ('+c.nameGu+')':''} ×${c.qty} — ₹${c.price*c.qty}`).join('\n');
-  const msg = `🍔 *New Order – Patel Fast Food*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Address:* ${fullAddress}\n\n🛒 *Items:*\n${lines}\n\n💰 *Total: ₹${getTotal()}*${note?`\n\n📝 *Note:* ${note}`:''}\n\n_via Patel Fast Food website_`;
+  const msg = `🍔 *New Order – Patel Fast Food*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Address:* ${address}\n\n🛒 *Items:*\n${lines}\n\n💰 *Total: ₹${getTotal()}*${note?`\n\n📝 *Note:* ${note}`:''}\n\n_via Patel Fast Food website_`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
   cart=[]; saveCart(); renderMenu(); renderCart(); closeCheckout();
   showToast('🎉 Order sent via WhatsApp!');
-  ['custName','custPhone','custNote','addrFlat','addrFloor','addrBuilding','addrLandmark'].forEach(id=>{const el=document.getElementById(id); if(el) el.value='';});
-  resetAddressSearch();
+  ['custName','custPhone','custAddress','custNote'].forEach(id=>document.getElementById(id).value='');
 });
 
 /* ITEM DETAIL MODAL */
@@ -1345,216 +1256,31 @@ function showToast(msg) {
   setTimeout(()=>t.remove(), 3200);
 }
 
-/* ============================================================
-   GOOGLE PLACES ADDRESS SEARCH + DISTANCE CHECK
-   Shop location: Vaishno Devi Circle, Ahmedabad
-   ============================================================ */
-
-const SHOP_LAT = 23.0780;    // Vaishno Devi Circle, Ahmedabad
-const SHOP_LNG = 72.5876;
-const MAX_KM   = 5;
-
-window.selectedAddress  = null;
-window.addressTooFar    = false;
-window.addrMap          = null;
-window.addrMarker       = null;
-window.addrPlacesService = null;
-window.addrAutocompleteService = null;
-window.addrSearchTimer  = null;
-
-function haversineKm(lat1, lng1, lat2, lng2) {
-  const R = 6371;
-  const dLat = (lat2 - lat1) * Math.PI / 180;
-  const dLng = (lng2 - lng1) * Math.PI / 180;
-  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-}
-
-function initAddrServices() {
-  window.addrAutocompleteService = new google.maps.places.AutocompleteService();
-  const mapDiv = document.createElement('div');
-  mapDiv.style.cssText = 'width:1px;height:1px;opacity:0;position:absolute';
-  document.body.appendChild(mapDiv);
-  window.addrPlacesService = new google.maps.places.PlacesService(mapDiv);
-}
-
-function initAddrMap(lat, lng) {
-  const container = document.getElementById('addrMapContainer');
-  if (!container) return;
-  container.innerHTML = '';
-  window.addrMap = new google.maps.Map(container, {
-    center: { lat, lng },
-    zoom: 15,
-    disableDefaultUI: true,
-    zoomControl: true,
-    styles: document.documentElement.dataset.theme === 'dark' ? [
-      {elementType:'geometry',stylers:[{color:'#1a0800'}]},
-      {elementType:'labels.text.fill',stylers:[{color:'#ffd9b8'}]},
-      {featureType:'road',elementType:'geometry',stylers:[{color:'#3a1500'}]},
-      {featureType:'water',elementType:'geometry',stylers:[{color:'#0f0500'}]}
-    ] : []
-  });
-  window.addrMarker = new google.maps.Marker({
-    position: { lat, lng },
-    map: window.addrMap,
-    title: 'Delivery Location',
-    icon: { url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png' }
-  });
-}
-
-function showAddrDropdown(predictions) {
-  const dd = document.getElementById('addrDropdown');
-  if (!predictions || predictions.length === 0) {
-    dd.innerHTML = '<div class="addr-no-result">No results found. Try a different search.</div>';
-    dd.classList.add('open');
-    return;
-  }
-  dd.innerHTML = predictions.map((p, i) => `
-    <div class="addr-dropdown-item" data-idx="${i}">
-      <span class="addr-icon">📍</span>
-      <div class="addr-text">
-        <strong>${p.structured_formatting.main_text}</strong>
-        <small>${p.structured_formatting.secondary_text || ''}</small>
-      </div>
-    </div>`).join('');
-  dd.classList.add('open');
-  dd.__predictions = predictions;
-  dd.querySelectorAll('.addr-dropdown-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const pred = predictions[+item.dataset.idx];
-      selectAddressFromPrediction(pred);
-    });
-  });
-}
-
-function selectAddressFromPrediction(pred) {
-  const dd = document.getElementById('addrDropdown');
-  dd.classList.remove('open');
-  dd.innerHTML = '<div class="addr-dropdown-loading">⏳ Getting location details…</div>';
-  dd.classList.add('open');
-
-  const runSelect = () => {
-    window.addrPlacesService.getDetails({ placeId: pred.place_id, fields: ['geometry','formatted_address','name'] }, (place, status) => {
-      dd.classList.remove('open');
-      if (status !== google.maps.places.PlacesServiceStatus.OK || !place.geometry) {
-        showToast('⚠️ Could not get location details. Try again.');
-        return;
-      }
-      const lat = place.geometry.location.lat();
-      const lng = place.geometry.location.lng();
-      const km  = haversineKm(SHOP_LAT, SHOP_LNG, lat, lng);
-
-      window.selectedAddress = {
-        main: pred.structured_formatting.main_text,
-        secondary: pred.structured_formatting.secondary_text || '',
-        lat, lng, km
-      };
-      window.addressTooFar = km > MAX_KM;
-
-      // Update selected card
-      document.getElementById('addrSelectedMain').textContent = pred.structured_formatting.main_text;
-      document.getElementById('addrSelectedSub').textContent = pred.structured_formatting.secondary_text || '';
-
-      // Show detail section, hide search
-      document.getElementById('addressSearchGroup').style.display = 'none';
-      document.getElementById('addrDetailSection').style.display  = 'block';
-
-      // Distance error
-      const errEl = document.getElementById('addrDistanceError');
-      if (window.addressTooFar) {
-        errEl.style.display = 'flex';
-        document.getElementById('addrFlat').disabled     = true;
-        document.getElementById('addrFloor').disabled    = true;
-        document.getElementById('addrBuilding').disabled = true;
-        document.getElementById('addrLandmark').disabled = true;
-        document.querySelector('.whatsapp-btn').disabled = true;
-      } else {
-        errEl.style.display = 'none';
-        document.getElementById('addrFlat').disabled     = false;
-        document.getElementById('addrFloor').disabled    = false;
-        document.getElementById('addrBuilding').disabled = false;
-        document.getElementById('addrLandmark').disabled = false;
-        document.querySelector('.whatsapp-btn').disabled = false;
-        setTimeout(() => document.getElementById('addrFlat').focus(), 300);
-      }
-
-      // Init map
-      if (window.GMAPS_LOADED) initAddrMap(lat, lng);
-    });
-  };
-
-  if (window.GMAPS_LOADED && window.addrPlacesService) {
-    runSelect();
-  } else {
-    window.GMAPS_CB_QUEUE.push(runSelect);
-  }
-}
-
-function resetAddressSearch() {
-  window.selectedAddress = null;
-  window.addressTooFar   = false;
-  document.getElementById('addrSearchInput').value = '';
-  document.getElementById('addrDropdown').classList.remove('open');
-  document.getElementById('addrDropdown').innerHTML = '';
-  document.getElementById('addrDetailSection').style.display  = 'none';
-  document.getElementById('addressSearchGroup').style.display = 'block';
-  document.getElementById('addrDistanceError').style.display  = 'none';
-  document.querySelector('.whatsapp-btn').disabled = false;
-  ['addrFlat','addrFloor','addrBuilding','addrLandmark'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.value = ''; el.disabled = false; }
-  });
-}
-
-// Init services when maps loads
-if (window.GMAPS_LOADED) {
-  initAddrServices();
-} else {
-  window.GMAPS_CB_QUEUE.push(initAddrServices);
-}
-
-// Search input handler
-document.getElementById('addrSearchInput').addEventListener('input', function() {
-  clearTimeout(window.addrSearchTimer);
-  const q = this.value.trim();
-  const dd = document.getElementById('addrDropdown');
-  if (!q) { dd.classList.remove('open'); return; }
-  dd.innerHTML = '<div class="addr-searching">🔍 Searching…</div>';
-  dd.classList.add('open');
-  window.addrSearchTimer = setTimeout(() => {
-    const run = () => {
-      if (!window.addrAutocompleteService) { initAddrServices(); }
-      window.addrAutocompleteService.getPlacePredictions(
-        { input: q, componentRestrictions: { country: 'in' }, location: new google.maps.LatLng(SHOP_LAT, SHOP_LNG), radius: 20000 },
-        (preds, status) => showAddrDropdown(status === google.maps.places.PlacesServiceStatus.OK ? preds : [])
-      );
-    };
-    if (window.GMAPS_LOADED) run();
-    else window.GMAPS_CB_QUEUE.push(run);
-  }, 320);
-});
-
-// Hide dropdown on outside click
-document.addEventListener('click', e => {
-  if (!e.target.closest('#addrSearchInput') && !e.target.closest('#addrDropdown')) {
-    document.getElementById('addrDropdown').classList.remove('open');
-  }
-});
-
-// Change address button
-document.getElementById('addrChangeBtn').addEventListener('click', resetAddressSearch);
-
-// Reset address when checkout modal reopens
-const _origOpenCheckout = openCheckout;
-function openCheckout() {
-  _origOpenCheckout();
-  resetAddressSearch();
-}
-
-/* ============================================================ */
-
 /* INIT */
 renderMenu(); renderCart();
+
+
+// ===== GOOGLE ADDRESS AUTOCOMPLETE =====
+function initAutocomplete() {
+  const input = document.getElementById("custAddress");
+
+  const autocomplete = new google.maps.places.Autocomplete(input, {
+    componentRestrictions: { country: "in" } // only India (optional)
+  });
+
+  autocomplete.addListener("place_changed", function () {
+    const place = autocomplete.getPlace();
+
+    if (!place.geometry) return;
+
+    console.log("Selected Address:", place.formatted_address);
+  });
+}
+
+// RUN AFTER PAGE LOAD
+window.onload = initAutocomplete;
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 </body>
 </html>
