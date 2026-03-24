@@ -130,18 +130,22 @@
     .pop-ribbon::after{content:'';position:absolute;bottom:-4px;left:0;border-top:4px solid var(--red-dark);border-left:4px solid transparent}
     .subcat-tag{position:absolute;bottom:8px;right:8px;background:rgba(255,107,0,.9);color:#fff;font-size:.65rem;font-weight:800;padding:3px 9px;border-radius:20px;z-index:2;letter-spacing:.03em}
 
-    .item-body{padding:1.1rem 1.2rem 1.2rem}
-    .item-name{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;margin-bottom:.25rem}
-    .item-desc{font-size:.8rem;color:var(--text3);margin-bottom:.9rem;line-height:1.5}
-    .item-footer{display:flex;align-items:center;justify-content:space-between}
+    .item-body{padding:1rem 1.1rem 1.1rem;display:flex;flex-direction:column;gap:.55rem}
+    .item-name{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;margin-bottom:0}
+    .item-desc{font-size:.8rem;color:var(--text3);line-height:1.5;margin-bottom:0}
+    /* Row 2: price left, qty right */
+    .item-price-qty-row{display:flex;align-items:center;justify-content:space-between;gap:.4rem}
     .item-price{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800;color:var(--red)}
-    .add-btn{background:var(--red);color:#fff;border-radius:10px;padding:.5rem 1rem;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:.4rem;transition:all .2s}
-    .add-btn:hover{background:var(--red-dark);transform:scale(1.07)}
-    .add-btn.added{background:#22a745}
-    .item-qty-row{display:flex;align-items:center;gap:.5rem}
-    .item-qty-btn{width:30px;height:30px;border-radius:8px;background:var(--red);color:#fff;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+    .item-qty-row{display:flex;align-items:center;gap:.4rem}
+    .item-qty-btn{width:28px;height:28px;border-radius:8px;background:var(--red);color:#fff;font-size:1.05rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
     .item-qty-btn:hover{background:var(--red-dark);transform:scale(1.1)}
-    .item-qty-num{font-weight:800;font-size:1rem;min-width:22px;text-align:center;color:var(--text)}
+    .item-qty-num{font-weight:800;font-size:.95rem;min-width:20px;text-align:center;color:var(--text)}
+    /* Row 3: full-width add button */
+    .add-btn{background:var(--red);color:#fff;border-radius:10px;padding:.55rem 1rem;font-weight:700;font-size:.88rem;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:all .2s;width:100%}
+    .add-btn:hover{background:var(--red-dark);transform:scale(1.03)}
+    .add-btn.added{background:#22a745}
+    /* legacy item-footer kept for modal compat */
+    .item-footer{display:none}
     .no-results{text-align:center;padding:3rem;color:var(--text3);grid-column:1/-1;font-size:1.05rem}
     .no-results .big{font-size:3rem;margin-bottom:1rem}
 
@@ -1013,25 +1017,33 @@ function renderMenu() {
       </div>` : ''}
       <div class="item-body">
         <div class="item-name">${item.name}</div>
+        <!-- Line 1: Description -->
         <div class="item-desc">${item.desc.length>90?item.desc.slice(0,90)+'…':item.desc}</div>
-        <div class="item-footer">
+        <!-- Line 2: Price left | Qty controls right (not for size items) -->
+        <div class="item-price-qty-row" onclick="event.stopPropagation()">
           <span class="item-price">${displayPrice}</span>
-          ${item.sizes
-            ? `<button class="add-btn" onclick="event.stopPropagation();openItemDetail(${item.id})">🎂 Customise</button>`
-            : inCart
-              ? `<div class="item-qty-row" onclick="event.stopPropagation()">
+          ${!item.sizes
+            ? inCart
+              ? `<div class="item-qty-row">
                   <button class="item-qty-btn" onclick="changeQty(${item.id},-1)">−</button>
                   <span class="item-qty-num">${inCart.qty}</span>
                   <button class="item-qty-btn" onclick="changeQty(${item.id},1)">+</button>
                  </div>`
-              : `<div class="item-qty-row" onclick="event.stopPropagation()">
+              : `<div class="item-qty-row">
                   <button class="item-qty-btn" onclick="changePreQty(${item.id},-1)">−</button>
                   <span class="item-qty-num">${preQty}</span>
                   <button class="item-qty-btn" onclick="changePreQty(${item.id},1)">+</button>
-                  <button class="add-btn" onclick="addToCart(${item.id})">＋ Add</button>
                  </div>`
+            : ``
           }
         </div>
+        <!-- Line 3: Full-width Add / Customise button -->
+        ${item.sizes
+          ? `<button class="add-btn" onclick="event.stopPropagation();openItemDetail(${item.id})">🎂 Customise</button>`
+          : inCart
+            ? `<button class="add-btn added" onclick="event.stopPropagation()">✓ Added to Cart</button>`
+            : `<button class="add-btn" onclick="event.stopPropagation();addToCart(${item.id})">＋ Add to Cart</button>`
+        }
       </div>
     </div>`;
   }).join('');
