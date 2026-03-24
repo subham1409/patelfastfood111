@@ -313,9 +313,19 @@ margin-left: -12px;}
     @media(max-width:600px){.item-modal-box{grid-template-columns:1fr}}
     .item-modal-close{position:absolute;top:.75rem;right:.75rem;background:var(--gray-light);border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--text2);z-index:3;transition:background .2s}
     .item-modal-close:hover{background:var(--red);color:#fff}
-    .item-modal-img-wrap{border-radius:22px 0 0 22px;overflow:hidden;background:var(--bg3);min-height:260px}
-    @media(max-width:600px){.item-modal-img-wrap{border-radius:22px 22px 0 0;min-height:200px}}
+    .item-modal-img-wrap{border-radius:22px 0 0 22px;overflow:hidden;background:var(--bg3);min-height:260px;display:flex;flex-direction:column}
+    @media(max-width:600px){.item-modal-img-wrap{border-radius:22px 22px 0 0;min-height:auto}}
     .item-modal-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+    /* Square main photo */
+    .imd-main-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--bg3);flex-shrink:0}
+    .imd-main-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    /* Thumbnail strip */
+    .imd-thumb-strip{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;scrollbar-width:thin;scrollbar-color:var(--red) transparent;background:var(--bg3);border-top:1.5px solid var(--border)}
+    .imd-thumb-strip::-webkit-scrollbar{height:4px}
+    .imd-thumb-strip::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+    .imd-thumb{width:56px;height:56px;border-radius:8px;overflow:hidden;flex-shrink:0;border:2.5px solid transparent;cursor:pointer;transition:border-color .2s}
+    .imd-thumb.active,.imd-thumb:hover{border-color:var(--red)}
+    .imd-thumb img{width:100%;height:100%;object-fit:cover;display:block}
     .item-modal-info{padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.6rem;justify-content:center}
     .item-modal-subcat{display:inline-block;background:var(--orange);color:#fff;font-size:.7rem;font-weight:800;padding:2px 10px;border-radius:20px;width:fit-content;letter-spacing:.03em}
     .item-modal-name{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;line-height:1.2;color:var(--text)}
@@ -573,9 +583,8 @@ const MENU = [
   {id:17, name:'Custom Celebration Cake', nameGu:'કસ્ટમ સેલિબ્રેશન કેક', nameHi:'कस्टम सेलिब्रेशन केक', cat:'cake',     subcat:'Cake',       popular:true,  price:400,
    desc:'Made fresh to order — choose your flavour, size & design. Perfect for birthdays, anniversaries & every special moment. Each cake is crafted with premium ingredients, fluffy layered sponge, rich cream frosting and personalised decoration. Available in multiple sizes with pricing from ₹400 (500g) onwards.',
    imgs:[
-     'food-photo/1 (1).jpeg',
-     'food-photo/1 (2).jpeg',
      'food-photo/1 (3).jpeg',
+     'food-photo/1 (2).jpeg',
      'food-photo/1 (4).jpeg',
      'food-photo/1 (6).jpeg',
    ],
@@ -1101,7 +1110,7 @@ function openCheckout() {
   closeCart();
   const rows = cart.map(c=>`<div class="sum-item"><span>${c.name} ×${c.qty}</span><span>₹${c.price*c.qty}</span></div>`).join('');
   document.getElementById('orderSummary').innerHTML =
-    `<div class="sum-title">📋 Order Summary</div>${rows}<div class="sum-total"><span>Total</span><span>₹${getTotal()}</span></div>`;
+    `<div class="sum-title">📋 Order Summary</div>${rows}<div class="sum-total" style="text-decoration:line-through;color:var(--text3);font-weight:700"><span>Price</span><span>₹${getTotal()}</span></div><div class="sum-total" style="margin-top:.4rem"><span>Final Price <span style="font-size:.7rem;background:var(--red);color:#fff;padding:1px 6px;border-radius:20px;font-weight:700;margin-left:.3rem">10% OFF</span></span><span>₹${Math.round(getTotal()*0.9)}</span></div>`;
   document.getElementById('checkoutModal').classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -1182,37 +1191,33 @@ function buildGallery(imgs){
   const wrap = document.getElementById('imdImgWrap');
   wrap.innerHTML = '';
   if(!imgs||imgs.length<=1){
-    // single image
+    const photoWrap = document.createElement('div'); photoWrap.className='imd-main-photo';
     const img = document.createElement('img');
     img.id='imdImg'; img.src=imgs?imgs[0]:''; img.alt='';
-    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
-    wrap.appendChild(img);
+    photoWrap.appendChild(img);
+    wrap.appendChild(photoWrap);
     return;
   }
-  // multi-image gallery
+  // Multi-image: square main photo + scrollable thumbnail strip (Flipkart style)
   imdGalleryIdx=0;
-  const rel = document.createElement('div'); rel.className='imd-img-wrap-rel'; rel.style.cssText='height:100%;width:100%';
-  const gallery = document.createElement('div'); gallery.className='imd-gallery'; gallery.id='imdGallery';
+  const photoWrap = document.createElement('div'); photoWrap.className='imd-main-photo';
+  const mainImg = document.createElement('img');
+  mainImg.id='imdMainImg'; mainImg.src=imgs[0]; mainImg.alt=''; mainImg.loading='lazy';
+  photoWrap.appendChild(mainImg);
+  wrap.appendChild(photoWrap);
+  const strip = document.createElement('div'); strip.className='imd-thumb-strip'; strip.id='imdThumbStrip';
   imgs.forEach((src,i)=>{
-    const slide=document.createElement('div'); slide.className='imd-gallery-slide';
-    const im=document.createElement('img'); im.src=src; im.alt='Cake '+(i+1); im.loading='lazy';
-    slide.appendChild(im); gallery.appendChild(slide);
+    const thumb = document.createElement('div'); thumb.className='imd-thumb'+(i===0?' active':'');
+    const tImg = document.createElement('img'); tImg.src=src; tImg.alt='Photo '+(i+1); tImg.loading='lazy';
+    thumb.appendChild(tImg);
+    thumb.addEventListener('click', ()=>{
+      imdGalleryIdx=i;
+      mainImg.src=src;
+      strip.querySelectorAll('.imd-thumb').forEach((t,j)=>t.classList.toggle('active',j===i));
+    });
+    strip.appendChild(thumb);
   });
-  // nav arrows
-  const prev=document.createElement('button'); prev.className='imd-gallery-nav prev'; prev.innerHTML='&#8249;';
-  const next=document.createElement('button'); next.className='imd-gallery-nav next'; next.innerHTML='&#8250;';
-  prev.addEventListener('click',e=>{e.stopPropagation();scrollGallery(imgs.length,-1);});
-  next.addEventListener('click',e=>{e.stopPropagation();scrollGallery(imgs.length,1);});
-  rel.appendChild(gallery); rel.appendChild(prev); rel.appendChild(next);
-  wrap.appendChild(rel);
-  // dots below
-  const dotsWrap=document.createElement('div'); dotsWrap.className='imd-gallery-dots'; dotsWrap.id='imdGalleryDots';
-  imgs.forEach((_,i)=>{
-    const d=document.createElement('div'); d.className='imd-gallery-dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>goGallery(imgs.length,i));
-    dotsWrap.appendChild(d);
-  });
-  wrap.appendChild(dotsWrap);
+  wrap.appendChild(strip);
 }
 
 function scrollGallery(total, dir){
