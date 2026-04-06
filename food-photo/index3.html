@@ -69,13 +69,18 @@
     .hero-stat{text-align:center}
     .hero-stat strong{display:block;font-family:'Baloo 2',cursive;font-size:1.8rem;font-weight:800;color:var(--red)}
     .hero-stat span{font-size:.8rem;color:var(--text3);font-weight:600}
+    /* FLOATING FOOD IMAGE */
     .hero-visual{display:flex;justify-content:center;align-items:center;position:relative;animation:fadeInRight .8s .2s ease both}
-    .hero-img-wrap{width:320px;height:320px;border-radius:50%;overflow:hidden;border:6px solid var(--red);box-shadow:0 20px 60px rgba(232,25,44,.3);animation:floatY 3s ease-in-out infinite;flex-shrink:0}
-    .hero-img-wrap img{width:100%;height:100%;object-fit:cover}
-    .hero-badge{position:absolute;background:var(--white);border-radius:16px;padding:.7rem 1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.85rem;animation:floatX 4s ease-in-out infinite;white-space:nowrap}
-    [data-theme=dark] .hero-badge{background:var(--card-bg)}
-    .hero-badge:nth-child(2){top:10%;right:-2%;animation-delay:.5s}
-    .hero-badge:nth-child(3){bottom:18%;left:-8%;animation-delay:1s}
+    .hero-float-img-wrap{position:relative;width:100%;max-width:460px}
+    .hero-float-img{width:100%;border-radius:50%;aspect-ratio:1/1;object-fit:cover;box-shadow:0 24px 60px rgba(232,25,44,.3),0 0 0 6px rgba(232,25,44,.15);animation:floatHero 3.5s ease-in-out infinite}
+    .hero-float-badge{position:absolute;background:var(--red);color:#fff;font-size:.82rem;font-weight:800;padding:.38rem .9rem;border-radius:30px;white-space:nowrap;box-shadow:0 4px 16px rgba(232,25,44,.35)}
+    .hero-float-badge-1{top:10%;left:-8%;animation:floatBadge1 3.5s ease-in-out infinite}
+    .hero-float-badge-2{bottom:12%;right:-8%;animation:floatBadge2 3.5s 0.5s ease-in-out infinite}
+    .hero-float-badge-3{top:60%;left:-10%;animation:floatBadge3 3.5s 1s ease-in-out infinite}
+    @keyframes floatHero{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+    @keyframes floatBadge1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes floatBadge2{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes floatBadge3{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
     /* MENU SECTION */
     .section-sub {
@@ -121,18 +126,22 @@
     .pop-ribbon::after{content:'';position:absolute;bottom:-4px;left:0;border-top:4px solid var(--red-dark);border-left:4px solid transparent}
     .subcat-tag{position:absolute;bottom:8px;right:8px;background:rgba(255,107,0,.9);color:#fff;font-size:.65rem;font-weight:800;padding:3px 9px;border-radius:20px;z-index:2;letter-spacing:.03em}
 
-    .item-body{padding:1.1rem 1.2rem 1.2rem}
-    .item-name{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;margin-bottom:.25rem}
-    .item-desc{font-size:.8rem;color:var(--text3);margin-bottom:.9rem;line-height:1.5}
-    .item-footer{display:flex;align-items:center;justify-content:space-between}
+    .item-body{padding:1rem 1.1rem 1.1rem;display:flex;flex-direction:column;gap:.55rem}
+    .item-name{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;margin-bottom:0}
+    .item-desc{font-size:.8rem;color:var(--text3);line-height:1.5;margin-bottom:0}
+    /* Row 2: price left, qty right */
+    .item-price-qty-row{display:flex;align-items:center;justify-content:space-between;gap:.4rem}
     .item-price{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800;color:var(--red)}
-    .add-btn{background:var(--red);color:#fff;border-radius:10px;padding:.5rem 1rem;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:.4rem;transition:all .2s}
-    .add-btn:hover{background:var(--red-dark);transform:scale(1.07)}
-    .add-btn.added{background:#22a745}
-    .item-qty-row{display:flex;align-items:center;gap:.5rem}
-    .item-qty-btn{width:30px;height:30px;border-radius:8px;background:var(--red);color:#fff;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+    .item-qty-row{display:flex;align-items:center;gap:.4rem}
+    .item-qty-btn{width:28px;height:28px;border-radius:8px;background:var(--red);color:#fff;font-size:1.05rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
     .item-qty-btn:hover{background:var(--red-dark);transform:scale(1.1)}
-    .item-qty-num{font-weight:800;font-size:1rem;min-width:22px;text-align:center;color:var(--text)}
+    .item-qty-num{font-weight:800;font-size:.95rem;min-width:20px;text-align:center;color:var(--text)}
+    /* Row 3: full-width add button */
+    .add-btn{background:var(--red);color:#fff;border-radius:10px;padding:.55rem 1rem;font-weight:700;font-size:.88rem;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:all .2s;width:100%}
+    .add-btn:hover{background:var(--red-dark);transform:scale(1.03)}
+    .add-btn.added{background:#22a745}
+    /* legacy item-footer kept for modal compat */
+    .item-footer{display:none}
     .no-results{text-align:center;padding:3rem;color:var(--text3);grid-column:1/-1;font-size:1.05rem}
     .no-results .big{font-size:3rem;margin-bottom:1rem}
 
@@ -237,8 +246,8 @@
     @keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(100%)}}
     @keyframes slideInR{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 
-    @media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-btns{justify-content:center}.hero-stats{justify-content:center}.hero-visual{margin-top:2rem}.about-inner{grid-template-columns:1fr}.about-img-grid{order:-1}.hero-badge:nth-child(2){right:5%}.hero-badge:nth-child(3){left:0}}
-    @media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}.menu-controls{flex-direction:column;align-items:stretch}.search-box{max-width:100%}.cat-tabs{justify-content:center}
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-btns{justify-content:center}.hero-stats{justify-content:center}.hero-visual{margin-top:2rem;width:100%;justify-content:center;animation:fadeInUp .8s .2s ease both}.hero-float-img-wrap{max-width:320px}.about-inner{grid-template-columns:1fr}.about-img-grid{order:-1}}
+    @media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}.menu-controls{flex-direction:column;align-items:stretch}.search-box{max-width:100%}.cat-tabs{justify-content:center}.hero-float-img-wrap{max-width:260px}
     .logo-icon{width: 40px;
     height: 32px;
   border-radius: 50%;
@@ -304,9 +313,19 @@ margin-left: -12px;}
     @media(max-width:600px){.item-modal-box{grid-template-columns:1fr}}
     .item-modal-close{position:absolute;top:.75rem;right:.75rem;background:var(--gray-light);border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--text2);z-index:3;transition:background .2s}
     .item-modal-close:hover{background:var(--red);color:#fff}
-    .item-modal-img-wrap{border-radius:22px 0 0 22px;overflow:hidden;background:var(--bg3);min-height:260px}
-    @media(max-width:600px){.item-modal-img-wrap{border-radius:22px 22px 0 0;min-height:200px}}
+    .item-modal-img-wrap{border-radius:22px 0 0 22px;overflow:hidden;background:var(--bg3);min-height:260px;display:flex;flex-direction:column}
+    @media(max-width:600px){.item-modal-img-wrap{border-radius:22px 22px 0 0;min-height:auto}}
     .item-modal-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+    /* Square main photo */
+    .imd-main-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--bg3);flex-shrink:0}
+    .imd-main-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    /* Thumbnail strip */
+    .imd-thumb-strip{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;scrollbar-width:thin;scrollbar-color:var(--red) transparent;background:var(--bg3);border-top:1.5px solid var(--border)}
+    .imd-thumb-strip::-webkit-scrollbar{height:4px}
+    .imd-thumb-strip::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+    .imd-thumb{width:56px;height:56px;border-radius:8px;overflow:hidden;flex-shrink:0;border:2.5px solid transparent;cursor:pointer;transition:border-color .2s}
+    .imd-thumb.active,.imd-thumb:hover{border-color:var(--red)}
+    .imd-thumb img{width:100%;height:100%;object-fit:cover;display:block}
     .item-modal-info{padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.6rem;justify-content:center}
     .item-modal-subcat{display:inline-block;background:var(--orange);color:#fff;font-size:.7rem;font-weight:800;padding:2px 10px;border-radius:20px;width:fit-content;letter-spacing:.03em}
     .item-modal-name{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;line-height:1.2;color:var(--text)}
@@ -320,6 +339,14 @@ margin-left: -12px;}
     .imd-qty-num{font-weight:800;font-size:1.1rem;min-width:28px;text-align:center}
     .imd-add-btn{flex:1;min-width:120px;background:var(--red);color:#fff;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;padding:.8rem 1.2rem;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:.4rem;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(232,25,44,.28)}
     .imd-add-btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+
+    /* ADDRESS OPTIONS */
+    .addr-options{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+    .addr-opt{background:var(--bg3);border:2px solid var(--border);border-radius:12px;padding:.6rem .8rem;font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:700;color:var(--text2);text-align:left;cursor:pointer;transition:all .2s;line-height:1.3}
+    .addr-opt:hover{border-color:var(--red);background:var(--gray-light);color:var(--red)}
+    .addr-opt.selected{border-color:var(--red);background:var(--red);color:#fff}
+    .addr-opt-custom{grid-column:1/-1}
+    @media(max-width:480px){.addr-options{grid-template-columns:1fr}}
 
   </style>
 </head>
@@ -364,11 +391,12 @@ margin-left: -12px;}
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=640&auto=format&fit=crop&q=80" alt="Burger" loading="eager"/>
+        <div class="hero-float-img-wrap">
+          <img class="hero-float-img" src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80" alt="Delicious Food" />
+          <div class="hero-float-badge hero-float-badge-1">🍔 Burgers</div>
+          <div class="hero-float-badge hero-float-badge-2">🎂 Cakes</div>
+          <div class="hero-float-badge hero-float-badge-3">🧊 Gola</div>
         </div>
-        <div class="hero-badge">🌟 Top Rated</div>
-        <div class="hero-badge">⚡ Fast Delivery</div>
       </div>
     </div>
   </div>
@@ -385,8 +413,6 @@ margin-left: -12px;}
     </div>
     <div class="cat-tabs" id="catTabs">
       <button class="cat-tab active" data-cat="all">🍽️ All Items</button>
-      <button class="cat-tab" data-cat="fastfood">🍔 Fast Food</button>
-      <button class="cat-tab" data-cat="pavbhaji">🍛 Pav Bhaji</button>
       <button class="cat-tab" data-cat="burger">🍔 Burger</button>
       <button class="cat-tab" data-cat="puff">🥐 Grilled Puff</button>
       <button class="cat-tab" data-cat="quickbites">🥙 Quick Bites</button>
@@ -436,7 +462,7 @@ margin-left: -12px;}
     <h2 class="section-title">Get In Touch</h2>
     <p class="section-sub">We're just a message away!</p>
     <div class="contact-grid">
-      <div class="contact-card"><div class="contact-icon">📞</div><h3>Call Us</h3><p>+91 8849110467<br>Open 10 AM – 10 PM daily</p><a href="tel:+918849110467">📞 Call Now</a></div>
+      <div class="contact-card"><div class="contact-icon">📞</div><h3>Call Us</h3><p>+91 8200014735<br>Open 10 AM – 10 PM daily</p><a href="tel:+918200014735">📞 Call Now</a></div>
       <div class="contact-card"><div class="contact-icon">📍</div><p>Patel Fast-Food, Western Unity <br>Vaishno Devi circle Near Sardardham<br>Ahmedabad, Gujarat 382501</p><a href="https://maps.app.goo.gl/4BWNR9h9tyMPhHG68" target="_blank">📍 Click Here For Location</a></div>
       <div class="contact-card"><div class="contact-icon">🕐</div><h3>Hours</h3><p>Mon – Sun: 10:00 AM – 10:00 PM<br>No holidays, always open!</p></div>
     </div>
@@ -449,7 +475,7 @@ margin-left: -12px;}
   <p style="margin-top:.5rem">© 2025 Patel Fast Food. Made by AS devloper.</p>
 </footer>
 
-<a class="floating-wa" href="https://wa.me/918849110467" target="_blank" title="Chat on WhatsApp">💬</a>
+<a class="floating-wa" href="https://wa.me/918200014735" target="_blank" title="Chat on WhatsApp">💬</a>
 
 <!-- ITEM DETAIL MODAL -->
 <div class="item-modal-overlay" id="itemDetailModal">
@@ -494,8 +520,18 @@ margin-left: -12px;}
     <div class="modal-body">
       <div class="order-summary-box" id="orderSummary"></div>
       <div class="form-group"><label>Your Name *</label><input type="text" id="custName" placeholder="e.g. Rahul Patel"/></div>
-      <div class="form-group"><label>Phone Number *</label><input type="tel" id="custPhone" placeholder="e.g. 8849110467"/></div>
-      <div class="form-group"><label>Delivery Address *</label><textarea id="custAddress" placeholder="House no, Street, Area, City..."></textarea></div>
+      <div class="form-group"><label>Phone Number *</label><input type="tel" id="custPhone" placeholder="e.g. 8200014735"/></div>
+      <div class="form-group">
+        <label>Delivery Address *</label>
+        <div class="addr-options" id="addrOptions">
+          <button type="button" class="addr-opt" data-val="Sardardham Boys Hostel, Western Unity, Vaishno Devi Circle, Ahmedabad" onclick="selectAddr(this)">🏠 Sardardham Boys Hostel</button>
+          <button type="button" class="addr-opt" data-val="Sardardham Girls Hostel, Western Unity, Vaishno Devi Circle, Ahmedabad" onclick="selectAddr(this)">🏠 Sardardham Girls Hostel</button>
+          <button type="button" class="addr-opt" data-val="At Our Shop – Patel Fast Food, Western Unity, Vaishno Devi Circle, Ahmedabad" onclick="selectAddr(this)">🍔 At Our Shop (Patel Fast Food)</button>
+          <button type="button" class="addr-opt addr-opt-custom" data-val="custom" onclick="selectAddr(this)">✏️ Customise</button>
+        </div>
+        <textarea id="custAddress" placeholder="Enter your full address…" style="display:none;margin-top:.6rem"></textarea>
+        <p style="font-size:.75rem;color:var(--text3);margin-top:.35rem;display:flex;align-items:center;gap:.3rem">📍 <em>Delivery only available within 3 km radius from our shop.</em></p>
+      </div>
       <div class="form-group"><label>Special Instructions</label><textarea id="custNote" placeholder="Extra chutney, less spicy…" style="min-height:60px"></textarea></div>
       <button class="whatsapp-btn" id="placeOrderBtn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -525,16 +561,10 @@ const MENU = [
    img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=80'},
 
   // ── Fast Food › Sandwich ──
-  {id:7, name:'Butter Cheese Sandwich', nameGu:'બટર ચીઝ સેન્ડવિચ',       nameHi:'बटर चीज़ सैंडविच',        cat:'fastfood', subcat:'Sandwich',   popular:true,  price:65,  desc:'Grilled with butter, cheese & green chutney — street comfort',
-   img:'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=80'},
-  {id:8, name:'Club Sandwich',          nameGu:'ક્લબ સેન્ડવિચ',           nameHi:'क्लब सैंडविच',             cat:'fastfood', subcat:'Sandwich',   popular:false, price:90,  desc:'Triple-decker with veggies, cheese & mustard mayo',
-   img:'https://media.istockphoto.com/id/1406626857/photo/club-sandwich-with-chicken-on-wooden-table.webp?a=1&b=1&s=612x612&w=0&k=20&c=Utx55fhmTRmZa3Z21MfCOaNItaMrHboFvt2G0Fworts='},
+
 
   // ── Fast Food › Snacks ──
-  {id:9,  name:'French Fries (Large)',  nameGu:'ફ્રેન્ચ ફ્રાઇઝ (મોટી)',   nameHi:'फ्रेंच फ्राइज़ (बड़ी)',   cat:'fastfood', subcat:'Snacks',     popular:true,  price:60,  desc:'Crispy golden fries tossed with masala & ketchup',
-   img:'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJlbmNoJTIwZnJpZXN8ZW58MHx8MHx8fDA%3D'},
-  {id:10, name:'Pav Bhaji',             nameGu:'પાવ ભાજી',                 nameHi:'पाव भाजी',                 cat:'pavbhaji', subcat:'Pav Bhaji',  popular:false, price:70,  desc:'Spiced mixed veg bhaji with extra butter pav',
-   img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=80'},
+
 
   // ── Cake › Pastry ──
   {id:11, name:'Custom Pastry Box', nameGu:'કસ્ટમ પેસ્ટ્રી બોક્સ', nameHi:'कस्टम पेस्ट्री बॉक्स', cat:'cake', subcat:'Pastry', popular:true, price:60,
@@ -554,8 +584,8 @@ const MENU = [
   {id:17, name:'Custom Celebration Cake', nameGu:'કસ્ટમ સેલિબ્રેશન કેક', nameHi:'कस्टम सेलिब्रेशन केक', cat:'cake',     subcat:'Cake',       popular:true,  price:400,
    desc:'Made fresh to order — choose your flavour, size & design. Perfect for birthdays, anniversaries & every special moment. Each cake is crafted with premium ingredients, fluffy layered sponge, rich cream frosting and personalised decoration. Available in multiple sizes with pricing from ₹400 (500g) onwards.',
    imgs:[
-     'food-photo/1 (2).jpeg',
      'food-photo/1 (3).jpeg',
+     'food-photo/1 (2).jpeg',
      'food-photo/1 (4).jpeg',
      'food-photo/1 (6).jpeg',
    ],
@@ -785,8 +815,7 @@ const MENU = [
    img:'food-photo/download (20).jpg'},
 
   // ── Chaat ──
-  {id:701, name:'Pani Puri (6 Flavours)',      nameGu:'પાણીપૂરી (6 ફ્લેવર)',        cat:'chaat', subcat:'Chaat', popular:true,  price:20,  desc:'Crispy puris with 6 different tangy pani flavours',
-   img:'food-photo/download (21).jpg'},
+
   {id:702, name:'Masala Puri',                 nameGu:'મસાલા પૂરી',                  cat:'chaat', subcat:'Chaat', popular:false, price:30,  desc:'Spiced masala filled puris with tangy chutneys',
    img:'food-photo/download (22).jpg'},
   {id:703, name:'Sev Puri',                    nameGu:'સેવ પૂરી',                    cat:'chaat', subcat:'Chaat', popular:false, price:30,  desc:'Crispy puris topped with sev, chutneys and spices',
@@ -903,9 +932,8 @@ const MENU = [
 
 /* subcat lists per main category */
 const SUBCATS = {
-  all:        ['All','Burger','Pizza','Sandwich','Snacks','Pav Bhaji','Grilled Puff','Quick Bites','Grilled Sandwich','French Fries','Pasta','Chaat','Chinese','Ice Sparkle','Milkshake','Combos','Pastry','Cake','Stick Gola','Dish Gola','Mava Dish','Sugar Free'],
+  all:        ['All','Burger','Pizza','Sandwich','Snacks','Grilled Puff','Quick Bites','Grilled Sandwich','French Fries','Pasta','Chaat','Chinese','Ice Sparkle','Milkshake','Combos','Pastry','Cake','Stick Gola','Dish Gola','Mava Dish','Sugar Free'],
   fastfood:   ['All'],
-  pavbhaji:   ['All','Pav Bhaji'],
   burger:     ['All','Burger'],
   puff:       ['All','Grilled Puff'],
   quickbites: ['All','Quick Bites'],
@@ -927,7 +955,7 @@ let pendingQty  = {};
 let activeCat   = 'all';
 let activeSub   = 'All';
 let searchQ     = '';
-const WA        = '918849110467';
+const WA        = '918200014735';
 
 /* RENDER SUBCATS */
 function renderSubcats() {
@@ -964,7 +992,7 @@ function renderMenu() {
     return;
   }
 
-  const catFallback = {fastfood:'🍔', cake:'🎂', gola:'🧊', puff:'🥐', quickbites:'🥙', sandwich:'🥪', pizza:'🍕', fries:'🍟', pasta:'🍝', chaat:'🫙', chinese:'🥢', drinks:'🥤', combos:'🎁', pavbhaji:'🍛', burger:'🍔'};
+  const catFallback = {fastfood:'🍔', cake:'🎂', gola:'🧊', puff:'🥐', quickbites:'🥙', sandwich:'🥪', pizza:'🍕', fries:'🍟', pasta:'🍝', chaat:'🫙', chinese:'🥢', drinks:'🥤', combos:'🎁', burger:'🍔'};
   grid.innerHTML = items.map(item => {
     const inCart = cart.find(c=>c.id===item.id);
     const preQty = pendingQty[item.id] || 1;
@@ -984,25 +1012,33 @@ function renderMenu() {
       </div>` : ''}
       <div class="item-body">
         <div class="item-name">${item.name}</div>
+        <!-- Line 1: Description -->
         <div class="item-desc">${item.desc.length>90?item.desc.slice(0,90)+'…':item.desc}</div>
-        <div class="item-footer">
+        <!-- Line 2: Price left | Qty controls right (not for size items) -->
+        <div class="item-price-qty-row" onclick="event.stopPropagation()">
           <span class="item-price">${displayPrice}</span>
-          ${item.sizes
-            ? `<button class="add-btn" onclick="event.stopPropagation();openItemDetail(${item.id})">🎂 Customise</button>`
-            : inCart
-              ? `<div class="item-qty-row" onclick="event.stopPropagation()">
+          ${!item.sizes
+            ? inCart
+              ? `<div class="item-qty-row">
                   <button class="item-qty-btn" onclick="changeQty(${item.id},-1)">−</button>
                   <span class="item-qty-num">${inCart.qty}</span>
                   <button class="item-qty-btn" onclick="changeQty(${item.id},1)">+</button>
                  </div>`
-              : `<div class="item-qty-row" onclick="event.stopPropagation()">
+              : `<div class="item-qty-row">
                   <button class="item-qty-btn" onclick="changePreQty(${item.id},-1)">−</button>
                   <span class="item-qty-num">${preQty}</span>
                   <button class="item-qty-btn" onclick="changePreQty(${item.id},1)">+</button>
-                  <button class="add-btn" onclick="addToCart(${item.id})">＋ Add</button>
                  </div>`
+            : ``
           }
         </div>
+        <!-- Line 3: Full-width Add / Customise button -->
+        ${item.sizes
+          ? `<button class="add-btn" onclick="event.stopPropagation();openItemDetail(${item.id})">🎂 Customise</button>`
+          : inCart
+            ? `<button class="add-btn added" onclick="event.stopPropagation()">✓ Added to Cart</button>`
+            : `<button class="add-btn" onclick="event.stopPropagation();addToCart(${item.id})">＋ Add to Cart</button>`
+        }
       </div>
     </div>`;
   }).join('');
@@ -1041,7 +1077,8 @@ function getTotal() { return cart.reduce((a,b)=>a+b.price*b.qty,0); }
 
 function renderCart() {
   const c = document.getElementById('cartItemsContainer');
-  document.getElementById('cartTotal').textContent = `₹${getTotal()}`;
+  const total = getTotal();
+  document.getElementById('cartTotal').textContent = `₹${total}`;
   document.getElementById('cartCount').textContent  = cart.reduce((a,b)=>a+b.qty,0);
   if (!cart.length) {
     c.innerHTML = `<div class="cart-empty"><div class="big">🛒</div><strong>Your cart is empty</strong><p style="margin-top:.5rem;color:var(--text3)">Add some delicious items!</p></div>`;
@@ -1072,6 +1109,21 @@ const closeCart = () => { document.getElementById('cartPanel').classList.remove(
 document.getElementById('cartToggle').addEventListener('click', openCart);
 document.getElementById('cartClose').addEventListener('click', closeCart);
 document.getElementById('cartOverlay').addEventListener('click', closeCart);
+
+/* ADDRESS SELECTOR */
+function selectAddr(btn) {
+  document.querySelectorAll('.addr-opt').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const ta = document.getElementById('custAddress');
+  if (btn.dataset.val === 'custom') {
+    ta.style.display = 'block';
+    ta.value = '';
+    ta.focus();
+  } else {
+    ta.style.display = 'none';
+    ta.value = btn.dataset.val;
+  }
+}
 
 /* CHECKOUT */
 function openCheckout() {
@@ -1111,9 +1163,8 @@ document.getElementById('placeOrderBtn').addEventListener('click', () => {
     return `${i + 1}. *${c.name}*${extraNames ? ` (${extraNames})` : ''} x${c.qty} - Rs.${c.price * c.qty}`;
   }).join('\n\n');
 
-  // ✅ Price + Discount Logic
+  // Price
   const totalPrice = getTotal();
-  const finalPrice = Math.round(totalPrice * 0.9); // 10% discount
 
   // Message
   const msg = `🍔 *New Order – Patel Fast Food*
@@ -1127,8 +1178,7 @@ document.getElementById('placeOrderBtn').addEventListener('click', () => {
 ${lines}
 ——————————————
 
-💵 Price: Rs.~${totalPrice}~
-🔥 *Final Price (10% OFF): Rs.${finalPrice}*${note ? `
+💵 *Total: Rs.${totalPrice}*${note ? `
 
 📝 *Note:* ${note}` : ''}
 
@@ -1150,6 +1200,8 @@ _via Patel Fast Food website_`;
   ['custName', 'custPhone', 'custAddress', 'custNote'].forEach(id => {
     document.getElementById(id).value = '';
   });
+  document.querySelectorAll('.addr-opt').forEach(b => b.classList.remove('selected'));
+  document.getElementById('custAddress').style.display = 'none';
 });
 
 /* ITEM DETAIL MODAL */
@@ -1159,37 +1211,33 @@ function buildGallery(imgs){
   const wrap = document.getElementById('imdImgWrap');
   wrap.innerHTML = '';
   if(!imgs||imgs.length<=1){
-    // single image
+    const photoWrap = document.createElement('div'); photoWrap.className='imd-main-photo';
     const img = document.createElement('img');
     img.id='imdImg'; img.src=imgs?imgs[0]:''; img.alt='';
-    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
-    wrap.appendChild(img);
+    photoWrap.appendChild(img);
+    wrap.appendChild(photoWrap);
     return;
   }
-  // multi-image gallery
+  // Multi-image: square main photo + scrollable thumbnail strip (Flipkart style)
   imdGalleryIdx=0;
-  const rel = document.createElement('div'); rel.className='imd-img-wrap-rel'; rel.style.cssText='height:100%;width:100%';
-  const gallery = document.createElement('div'); gallery.className='imd-gallery'; gallery.id='imdGallery';
+  const photoWrap = document.createElement('div'); photoWrap.className='imd-main-photo';
+  const mainImg = document.createElement('img');
+  mainImg.id='imdMainImg'; mainImg.src=imgs[0]; mainImg.alt=''; mainImg.loading='lazy';
+  photoWrap.appendChild(mainImg);
+  wrap.appendChild(photoWrap);
+  const strip = document.createElement('div'); strip.className='imd-thumb-strip'; strip.id='imdThumbStrip';
   imgs.forEach((src,i)=>{
-    const slide=document.createElement('div'); slide.className='imd-gallery-slide';
-    const im=document.createElement('img'); im.src=src; im.alt='Cake '+(i+1); im.loading='lazy';
-    slide.appendChild(im); gallery.appendChild(slide);
+    const thumb = document.createElement('div'); thumb.className='imd-thumb'+(i===0?' active':'');
+    const tImg = document.createElement('img'); tImg.src=src; tImg.alt='Photo '+(i+1); tImg.loading='lazy';
+    thumb.appendChild(tImg);
+    thumb.addEventListener('click', ()=>{
+      imdGalleryIdx=i;
+      mainImg.src=src;
+      strip.querySelectorAll('.imd-thumb').forEach((t,j)=>t.classList.toggle('active',j===i));
+    });
+    strip.appendChild(thumb);
   });
-  // nav arrows
-  const prev=document.createElement('button'); prev.className='imd-gallery-nav prev'; prev.innerHTML='&#8249;';
-  const next=document.createElement('button'); next.className='imd-gallery-nav next'; next.innerHTML='&#8250;';
-  prev.addEventListener('click',e=>{e.stopPropagation();scrollGallery(imgs.length,-1);});
-  next.addEventListener('click',e=>{e.stopPropagation();scrollGallery(imgs.length,1);});
-  rel.appendChild(gallery); rel.appendChild(prev); rel.appendChild(next);
-  wrap.appendChild(rel);
-  // dots below
-  const dotsWrap=document.createElement('div'); dotsWrap.className='imd-gallery-dots'; dotsWrap.id='imdGalleryDots';
-  imgs.forEach((_,i)=>{
-    const d=document.createElement('div'); d.className='imd-gallery-dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>goGallery(imgs.length,i));
-    dotsWrap.appendChild(d);
-  });
-  wrap.appendChild(dotsWrap);
+  wrap.appendChild(strip);
 }
 
 function scrollGallery(total, dir){
